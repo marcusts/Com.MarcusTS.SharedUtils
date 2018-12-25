@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>Com.MarcusTS.SharedUtils</id>
+    <version>1.0.7</version>
+    <title>Shared Utils</title>
+    <authors>Stephen Marcus</authors>
+    <owners>Marcus Technical Services, Inc.</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+     <license type="file">license.txt</license>
+     <description>
+        Utilities to support development in C#.
+    </description>
+    <copyright>Copyright 2018 Marcus Technical Services, Inc. (https://www.marcusts.com)</copyright>
+    <tags>c# c#-utils c#-utilities c-sharp  c-sharp-utils  c-sharp-utilities</tags>
+  </metadata>
+</package>
