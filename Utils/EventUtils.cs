@@ -2,7 +2,7 @@
 // Assembly         : Com.MarcusTS.SmartDI.Lib
 // Author           : Stephen Marcus (Marcus Technical Services, Inc.)
 // Created          : 11-26-2018
-// Last Modified On : 12-23-2018
+// Last Modified On : 01-02-2019
 //
 // <copyright file="EventUtils.cs" company="Marcus Technical Services, Inc.">
 //     @2018 Marcus Technical Services, Inc.
@@ -31,25 +31,98 @@
 
 namespace Com.MarcusTS.SharedUtils.Utils
 {
-   /// <summary>
-   /// Class EventUtils.
-   /// </summary>
+   using System;
+   using System.Threading;
+   using System.Threading.Tasks;
+
    public static class EventUtils
    {
       #region Public Delegates
 
-      /// <summary>
-      /// Delegate GenericDelegate
-      /// </summary>
-      /// <typeparam name="T"></typeparam>
-      /// <param name="val">The value.</param>
       public delegate void GenericDelegate<in T>(T val);
 
-      /// <summary>
-      /// Delegate NoParamsDelegate
-      /// </summary>
+      public delegate Task GenericDelegateTask<in T>(T val);
+
       public delegate void NoParamsDelegate();
 
+      public delegate Task NoParamsDelegateTask();
+
       #endregion Public Delegates
+
+      #region Public Methods
+
+      /// <summary>
+      /// Raises the specified sender.
+      /// </summary>
+      /// <typeparam name="T"></typeparam>
+      /// <param name="handler">The handler.</param>
+      /// <param name="sender">The sender.</param>
+      /// <param name="e">The e.</param>
+      public static void Raise<T>(this EventHandler<T> handler,
+                                  object               sender,
+                                  T                    e) where T : EventArgs
+      {
+         handler?.Invoke(sender, e);
+      }
+
+      /// <summary>
+      /// Raises the specified sender.
+      /// </summary>
+      /// <param name="handler">The handler.</param>
+      /// <param name="sender">The sender.</param>
+      /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+      public static void Raise(this EventHandler handler,
+                               object            sender,
+                               EventArgs         e)
+      {
+         handler?.Invoke(sender, e);
+      }
+
+      /// <summary>
+      /// Raises the on different thread.
+      /// </summary>
+      /// <typeparam name="T"></typeparam>
+      /// <param name="handler">The handler.</param>
+      /// <param name="sender">The sender.</param>
+      /// <param name="e">The e.</param>
+      public static void RaiseOnDifferentThread<T>(this EventHandler<T> handler,
+                                                   object               sender,
+                                                   T                    e) where T : EventArgs
+      {
+         if (handler != null)
+         {
+            Task.Factory.StartNewOnDifferentThread(() => handler.Raise(sender, e));
+         }
+      }
+
+      /// <summary>
+      /// Raises the on different thread.
+      /// </summary>
+      /// <param name="handler">The handler.</param>
+      /// <param name="sender">The sender.</param>
+      /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+      public static void RaiseOnDifferentThread(this EventHandler handler,
+                                                object            sender,
+                                                EventArgs         e)
+      {
+         if (handler != null)
+         {
+            Task.Factory.StartNewOnDifferentThread(() => handler.Raise(sender, e));
+         }
+      }
+
+      /// <summary>
+      /// Starts the new on different thread.
+      /// </summary>
+      /// <param name="taskFactory">The task factory.</param>
+      /// <param name="action">The action.</param>
+      /// <returns>Task.</returns>
+      public static Task StartNewOnDifferentThread(this TaskFactory taskFactory,
+                                                   Action           action)
+      {
+         return taskFactory.StartNew(action, new CancellationToken());
+      }
+
+      #endregion Public Methods
    }
 }
