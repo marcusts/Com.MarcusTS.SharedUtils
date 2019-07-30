@@ -30,6 +30,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
    using System.Collections;
    using System.Collections.Concurrent;
    using System.Collections.Generic;
+   using System.Collections.ObjectModel;
    using System.Diagnostics;
    using System.Linq;
    using System.Reflection;
@@ -150,7 +151,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
          params PropertyInfo[] propInfos
       )
       {
-         if (propInfos == null || !propInfos.Any())
+         if (propInfos == null || !propInfos.IsNotEmpty())
          {
             propInfos = typeof(T).GetRuntimeWriteableProperties();
          }
@@ -422,6 +423,50 @@ namespace Com.MarcusTS.SharedUtils.Utils
       public static bool IsEmpty<T>(this IEnumerable<T> list)
       {
          return list == null || !list.Any();
+      }
+
+      /// <return>
+      /// The differences between the two lists:
+      ///   * First tuple -- the main list items not in the second list
+      ///   * Second tuple -- the second list items not fond in the main list
+      /// </return>
+      public static (IList<T>, IList<T>) GetDifferences<T>(this IEnumerable<T> mainList, IEnumerable<T> secondList)
+      {
+         var mainListItemsNotFoundInSecondList = new List<T>();
+         var secondListItemsNotFoundInMainList = new List<T>();
+
+         if (mainList.IsNotEmpty() || secondList.IsNotEmpty())
+         {
+            foreach (var mainListItem in mainList)
+            {
+               if (!secondList.Contains(mainListItem))
+               {
+                  mainListItemsNotFoundInSecondList.Add(mainListItem);
+               }
+            }
+
+            foreach (var secondListItem in secondList)
+            {
+               if (!mainList.Contains(secondListItem))
+               {
+                  secondListItemsNotFoundInMainList.Add(secondListItem);
+               }
+            }
+         }
+
+         return (mainListItemsNotFoundInSecondList, secondListItemsNotFoundInMainList);
+      }
+
+      public static bool IsSameAs<T>(this IEnumerable<T> mainList, IEnumerable<T> secondList)
+      {
+         var comparison = mainList.GetDifferences(secondList);
+
+         return comparison.Item1.IsEmpty() && comparison.Item2.IsEmpty();
+      }
+
+      public static bool IsDifferentThan<T>(this IEnumerable<T> mainList, IEnumerable<T> secondList)
+      {
+         return !mainList.IsSameAs(secondList);
       }
 
       /// <summary>

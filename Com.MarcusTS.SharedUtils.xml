@@ -317,6 +317,13 @@
             <param name="list">The list.</param>
             <returns><c>true</c> if the specified list is empty; otherwise, <c>false</c>.</returns>
         </member>
+        <member name="M:Com.MarcusTS.SharedUtils.Utils.Extensions.GetDifferences``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``0})">
+            <return>
+            The differences between the two lists:
+              * First tuple -- the main list items not in the second list
+              * Second tuple -- the second list items not fond in the main list
+            </return>
+        </member>
         <member name="M:Com.MarcusTS.SharedUtils.Utils.Extensions.IsEmpty(System.Double)">
             <summary>
                Determines whether the specified main d is empty.
