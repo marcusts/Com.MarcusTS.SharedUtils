@@ -1,33 +1,28 @@
-﻿// *********************************************************************************
-// Assembly         : Com.MarcusTS.SmartDI.Lib
-// Author           : Stephen Marcus (Marcus Technical Services, Inc.)
-// Created          : 11-26-2018
-// Last Modified On : 01-02-2019
+﻿#region License
+
+// Copyright (c) 2019  Marcus Technical Services, Inc. <marcus@marcusts.com>
 //
-// <copyright file="EventUtils.cs" company="Marcus Technical Services, Inc.">
-//     @2018 Marcus Technical Services, Inc.
-// </copyright>
+// This file, EventUtils.cs, is a part of a program called AccountViewMobile.
 //
-// MIT License
+// AccountViewMobile is free software: you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation, either version 3 of the License, or
+// (at your option) any later version.
 //
-// Permission is hereby granted, free of charge, to any person obtaining a copy
-// of this software and associated documentation files (the "Software"), to deal
-// in the Software without restriction, including without limitation the rights
-// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-// copies of the Software, and to permit persons to whom the Software is
-// furnished to do so, subject to the following conditions:
+// Permission to use, copy, modify, and/or distribute this software
+// for any purpose with or without fee is hereby granted, provided
+// that the above copyright notice and this permission notice appear
+// in all copies.
 //
-// The above copyright notice and this permission notice shall be included in all
-// copies or substantial portions of the Software.
+// AccountViewMobile is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
 //
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-// FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
-// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-// SOFTWARE.
-// *********************************************************************************
+// For the complete GNU General Public License,
+// see <http://www.gnu.org/licenses/>.
+
+#endregion
 
 namespace Com.MarcusTS.SharedUtils.Utils
 {
@@ -35,21 +30,36 @@ namespace Com.MarcusTS.SharedUtils.Utils
    using System.Threading;
    using System.Threading.Tasks;
 
+   /// <summary>
+   /// Class EventUtils.
+   /// </summary>
    public static class EventUtils
    {
-      #region Public Delegates
-
+      /// <summary>
+      /// Delegate GenericDelegate
+      /// </summary>
+      /// <typeparam name="T"></typeparam>
+      /// <param name="val">The value.</param>
       public delegate void GenericDelegate<in T>(T val);
 
+      /// <summary>
+      /// Delegate GenericDelegateTask
+      /// </summary>
+      /// <typeparam name="T"></typeparam>
+      /// <param name="val">The value.</param>
+      /// <returns>Task.</returns>
       public delegate Task GenericDelegateTask<in T>(T val);
 
+      /// <summary>
+      /// Delegate NoParamsDelegate
+      /// </summary>
       public delegate void NoParamsDelegate();
 
+      /// <summary>
+      /// Delegate NoParamsDelegateTask
+      /// </summary>
+      /// <returns>Task.</returns>
       public delegate Task NoParamsDelegateTask();
-
-      #endregion Public Delegates
-
-      #region Public Methods
 
       /// <summary>
       /// Raises the specified sender.
@@ -70,7 +80,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       /// </summary>
       /// <param name="handler">The handler.</param>
       /// <param name="sender">The sender.</param>
-      /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+      /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
       public static void Raise(this EventHandler handler,
                                object            sender,
                                EventArgs         e)
@@ -100,7 +110,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       /// </summary>
       /// <param name="handler">The handler.</param>
       /// <param name="sender">The sender.</param>
-      /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+      /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
       public static void RaiseOnDifferentThread(this EventHandler handler,
                                                 object            sender,
                                                 EventArgs         e)
@@ -122,7 +132,5 @@ namespace Com.MarcusTS.SharedUtils.Utils
       {
          return taskFactory.StartNew(action, new CancellationToken());
       }
-
-      #endregion Public Methods
    }
 }
