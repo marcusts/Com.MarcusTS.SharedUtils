@@ -1,52 +1,26 @@
-﻿#region License
-
-// Copyright (c) 2019  Marcus Technical Services, Inc. <marcus@marcusts.com>
-//
-// This file, ThreadHelper.cs, is a part of a program called AccountViewMobile.
-//
-// AccountViewMobile is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// Permission to use, copy, modify, and/or distribute this software
-// for any purpose with or without fee is hereby granted, provided
-// that the above copyright notice and this permission notice appear
-// in all copies.
-//
-// AccountViewMobile is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// For the complete GNU General Public License,
-// see <http://www.gnu.org/licenses/>.
-
-#endregion
-
-namespace Com.MarcusTS.SharedUtils.Utils
+﻿namespace Com.MarcusTS.SharedUtils.Utils
 {
    using System;
 
    /// <summary>
-   /// Class ThreadHelper.
+   ///    Class ThreadHelper.
    /// </summary>
    public static class ThreadHelper
    {
       /// <summary>
-      /// Gets a value indicating whether this instance is on main thread.
+      ///    Gets a value indicating whether this instance is on main thread.
       /// </summary>
       /// <value><c>true</c> if this instance is on main thread; otherwise, <c>false</c>.</value>
       public static bool IsOnMainThread => Environment.CurrentManagedThreadId == MainThreadId;
 
       /// <summary>
-      /// Gets the main thread identifier.
+      ///    Gets the main thread identifier.
       /// </summary>
       /// <value>The main thread identifier.</value>
       public static int MainThreadId { get; private set; }
 
       /// <summary>
-      /// Initializes the specified main thread identifier.
+      ///    Initializes the specified main thread identifier.
       /// </summary>
       /// <param name="mainThreadId">The main thread identifier.</param>
       public static void Initialize(int mainThreadId)

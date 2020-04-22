@@ -1,30 +1,4 @@
-﻿#region License
-
-// Copyright (c) 2019  Marcus Technical Services, Inc. <marcus@marcusts.com>
-//
-// This file, Extensions.cs, is a part of a program called AccountViewMobile.
-//
-// AccountViewMobile is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// Permission to use, copy, modify, and/or distribute this software
-// for any purpose with or without fee is hereby granted, provided
-// that the above copyright notice and this permission notice appear
-// in all copies.
-//
-// AccountViewMobile is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// For the complete GNU General Public License,
-// see <http://www.gnu.org/licenses/>.
-
-#endregion
-
-namespace Com.MarcusTS.SharedUtils.Utils
+﻿namespace Com.MarcusTS.SharedUtils.Utils
 {
    using System;
    using System.Collections;
@@ -36,39 +10,41 @@ namespace Com.MarcusTS.SharedUtils.Utils
    using System.Text.RegularExpressions;
 
    /// <summary>
-   /// Class Extensions.
+   ///    Class Extensions.
    /// </summary>
    public static class Extensions
    {
       /// <summary>
-      /// The decimal
+      ///    The decimal
       /// </summary>
       public const string DECIMAL = ".";
 
       /// <summary>
-      /// The zero character
+      ///    The zero character
       /// </summary>
       public const char ZERO_CHAR = '0';
 
       /// <summary>
-      /// The numeric error
+      ///    The numeric error
       /// </summary>
       private const double NUMERIC_ERROR = 0.001;
 
       /// <summary>
-      /// The global random
+      ///    The global random
       /// </summary>
       public static readonly Random GLOBAL_RANDOM = new Random((int) DateTime.Now.Ticks & 0x0000FFFF);
 
       /// <summary>
-      /// Gets a value indicating whether [empty nullable bool].
+      ///    Gets a value indicating whether [empty nullable bool].
       /// </summary>
-      /// <value><c>null</c> if [empty nullable bool] contains no value, <c>true</c> if [empty nullable bool]; otherwise,
-      /// <c>false</c>.</value>
+      /// <value>
+      ///    <c>null</c> if [empty nullable bool] contains no value, <c>true</c> if [empty nullable bool]; otherwise,
+      ///    <c>false</c>.
+      /// </value>
       public static bool? EmptyNullableBool => new bool?();
 
       /// <summary>
-      /// Adds the or update.
+      ///    Adds the or update.
       /// </summary>
       /// <typeparam name="T"></typeparam>
       /// <typeparam name="U"></typeparam>
@@ -90,8 +66,8 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines if two collections of properties contain the same actual values. Can be called
-      /// for a single property using the optional parameter.
+      ///    Determines if two collections of properties contain the same actual values. Can be called
+      ///    for a single property using the optional parameter.
       /// </summary>
       /// <typeparam name="T">The type of class which is being evaluated for changes.</typeparam>
       /// <param name="mainViewModel">The main class for comparison.</param>
@@ -137,7 +113,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Cleans up service error text.
+      ///    Cleans up service error text.
       /// </summary>
       /// <param name="errorText">The error text.</param>
       /// <returns>System.String.</returns>
@@ -158,35 +134,29 @@ namespace Com.MarcusTS.SharedUtils.Utils
          return string.Empty;
       }
 
-      /// <summary>
-      /// Copies the enumerable.
-      /// </summary>
-      /// <typeparam name="InputListT">The type of the input list t.</typeparam>
-      /// <typeparam name="OutputListT">The type of the output list t.</typeparam>
-      /// <param name="inputLists">The input lists.</param>
-      /// <returns>OutputListT[].</returns>
-      public static OutputListT[] CopyEnumerable<InputListT, OutputListT>(InputListT[] inputLists)
-         where OutputListT : class, InputListT
+      public static OutputListInterface[] CopyEnumerable<InputListInterface, InputListClass, OutputListInterface, OutputListClass>(InputListClass[] inputList, Func<OutputListClass> creator)
+         where InputListClass : class, InputListInterface
+         where OutputListClass : class, OutputListInterface, InputListInterface
       {
-         if (inputLists.IsAnEmptyList())
+         if (inputList.IsAnEmptyList())
          {
             return default;
          }
 
-         var propInfos = typeof(InputListT).GetRuntimeWriteableProperties().ToArray();
+         var propInfos = typeof(InputListClass).GetRuntimeWriteableProperties().ToArray();
 
          if (propInfos.IsAnEmptyList())
          {
             return default;
          }
 
-         var tempOutputList = new List<OutputListT>();
+         var tempOutputList = new List<OutputListInterface>();
 
          // The properties should be of the individual list type - not the originating service model type.
-         foreach (var list in inputLists)
+         foreach (var record in inputList)
          {
-            var newRecord = Activator.CreateInstance(typeof(OutputListT)) as OutputListT;
-            newRecord.CopySettablePropertyValuesFrom(list, propInfos);
+            var newRecord = creator?.Invoke();
+            newRecord.CopySettablePropertyValuesFrom<InputListInterface>(record, propInfos);
             tempOutputList.Add(newRecord);
          }
 
@@ -194,7 +164,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Copy the values from the specified properties from value to target.
+      ///    Copy the values from the specified properties from value to target.
       /// </summary>
       /// <typeparam name="T">*Unused* -- required for referencing only.</typeparam>
       /// <param name="targetViewModel">The view model to copy *to*.</param>
@@ -226,7 +196,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Gets all property infos.
+      ///    Gets all property infos.
       /// </summary>
       /// <typeparam name="T"></typeparam>
       /// <returns>PropertyInfo[].</returns>
@@ -237,16 +207,16 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Gets the differences.
+      ///    Gets the differences.
       /// </summary>
       /// <typeparam name="T"></typeparam>
       /// <param name="mainList">The main list.</param>
       /// <param name="secondList">The second list.</param>
       /// <returns>System.ValueTuple&lt;IList&lt;T&gt;, IList&lt;T&gt;&gt;.</returns>
       /// <return>
-      /// The differences between the two lists:
-      /// * First tuple -- the main list items not in the second list
-      /// * Second tuple -- the second list items not fond in the main list
+      ///    The differences between the two lists:
+      ///    * First tuple -- the main list items not in the second list
+      ///    * Second tuple -- the second list items not fond in the main list
       /// </return>
       public static (IList<T>, IList<T>) GetDifferences<T>(this T[] mainList, T[] secondList)
       {
@@ -276,7 +246,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Gets the enum count.
+      ///    Gets the enum count.
       /// </summary>
       /// <typeparam name="T"></typeparam>
       /// <returns>System.Int32.</returns>
@@ -293,7 +263,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Gets the properties for a type that have a public setter.
+      ///    Gets the properties for a type that have a public setter.
       /// </summary>
       /// <param name="type">The type being analyzed.</param>
       /// <returns>The public settable property info's for this type.</returns>
@@ -341,7 +311,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Gets the string from object.
+      ///    Gets the string from object.
       /// </summary>
       /// <param name="value">The value.</param>
       /// <returns>System.String.</returns>
@@ -356,7 +326,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether [has no value] [the specified database].
+      ///    Determines whether [has no value] [the specified database].
       /// </summary>
       /// <param name="db">The database.</param>
       /// <returns><c>true</c> if [has no value] [the specified database]; otherwise, <c>false</c>.</returns>
@@ -366,7 +336,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether [is an empty list] [the specified list].
+      ///    Determines whether [is an empty list] [the specified list].
       /// </summary>
       /// <param name="list">The list.</param>
       /// <returns><c>true</c> if [is an empty list] [the specified list]; otherwise, <c>false</c>.</returns>
@@ -376,7 +346,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether [is an empty list] [the specified list].
+      ///    Determines whether [is an empty list] [the specified list].
       /// </summary>
       /// <param name="list">The list.</param>
       /// <returns><c>true</c> if [is an empty list] [the specified list]; otherwise, <c>false</c>.</returns>
@@ -394,7 +364,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether [is an equal object to] [the specified compare object].
+      ///    Determines whether [is an equal object to] [the specified compare object].
       /// </summary>
       /// <param name="mainObj">The main object.</param>
       /// <param name="compareObj">The compare object.</param>
@@ -413,7 +383,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether [is an equal reference to] [the specified compare object].
+      ///    Determines whether [is an equal reference to] [the specified compare object].
       /// </summary>
       /// <typeparam name="T"></typeparam>
       /// <param name="mainObj">The main object.</param>
@@ -433,7 +403,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether [is different than] [the specified other date time].
+      ///    Determines whether [is different than] [the specified other date time].
       /// </summary>
       /// <param name="mainDateTime">The main date time.</param>
       /// <param name="otherDateTime">The other date time.</param>
@@ -448,7 +418,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether [is different than] [the specified other d].
+      ///    Determines whether [is different than] [the specified other d].
       /// </summary>
       /// <param name="mainD">The main d.</param>
       /// <param name="otherD">The other d.</param>
@@ -463,7 +433,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether [is different than] [the specified other d].
+      ///    Determines whether [is different than] [the specified other d].
       /// </summary>
       /// <param name="mainD">The main d.</param>
       /// <param name="otherD">The other d.</param>
@@ -478,7 +448,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether [is different than] [the specified other f].
+      ///    Determines whether [is different than] [the specified other f].
       /// </summary>
       /// <param name="mainF">The main f.</param>
       /// <param name="otherF">The other f.</param>
@@ -493,7 +463,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether [is different than] [the specified other string].
+      ///    Determines whether [is different than] [the specified other string].
       /// </summary>
       /// <param name="mainStr">The main string.</param>
       /// <param name="otherStr">The other string.</param>
@@ -508,7 +478,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether [is different than] [the specified second list].
+      ///    Determines whether [is different than] [the specified second list].
       /// </summary>
       /// <typeparam name="T"></typeparam>
       /// <param name="mainList">The main list.</param>
@@ -520,7 +490,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether the specified main date time is empty.
+      ///    Determines whether the specified main date time is empty.
       /// </summary>
       /// <param name="mainDateTime">The main date time.</param>
       /// <returns><c>true</c> if the specified main date time is empty; otherwise, <c>false</c>.</returns>
@@ -530,7 +500,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether the specified list is empty.
+      ///    Determines whether the specified list is empty.
       /// </summary>
       /// <typeparam name="T"></typeparam>
       /// <param name="list">The list.</param>
@@ -541,7 +511,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether the specified main d is empty.
+      ///    Determines whether the specified main d is empty.
       /// </summary>
       /// <param name="mainD">The main d.</param>
       /// <returns><c>true</c> if the specified main d is empty; otherwise, <c>false</c>.</returns>
@@ -551,7 +521,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether the specified string is empty.
+      ///    Determines whether the specified string is empty.
       /// </summary>
       /// <param name="str">The string.</param>
       /// <returns><c>true</c> if the specified string is empty; otherwise, <c>false</c>.</returns>
@@ -561,7 +531,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether [is greater than] [the specified other d].
+      ///    Determines whether [is greater than] [the specified other d].
       /// </summary>
       /// <param name="thisD">The this d.</param>
       /// <param name="otherD">The other d.</param>
@@ -578,7 +548,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether [is greater than or equal to] [the specified other d].
+      ///    Determines whether [is greater than or equal to] [the specified other d].
       /// </summary>
       /// <param name="thisD">The this d.</param>
       /// <param name="otherD">The other d.</param>
@@ -595,7 +565,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether [is less than] [the specified other d].
+      ///    Determines whether [is less than] [the specified other d].
       /// </summary>
       /// <param name="thisD">The this d.</param>
       /// <param name="otherD">The other d.</param>
@@ -612,7 +582,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether [is less than or equal to] [the specified other d].
+      ///    Determines whether [is less than or equal to] [the specified other d].
       /// </summary>
       /// <param name="thisD">The this d.</param>
       /// <param name="otherD">The other d.</param>
@@ -629,7 +599,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether [is non null regex match] [the specified regex].
+      ///    Determines whether [is non null regex match] [the specified regex].
       /// </summary>
       /// <param name="s">The s.</param>
       /// <param name="regex">The regex.</param>
@@ -644,7 +614,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether [is not an empty list] [the specified list].
+      ///    Determines whether [is not an empty list] [the specified list].
       /// </summary>
       /// <param name="list">The list.</param>
       /// <returns><c>true</c> if [is not an empty list] [the specified list]; otherwise, <c>false</c>.</returns>
@@ -654,7 +624,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether [is not an empty list] [the specified list].
+      ///    Determines whether [is not an empty list] [the specified list].
       /// </summary>
       /// <param name="list">The list.</param>
       /// <returns><c>true</c> if [is not an empty list] [the specified list]; otherwise, <c>false</c>.</returns>
@@ -664,7 +634,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether [is not an equal object to] [the specified compare object].
+      ///    Determines whether [is not an equal object to] [the specified compare object].
       /// </summary>
       /// <param name="mainObj">The main object.</param>
       /// <param name="compareObj">The compare object.</param>
@@ -679,7 +649,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether [is not an equal reference to] [the specified compare object].
+      ///    Determines whether [is not an equal reference to] [the specified compare object].
       /// </summary>
       /// <typeparam name="T"></typeparam>
       /// <param name="mainObj">The main object.</param>
@@ -696,7 +666,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether [is not empty] [the specified main date time].
+      ///    Determines whether [is not empty] [the specified main date time].
       /// </summary>
       /// <param name="mainDateTime">The main date time.</param>
       /// <returns><c>true</c> if [is not empty] [the specified main date time]; otherwise, <c>false</c>.</returns>
@@ -706,7 +676,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether [is not empty] [the specified list].
+      ///    Determines whether [is not empty] [the specified list].
       /// </summary>
       /// <typeparam name="T"></typeparam>
       /// <param name="list">The list.</param>
@@ -718,7 +688,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether [is not empty] [the specified main d].
+      ///    Determines whether [is not empty] [the specified main d].
       /// </summary>
       /// <param name="mainD">The main d.</param>
       /// <returns><c>true</c> if [is not empty] [the specified main d]; otherwise, <c>false</c>.</returns>
@@ -728,7 +698,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether [is not empty] [the specified string].
+      ///    Determines whether [is not empty] [the specified string].
       /// </summary>
       /// <param name="str">The string.</param>
       /// <returns><c>true</c> if [is not empty] [the specified string]; otherwise, <c>false</c>.</returns>
@@ -738,7 +708,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether [is not null or default] [the specified main object].
+      ///    Determines whether [is not null or default] [the specified main object].
       /// </summary>
       /// <typeparam name="T"></typeparam>
       /// <param name="mainObj">The main object.</param>
@@ -750,7 +720,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether [is not the same] [the specified second].
+      ///    Determines whether [is not the same] [the specified second].
       /// </summary>
       /// <param name="first">if set to <c>true</c> [first].</param>
       /// <param name="second">if set to <c>true</c> [second].</param>
@@ -767,7 +737,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether [is null or default] [the specified main object].
+      ///    Determines whether [is null or default] [the specified main object].
       /// </summary>
       /// <typeparam name="T"></typeparam>
       /// <param name="mainObj">The main object.</param>
@@ -779,7 +749,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether [is really null] [the specified text].
+      ///    Determines whether [is really null] [the specified text].
       /// </summary>
       /// <param name="text">The text.</param>
       /// <returns><c>true</c> if [is really null] [the specified text]; otherwise, <c>false</c>.</returns>
@@ -789,7 +759,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether [is same as] [the specified other d].
+      ///    Determines whether [is same as] [the specified other d].
       /// </summary>
       /// <param name="mainD">The main d.</param>
       /// <param name="otherD">The other d.</param>
@@ -807,7 +777,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether [is same as] [the specified second list].
+      ///    Determines whether [is same as] [the specified second list].
       /// </summary>
       /// <typeparam name="T"></typeparam>
       /// <param name="mainList">The main list.</param>
@@ -821,7 +791,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether [is same as] [the specified other date time].
+      ///    Determines whether [is same as] [the specified other date time].
       /// </summary>
       /// <param name="mainDateTime">The main date time.</param>
       /// <param name="otherDateTime">The other date time.</param>
@@ -836,7 +806,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether [is same as] [the specified other d].
+      ///    Determines whether [is same as] [the specified other d].
       /// </summary>
       /// <param name="mainD">The main d.</param>
       /// <param name="otherD">The other d.</param>
@@ -853,7 +823,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether [is same as] [the specified other f].
+      ///    Determines whether [is same as] [the specified other f].
       /// </summary>
       /// <param name="mainF">The main f.</param>
       /// <param name="otherF">The other f.</param>
@@ -870,7 +840,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether [is same as] [the specified other string].
+      ///    Determines whether [is same as] [the specified other string].
       /// </summary>
       /// <param name="mainStr">The main string.</param>
       /// <param name="otherStr">The other string.</param>
@@ -902,7 +872,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether the specified b is true.
+      ///    Determines whether the specified b is true.
       /// </summary>
       /// <param name="b">if set to <c>true</c> [b].</param>
       /// <returns><c>true</c> if the specified b is true; otherwise, <c>false</c>.</returns>
@@ -912,7 +882,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether [is type or assignable from type] [the specified target type].
+      ///    Determines whether [is type or assignable from type] [the specified target type].
       /// </summary>
       /// <param name="mainType">Type of the main.</param>
       /// <param name="targetType">Type of the target.</param>
@@ -927,7 +897,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Minimums the of two doubles.
+      ///    Minimums the of two doubles.
       /// </summary>
       /// <param name="width">The width.</param>
       /// <param name="height">The height.</param>
@@ -942,7 +912,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Positions the of decimal.
+      ///    Positions the of decimal.
       /// </summary>
       /// <param name="str">The string.</param>
       /// <returns>System.Int32.</returns>
@@ -952,24 +922,27 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Randoms the string.
+      ///    Randoms the string.
       /// </summary>
       /// <param name="strings">The strings.</param>
+      /// <param name="emptyOK"></param>
       /// <returns>System.String.</returns>
-      public static string RandomString(this string[] strings)
+      public static string RandomString(this string[] strings, bool emptyOK = false)
       {
          if (strings.IsEmpty())
          {
             return "";
          }
 
-         var nextRandomString = strings[GLOBAL_RANDOM.Next(0, strings.Length - 1)];
+         var validStrings = emptyOK ? strings : strings.Where(s => s.IsNotEmpty()).ToArray();
+
+         var nextRandomString = validStrings[GLOBAL_RANDOM.Next(0, validStrings.Length - 1)];
 
          return nextRandomString;
       }
 
       /// <summary>
-      /// Reverses the dictionary.
+      ///    Reverses the dictionary.
       /// </summary>
       /// <typeparam name="T"></typeparam>
       /// <typeparam name="U"></typeparam>
@@ -995,7 +968,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Rounds to int.
+      ///    Rounds to int.
       /// </summary>
       /// <param name="floatVal">The float value.</param>
       /// <returns>System.Int32.</returns>
@@ -1005,7 +978,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Converts to roundedint.
+      ///    Converts to roundedint.
       /// </summary>
       /// <param name="d">The d.</param>
       /// <returns>System.Int32.</returns>
@@ -1015,7 +988,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Converts to roundedlong.
+      ///    Converts to roundedlong.
       /// </summary>
       /// <param name="d">The d.</param>
       /// <returns>System.Int64.</returns>
@@ -1025,7 +998,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Returns the value for a key, if that key exists in the dictionary.
+      ///    Returns the value for a key, if that key exists in the dictionary.
       /// </summary>
       /// <param name="dict">The dictionary.</param>
       /// <param name="key">The key.</param>

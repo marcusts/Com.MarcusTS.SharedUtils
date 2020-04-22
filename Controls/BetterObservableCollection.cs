@@ -1,44 +1,18 @@
-﻿#region License
-
-// Copyright (c) 2019  Marcus Technical Services, Inc. <marcus@marcusts.com>
-//
-// This file, BetterObservableCollection.cs, is a part of a program called AccountViewMobile.
-//
-// AccountViewMobile is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// Permission to use, copy, modify, and/or distribute this software
-// for any purpose with or without fee is hereby granted, provided
-// that the above copyright notice and this permission notice appear
-// in all copies.
-//
-// AccountViewMobile is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// For the complete GNU General Public License,
-// see <http://www.gnu.org/licenses/>.
-
-#endregion
-
-namespace Com.MarcusTS.SharedUtils.Controls
+﻿namespace Com.MarcusTS.SharedUtils.Controls
 {
    using System.Collections.ObjectModel;
    using System.Collections.Specialized;
    using System.Linq;
-   using Utils;
+   using Com.MarcusTS.SharedUtils.Utils;
 
    /// <summary>
-   /// Interface IDecideWhichIsLess
+   ///    Interface IDecideWhichIsLess
    /// </summary>
    /// <typeparam name="T"></typeparam>
    public interface IDecideWhichIsLess<T>
    {
       /// <summary>
-      /// Determines whether [is less than] [the specified main item].
+      ///    Determines whether [is less than] [the specified main item].
       /// </summary>
       /// <param name="mainItem">The main item.</param>
       /// <param name="compareItem">The compare item.</param>
@@ -47,20 +21,20 @@ namespace Com.MarcusTS.SharedUtils.Controls
    }
 
    /// <summary>
-   /// Class BetterObservableCollection.
-   /// Implements the <see cref="System.Collections.ObjectModel.ObservableCollection{T}" />
+   ///    Class BetterObservableCollection.
+   ///    Implements the <see cref="System.Collections.ObjectModel.ObservableCollection{T}" />
    /// </summary>
    /// <typeparam name="T"></typeparam>
    /// <seealso cref="System.Collections.ObjectModel.ObservableCollection{T}" />
    public class BetterObservableCollection<T> : ObservableCollection<T>
    {
       /// <summary>
-      /// The suppress notification
+      ///    The suppress notification
       /// </summary>
       private bool _suppressNotification;
 
       /// <summary>
-      /// Initializes a new instance of the <see cref="BetterObservableCollection{T}"/> class.
+      ///    Initializes a new instance of the <see cref="BetterObservableCollection{T}" /> class.
       /// </summary>
       /// <param name="items">The items.</param>
       public BetterObservableCollection(T[] items)
@@ -70,14 +44,14 @@ namespace Com.MarcusTS.SharedUtils.Controls
       }
 
       /// <summary>
-      /// Initializes a new instance of the <see cref="BetterObservableCollection{T}"/> class.
+      ///    Initializes a new instance of the <see cref="BetterObservableCollection{T}" /> class.
       /// </summary>
       public BetterObservableCollection()
       {
       }
 
       /// <summary>
-      /// Adds the range sorted and without notification.
+      ///    Adds the range sorted and without notification.
       /// </summary>
       /// <param name="list">The list.</param>
       /// <param name="comparer">The comparer.</param>
@@ -98,7 +72,7 @@ namespace Com.MarcusTS.SharedUtils.Controls
       }
 
       /// <summary>
-      /// Adds the sorted.
+      ///    Adds the sorted.
       /// </summary>
       /// <param name="item">The item.</param>
       /// <param name="comparer">The comparer.</param>
@@ -121,7 +95,7 @@ namespace Com.MarcusTS.SharedUtils.Controls
       }
 
       /// <summary>
-      /// Notifies the of additions.
+      ///    Notifies the of additions.
       /// </summary>
       /// <param name="list">The list.</param>
       public void NotifyOfAdditions(T[] list)
@@ -130,7 +104,7 @@ namespace Com.MarcusTS.SharedUtils.Controls
       }
 
       /// <summary>
-      /// Sorts the specified sorted.
+      ///    Sorts the specified sorted.
       /// </summary>
       /// <param name="sorted">The sorted.</param>
       public void Sort(T[] sorted)
@@ -146,9 +120,9 @@ namespace Com.MarcusTS.SharedUtils.Controls
       }
 
       /// <summary>
-      /// Handles the <see cref="E:CollectionChanged" /> event.
+      ///    Handles the <see cref="E:CollectionChanged" /> event.
       /// </summary>
-      /// <param name="e">The <see cref="NotifyCollectionChangedEventArgs"/> instance containing the event data.</param>
+      /// <param name="e">The <see cref="NotifyCollectionChangedEventArgs" /> instance containing the event data.</param>
       protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
       {
          if (_suppressNotification)

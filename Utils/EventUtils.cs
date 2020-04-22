@@ -1,49 +1,23 @@
-﻿#region License
-
-// Copyright (c) 2019  Marcus Technical Services, Inc. <marcus@marcusts.com>
-//
-// This file, EventUtils.cs, is a part of a program called AccountViewMobile.
-//
-// AccountViewMobile is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// Permission to use, copy, modify, and/or distribute this software
-// for any purpose with or without fee is hereby granted, provided
-// that the above copyright notice and this permission notice appear
-// in all copies.
-//
-// AccountViewMobile is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// For the complete GNU General Public License,
-// see <http://www.gnu.org/licenses/>.
-
-#endregion
-
-namespace Com.MarcusTS.SharedUtils.Utils
+﻿namespace Com.MarcusTS.SharedUtils.Utils
 {
    using System;
    using System.Threading;
    using System.Threading.Tasks;
 
    /// <summary>
-   /// Class EventUtils.
+   ///    Class EventUtils.
    /// </summary>
    public static class EventUtils
    {
       /// <summary>
-      /// Delegate GenericDelegate
+      ///    Delegate GenericDelegate
       /// </summary>
       /// <typeparam name="T"></typeparam>
       /// <param name="val">The value.</param>
       public delegate void GenericDelegate<in T>(T val);
 
       /// <summary>
-      /// Delegate GenericDelegateTask
+      ///    Delegate GenericDelegateTask
       /// </summary>
       /// <typeparam name="T"></typeparam>
       /// <param name="val">The value.</param>
@@ -51,18 +25,18 @@ namespace Com.MarcusTS.SharedUtils.Utils
       public delegate Task GenericDelegateTask<in T>(T val);
 
       /// <summary>
-      /// Delegate NoParamsDelegate
+      ///    Delegate NoParamsDelegate
       /// </summary>
       public delegate void NoParamsDelegate();
 
       /// <summary>
-      /// Delegate NoParamsDelegateTask
+      ///    Delegate NoParamsDelegateTask
       /// </summary>
       /// <returns>Task.</returns>
       public delegate Task NoParamsDelegateTask();
 
       /// <summary>
-      /// Raises the specified sender.
+      ///    Raises the specified sender.
       /// </summary>
       /// <typeparam name="T"></typeparam>
       /// <param name="handler">The handler.</param>
@@ -76,7 +50,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Raises the specified sender.
+      ///    Raises the specified sender.
       /// </summary>
       /// <param name="handler">The handler.</param>
       /// <param name="sender">The sender.</param>
@@ -89,7 +63,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Raises the on different thread.
+      ///    Raises the on different thread.
       /// </summary>
       /// <typeparam name="T"></typeparam>
       /// <param name="handler">The handler.</param>
@@ -106,7 +80,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Raises the on different thread.
+      ///    Raises the on different thread.
       /// </summary>
       /// <param name="handler">The handler.</param>
       /// <param name="sender">The sender.</param>
@@ -122,7 +96,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Starts the new on different thread.
+      ///    Starts the new on different thread.
       /// </summary>
       /// <param name="taskFactory">The task factory.</param>
       /// <param name="action">The action.</param>

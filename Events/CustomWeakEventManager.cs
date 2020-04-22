@@ -1,58 +1,32 @@
-﻿#region License
-
-// Copyright (c) 2019  Marcus Technical Services, Inc. <marcus@marcusts.com>
-//
-// This file, CustomWeakEventManager.cs, is a part of a program called AccountViewMobile.
-//
-// AccountViewMobile is free software: you can redistribute it and/or modify
-// it under the terms of the GNU General Public License as published by
-// the Free Software Foundation, either version 3 of the License, or
-// (at your option) any later version.
-//
-// Permission to use, copy, modify, and/or distribute this software
-// for any purpose with or without fee is hereby granted, provided
-// that the above copyright notice and this permission notice appear
-// in all copies.
-//
-// AccountViewMobile is distributed in the hope that it will be useful,
-// but WITHOUT ANY WARRANTY; without even the implied warranty of
-// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-// GNU General Public License for more details.
-//
-// For the complete GNU General Public License,
-// see <http://www.gnu.org/licenses/>.
-
-#endregion
-
-namespace Com.MarcusTS.SharedUtils.Events
+﻿namespace Com.MarcusTS.SharedUtils.Events
 {
    using System;
    using System.Collections.Generic;
    using System.Reflection;
    using System.Runtime.CompilerServices;
-   using Utils;
+   using Com.MarcusTS.SharedUtils.Utils;
 
    /// <summary>
-   /// Copied from (internal) Xamarin.Forms  to make it publicly accessible.
+   ///    Copied from (internal) Xamarin.Forms  to make it publicly accessible.
    /// </summary>
    public static class CustomWeakEventManager
    {
       /// <summary>
-      /// The event handlers
+      ///    The event handlers
       /// </summary>
       private static readonly Dictionary<string, List<Subscription>> _eventHandlers =
          new Dictionary<string, List<Subscription>>();
 
       /// <summary>
-      /// Adds the event handler.
+      ///    Adds the event handler.
       /// </summary>
       /// <typeparam name="TEventArgs">The type of the t event arguments.</typeparam>
       /// <param name="handler">The handler.</param>
       /// <param name="eventName">Name of the event.</param>
       /// <exception cref="ArgumentNullException">
-      /// eventName
-      /// or
-      /// handler
+      ///    eventName
+      ///    or
+      ///    handler
       /// </exception>
       public static void AddEventHandler<TEventArgs>(EventHandler<TEventArgs>  handler,
                                                      [CallerMemberName] string eventName = null)
@@ -72,14 +46,14 @@ namespace Com.MarcusTS.SharedUtils.Events
       }
 
       /// <summary>
-      /// Adds the event handler.
+      ///    Adds the event handler.
       /// </summary>
       /// <param name="handler">The handler.</param>
       /// <param name="eventName">Name of the event.</param>
       /// <exception cref="ArgumentNullException">
-      /// eventName
-      /// or
-      /// handler
+      ///    eventName
+      ///    or
+      ///    handler
       /// </exception>
       public static void AddEventHandler(EventHandler handler, [CallerMemberName] string eventName = null)
       {
@@ -97,7 +71,7 @@ namespace Com.MarcusTS.SharedUtils.Events
       }
 
       /// <summary>
-      /// Handles the event.
+      ///    Handles the event.
       /// </summary>
       /// <param name="sender">The sender.</param>
       /// <param name="args">The arguments.</param>
@@ -149,15 +123,15 @@ namespace Com.MarcusTS.SharedUtils.Events
       }
 
       /// <summary>
-      /// Removes the event handler.
+      ///    Removes the event handler.
       /// </summary>
       /// <typeparam name="TEventArgs">The type of the t event arguments.</typeparam>
       /// <param name="handler">The handler.</param>
       /// <param name="eventName">Name of the event.</param>
       /// <exception cref="ArgumentNullException">
-      /// eventName
-      /// or
-      /// handler
+      ///    eventName
+      ///    or
+      ///    handler
       /// </exception>
       public static void RemoveEventHandler<TEventArgs>(EventHandler<TEventArgs>  handler,
                                                         [CallerMemberName] string eventName = null)
@@ -177,14 +151,14 @@ namespace Com.MarcusTS.SharedUtils.Events
       }
 
       /// <summary>
-      /// Removes the event handler.
+      ///    Removes the event handler.
       /// </summary>
       /// <param name="handler">The handler.</param>
       /// <param name="eventName">Name of the event.</param>
       /// <exception cref="ArgumentNullException">
-      /// eventName
-      /// or
-      /// handler
+      ///    eventName
+      ///    or
+      ///    handler
       /// </exception>
       public static void RemoveEventHandler(EventHandler handler, [CallerMemberName] string eventName = null)
       {
@@ -202,7 +176,7 @@ namespace Com.MarcusTS.SharedUtils.Events
       }
 
       /// <summary>
-      /// Adds the event handler.
+      ///    Adds the event handler.
       /// </summary>
       /// <param name="eventName">Name of the event.</param>
       /// <param name="handlerTarget">The handler target.</param>
@@ -226,7 +200,7 @@ namespace Com.MarcusTS.SharedUtils.Events
       }
 
       /// <summary>
-      /// Removes the event handler.
+      ///    Removes the event handler.
       /// </summary>
       /// <param name="eventName">Name of the event.</param>
       /// <param name="handlerTarget">The handler target.</param>
@@ -253,22 +227,22 @@ namespace Com.MarcusTS.SharedUtils.Events
       }
 
       /// <summary>
-      /// Struct Subscription
+      ///    Struct Subscription
       /// </summary>
       private struct Subscription
       {
          /// <summary>
-         /// The handler
+         ///    The handler
          /// </summary>
          public readonly MethodInfo Handler;
 
          /// <summary>
-         /// The subscriber
+         ///    The subscriber
          /// </summary>
          public readonly WeakReference Subscriber;
 
          /// <summary>
-         /// Initializes a new instance of the <see cref="Subscription"/> struct.
+         ///    Initializes a new instance of the <see cref="Subscription" /> struct.
          /// </summary>
          /// <param name="subscriber">The subscriber.</param>
          /// <param name="handler">The handler.</param>
