@@ -25,14 +25,14 @@
       public const char ZERO_CHAR = '0';
 
       /// <summary>
+      ///    The global random
+      /// </summary>
+      public static readonly Random GLOBAL_RANDOM = new Random((int)DateTime.Now.Ticks & 0x0000FFFF);
+
+      /// <summary>
       ///    The numeric error
       /// </summary>
       private const double NUMERIC_ERROR = 0.001;
-
-      /// <summary>
-      ///    The global random
-      /// </summary>
-      public static readonly Random GLOBAL_RANDOM = new Random((int) DateTime.Now.Ticks & 0x0000FFFF);
 
       /// <summary>
       ///    Gets a value indicating whether [empty nullable bool].
@@ -54,8 +54,8 @@
       public static void AddOrUpdate<T, U>
       (
          this ConcurrentDictionary<T, U> retDict,
-         T                               key,
-         U                               value
+         T key,
+         U value
       )
       {
          retDict.AddOrUpdate(key, value,
@@ -77,9 +77,9 @@
       /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
       public static bool AnySettablePropertyHasChanged<T>
       (
-         this T         mainViewModel,
-         T              otherViewModel,
-         string         singlePropertyName,
+         this T mainViewModel,
+         T otherViewModel,
+         string singlePropertyName,
          PropertyInfo[] propInfos
       )
          where T : class
@@ -100,7 +100,7 @@
             }
 
             var currentValue = propInfo.GetValue(mainViewModel);
-            var otherValue   = propInfo.GetValue(otherViewModel);
+            var otherValue = propInfo.GetValue(otherViewModel);
 
             if (currentValue.IsNotAnEqualObjectTo(otherValue))
             {
@@ -172,8 +172,8 @@
       /// <param name="propInfos">The property info records to use to get and set values.</param>
       public static void CopySettablePropertyValuesFrom<T>
       (
-         this T         targetViewModel,
-         T              valueViewModel,
+         this T targetViewModel,
+         T valueViewModel,
          PropertyInfo[] propInfos = null
       )
       {
@@ -279,7 +279,7 @@
          var propertyInfos = new List<PropertyInfo>();
 
          var considered = new List<Type>();
-         var queue      = new Queue<Type>();
+         var queue = new Queue<Type>();
          considered.Add(type);
          queue.Enqueue(type);
          while (queue.Count > 0)
@@ -372,7 +372,7 @@
       public static bool IsAnEqualObjectTo
       (
          this object mainObj,
-         object      compareObj
+         object compareObj
       )
       {
          return mainObj == null && compareObj == null
@@ -392,7 +392,7 @@
       public static bool IsAnEqualReferenceTo<T>
       (
          this T mainObj,
-         T      compareObj
+         T compareObj
       )
          where T : class
       {
@@ -411,7 +411,7 @@
       public static bool IsDifferentThan
       (
          this DateTime mainDateTime,
-         DateTime      otherDateTime
+         DateTime otherDateTime
       )
       {
          return !mainDateTime.IsSameAs(otherDateTime);
@@ -426,7 +426,7 @@
       public static bool IsDifferentThan
       (
          this double? mainD,
-         double?      otherD
+         double? otherD
       )
       {
          return !mainD.IsSameAs(otherD);
@@ -441,7 +441,7 @@
       public static bool IsDifferentThan
       (
          this double mainD,
-         double      otherD
+         double otherD
       )
       {
          return !mainD.IsSameAs(otherD);
@@ -456,7 +456,7 @@
       public static bool IsDifferentThan
       (
          this float mainF,
-         float      otherF
+         float otherF
       )
       {
          return !mainF.IsSameAs(otherF);
@@ -471,7 +471,7 @@
       public static bool IsDifferentThan
       (
          this string mainStr,
-         string      otherStr
+         string otherStr
       )
       {
          return !mainStr.IsSameAs(otherStr);
@@ -540,8 +540,8 @@
       public static bool IsGreaterThan
       (
          this double thisD,
-         double      otherD,
-         double      numericError = NUMERIC_ERROR
+         double otherD,
+         double numericError = NUMERIC_ERROR
       )
       {
          return thisD - otherD > numericError;
@@ -557,8 +557,8 @@
       public static bool IsGreaterThanOrEqualTo
       (
          this double thisD,
-         double      otherD,
-         double      numericError = NUMERIC_ERROR
+         double otherD,
+         double numericError = NUMERIC_ERROR
       )
       {
          return thisD.IsSameAs(otherD, numericError) || thisD.IsGreaterThan(otherD, numericError);
@@ -574,8 +574,8 @@
       public static bool IsLessThan
       (
          this double thisD,
-         double      otherD,
-         double      numericError = NUMERIC_ERROR
+         double otherD,
+         double numericError = NUMERIC_ERROR
       )
       {
          return otherD - thisD > numericError;
@@ -591,8 +591,8 @@
       public static bool IsLessThanOrEqualTo
       (
          this double thisD,
-         double      otherD,
-         double      numericError = NUMERIC_ERROR
+         double otherD,
+         double numericError = NUMERIC_ERROR
       )
       {
          return thisD.IsSameAs(otherD, numericError) || thisD.IsLessThan(otherD, numericError);
@@ -607,7 +607,7 @@
       public static bool IsNonNullRegexMatch
       (
          this string s,
-         string      regex
+         string regex
       )
       {
          return s != null && Regex.IsMatch(s, regex, RegexOptions.IgnoreCase);
@@ -642,7 +642,7 @@
       public static bool IsNotAnEqualObjectTo
       (
          this object mainObj,
-         object      compareObj
+         object compareObj
       )
       {
          return !mainObj.IsAnEqualObjectTo(compareObj);
@@ -658,7 +658,7 @@
       public static bool IsNotAnEqualReferenceTo<T>
       (
          this T mainObj,
-         T      compareObj
+         T compareObj
       )
          where T : class
       {
@@ -728,7 +728,7 @@
       public static bool IsNotTheSame
       (
          this bool? first,
-         bool?      second
+         bool? second
       )
       {
          return first == null != (second == null)
@@ -767,7 +767,7 @@
       public static bool IsSameAs
       (
          this double? mainD,
-         double?      otherD
+         double? otherD
       )
       {
          return
@@ -799,7 +799,7 @@
       public static bool IsSameAs
       (
          this DateTime mainDateTime,
-         DateTime      otherDateTime
+         DateTime otherDateTime
       )
       {
          return mainDateTime.CompareTo(otherDateTime) == 0;
@@ -815,8 +815,8 @@
       public static bool IsSameAs
       (
          this double mainD,
-         double      otherD,
-         double      numericError = NUMERIC_ERROR
+         double otherD,
+         double numericError = NUMERIC_ERROR
       )
       {
          return Math.Abs(mainD - otherD) < numericError;
@@ -832,8 +832,8 @@
       public static bool IsSameAs
       (
          this float mainF,
-         float      otherF,
-         double     numericError = NUMERIC_ERROR
+         float otherF,
+         double numericError = NUMERIC_ERROR
       )
       {
          return Math.Abs(mainF - otherF) < numericError;
@@ -848,12 +848,12 @@
       public static bool IsSameAs
       (
          this string mainStr,
-         string      otherStr
+         string otherStr
       )
       {
-         var mainStrIsNullOrEmpty  = string.IsNullOrEmpty(mainStr);
+         var mainStrIsNullOrEmpty = string.IsNullOrEmpty(mainStr);
          var otherStrIsNullOrEmpty = string.IsNullOrEmpty(otherStr);
-         var isSameBasedOnNull     = mainStrIsNullOrEmpty && otherStrIsNullOrEmpty;
+         var isSameBasedOnNull = mainStrIsNullOrEmpty && otherStrIsNullOrEmpty;
 
          if (isSameBasedOnNull)
          {
@@ -890,7 +890,7 @@
       public static bool IsTypeOrAssignableFromType
       (
          this Type mainType,
-         Type      targetType
+         Type targetType
       )
       {
          return mainType == targetType || targetType.IsAssignableFrom(mainType);
@@ -974,7 +974,7 @@
       /// <returns>System.Int32.</returns>
       public static int RoundToInt(this double floatVal)
       {
-         return (int) Math.Round(floatVal, 0);
+         return (int)Math.Round(floatVal, 0);
       }
 
       /// <summary>
@@ -984,7 +984,7 @@
       /// <returns>System.Int32.</returns>
       public static int ToRoundedInt(this double d)
       {
-         return (int) Math.Round(d, 0);
+         return (int)Math.Round(d, 0);
       }
 
       /// <summary>
@@ -994,7 +994,7 @@
       /// <returns>System.Int64.</returns>
       public static long ToRoundedLong(this double d)
       {
-         return (long) Math.Round(d, 0);
+         return (long)Math.Round(d, 0);
       }
 
       /// <summary>
@@ -1007,7 +1007,7 @@
       public static string TryToGetKeyValue
       (
          this IDictionary<string, string> dict,
-         string                           key
+         string key
       )
       {
          if (dict != null && dict.ContainsKey(key))

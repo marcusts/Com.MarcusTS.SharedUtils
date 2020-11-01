@@ -43,8 +43,8 @@
       /// <param name="sender">The sender.</param>
       /// <param name="e">The e.</param>
       public static void Raise<T>(this EventHandler<T> handler,
-                                  object               sender,
-                                  T                    e) where T : EventArgs
+                                  object sender,
+                                  T e) where T : EventArgs
       {
          handler?.Invoke(sender, e);
       }
@@ -56,8 +56,8 @@
       /// <param name="sender">The sender.</param>
       /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
       public static void Raise(this EventHandler handler,
-                               object            sender,
-                               EventArgs         e)
+                               object sender,
+                               EventArgs e)
       {
          handler?.Invoke(sender, e);
       }
@@ -70,8 +70,8 @@
       /// <param name="sender">The sender.</param>
       /// <param name="e">The e.</param>
       public static void RaiseOnDifferentThread<T>(this EventHandler<T> handler,
-                                                   object               sender,
-                                                   T                    e) where T : EventArgs
+                                                   object sender,
+                                                   T e) where T : EventArgs
       {
          if (handler != null)
          {
@@ -86,8 +86,8 @@
       /// <param name="sender">The sender.</param>
       /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
       public static void RaiseOnDifferentThread(this EventHandler handler,
-                                                object            sender,
-                                                EventArgs         e)
+                                                object sender,
+                                                EventArgs e)
       {
          if (handler != null)
          {
@@ -102,7 +102,7 @@
       /// <param name="action">The action.</param>
       /// <returns>Task.</returns>
       public static Task StartNewOnDifferentThread(this TaskFactory taskFactory,
-                                                   Action           action)
+                                                   Action action)
       {
          return taskFactory.StartNew(action, new CancellationToken());
       }

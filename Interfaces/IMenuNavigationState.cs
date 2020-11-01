@@ -36,8 +36,6 @@ namespace Com.MarcusTS.SharedUtils.Interfaces
    /// </summary>
    public interface IMenuNavigationState
    {
-      #region Public Properties
-
       /// <summary>
       /// The app state to navigate to
       /// </summary>
@@ -61,7 +59,5 @@ namespace Com.MarcusTS.SharedUtils.Interfaces
       /// </summary>
       /// <value>The view title.</value>
       string ViewTitle { get; }
-
-      #endregion Public Properties
    }
 }

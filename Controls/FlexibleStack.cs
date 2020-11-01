@@ -1,9 +1,9 @@
 ﻿namespace Com.MarcusTS.SharedUtils.Controls
 {
+   using Com.MarcusTS.SharedUtils.Utils;
    using System;
    using System.Collections;
    using System.Collections.Generic;
-   using Com.MarcusTS.SharedUtils.Utils;
 
    /// <summary>
    ///    Class FlexibleStack.
@@ -19,32 +19,20 @@
       private readonly IList<T> _items = new List<T>();
 
       /// <summary>
+      ///    Clears this instance.
+      /// </summary>
+      public void Clear()
+      {
+         _items.Clear();
+      }
+
+      /// <summary>
       ///    Returns an enumerator that iterates through the collection.
       /// </summary>
       /// <returns>An enumerator that can be used to iterate through the collection.</returns>
       public IEnumerator<T> GetEnumerator()
       {
          return _items.GetEnumerator();
-      }
-
-      /// <summary>
-      ///    Returns an enumerator that iterates through a collection.
-      /// </summary>
-      /// <returns>
-      ///    An <see cref="T:System.Collections.IEnumerator"></see> object that can be used to iterate through the
-      ///    collection.
-      /// </returns>
-      IEnumerator IEnumerable.GetEnumerator()
-      {
-         return GetEnumerator();
-      }
-
-      /// <summary>
-      ///    Clears this instance.
-      /// </summary>
-      public void Clear()
-      {
-         _items.Clear();
       }
 
       /// <summary>
@@ -79,7 +67,7 @@
       /// </summary>
       /// <param name="item">The item.</param>
       /// <param name="dupTest">The dup test.</param>
-      public void RemoveIfPresent(T            item,
+      public void RemoveIfPresent(T item,
                                   Predicate<T> dupTest)
       {
          if (_items.IsEmpty() || dupTest == null)
@@ -104,6 +92,18 @@
                itemIdx++;
             }
          } while (itemIdx < _items.Count);
+      }
+
+      /// <summary>
+      ///    Returns an enumerator that iterates through a collection.
+      /// </summary>
+      /// <returns>
+      ///    An <see cref="T:System.Collections.IEnumerator"></see> object that can be used to iterate through the
+      ///    collection.
+      /// </returns>
+      IEnumerator IEnumerable.GetEnumerator()
+      {
+         return GetEnumerator();
       }
 
       /// <summary>

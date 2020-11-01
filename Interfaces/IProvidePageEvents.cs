@@ -38,8 +38,6 @@ namespace Com.MarcusTS.SharedUtils.Interfaces
    /// </summary>
    public interface IProvidePageEvents
    {
-      #region Public Properties
-
       /// <summary>
       /// Regrettable use of object; we could type-cast, but than makes it difficult to pass
       /// IProvidePageEvents at lower levels without omniscient knowledge off the parent page type.
@@ -50,7 +48,5 @@ namespace Com.MarcusTS.SharedUtils.Interfaces
       /// Otherwise, an assignment might begin with null and then never change. The root of these
       /// events is a known, valid page that should be seekable by any deriver or nested deriver.</remarks>
       Func<object> GetEventBroadcaster { get; }
-
-      #endregion Public Properties
    }
 }

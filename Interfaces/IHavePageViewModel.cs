@@ -38,14 +38,10 @@ namespace Com.MarcusTS.SharedUtils.Interfaces
    /// <typeparam name="T">the type of ViewModel</typeparam>
    public interface IHavePageViewModel<out T> where T : class
    {
-      #region Public Properties
-
       /// <summary>
       /// Gets the view model.
       /// </summary>
       /// <value>The view model.</value>
       T ViewModel { get; }
-
-      #endregion Public Properties
    }
 }

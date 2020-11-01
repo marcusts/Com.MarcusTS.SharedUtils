@@ -36,14 +36,10 @@ namespace Com.MarcusTS.SharedUtils.Interfaces
    /// </summary>
    public interface IReceivePageEvents
    {
-      #region Public Properties
-
       /// <summary>
       /// Gets or sets the page event provider.
       /// </summary>
       /// <value>The page event provider.</value>
       IProvidePageEvents PageEventProvider { get; set; }
-
-      #endregion Public Properties
    }
 }

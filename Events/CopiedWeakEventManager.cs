@@ -41,16 +41,10 @@ namespace Com.MarcusTS.SharedUtils.Events
    /// </summary>
    public static class CopiedWeakEventManager
    {
-      #region Private Fields
-
       /// <summary>
       /// The event handlers
       /// </summary>
       private static readonly Dictionary<string, List<Subscription>> _eventHandlers = new Dictionary<string, List<Subscription>>();
-
-      #endregion Private Fields
-
-      #region Public Methods
 
       /// <summary>
       /// Adds the event handler.
@@ -63,7 +57,7 @@ namespace Com.MarcusTS.SharedUtils.Events
       /// or
       /// handler
       /// </exception>
-      public static void AddEventHandler<TEventArgs>(EventHandler<TEventArgs> handler, [CallerMemberName]string eventName = null)
+      public static void AddEventHandler<TEventArgs>(EventHandler<TEventArgs> handler, [CallerMemberName] string eventName = null)
          where TEventArgs : EventArgs
       {
          if (eventName.IsEmpty())
@@ -85,7 +79,7 @@ namespace Com.MarcusTS.SharedUtils.Events
       /// or
       /// handler
       /// </exception>
-      public static void AddEventHandler(EventHandler handler, [CallerMemberName]string eventName = null)
+      public static void AddEventHandler(EventHandler handler, [CallerMemberName] string eventName = null)
       {
          if (eventName.IsEmpty())
             throw new ArgumentNullException(nameof(eventName));
@@ -154,7 +148,7 @@ namespace Com.MarcusTS.SharedUtils.Events
       /// or
       /// handler
       /// </exception>
-      public static void RemoveEventHandler<TEventArgs>(EventHandler<TEventArgs> handler, [CallerMemberName]string eventName = null)
+      public static void RemoveEventHandler<TEventArgs>(EventHandler<TEventArgs> handler, [CallerMemberName] string eventName = null)
          where TEventArgs : EventArgs
       {
          if (eventName.IsEmpty())
@@ -176,7 +170,7 @@ namespace Com.MarcusTS.SharedUtils.Events
       /// or
       /// handler
       /// </exception>
-      public static void RemoveEventHandler(EventHandler handler, [CallerMemberName]string eventName = null)
+      public static void RemoveEventHandler(EventHandler handler, [CallerMemberName] string eventName = null)
       {
          if (eventName.IsEmpty())
             throw new ArgumentNullException(nameof(eventName));
@@ -186,10 +180,6 @@ namespace Com.MarcusTS.SharedUtils.Events
 
          RemoveEventHandler(eventName, handler.Target, handler.GetMethodInfo());
       }
-
-      #endregion Public Methods
-
-      #region Private Methods
 
       /// <summary>
       /// Adds the event handler.
@@ -238,17 +228,11 @@ namespace Com.MarcusTS.SharedUtils.Events
          }
       }
 
-      #endregion Private Methods
-
-      #region Private Structs
-
       /// <summary>
       /// Struct Subscription
       /// </summary>
       private struct Subscription
       {
-         #region Public Fields
-
          /// <summary>
          /// The handler
          /// </summary>
@@ -258,10 +242,6 @@ namespace Com.MarcusTS.SharedUtils.Events
          /// The subscriber
          /// </summary>
          public readonly WeakReference Subscriber;
-
-         #endregion Public Fields
-
-         #region Public Constructors
 
          /// <summary>
          /// Initializes a new instance of the <see cref="Subscription"/> struct.
@@ -274,10 +254,6 @@ namespace Com.MarcusTS.SharedUtils.Events
             Subscriber = subscriber;
             Handler = handler ?? throw new ArgumentNullException(nameof(handler));
          }
-
-         #endregion Public Constructors
       }
-
-      #endregion Private Structs
    }
 }

@@ -1,10 +1,10 @@
 ﻿namespace Com.MarcusTS.SharedUtils.Events
 {
+   using Com.MarcusTS.SharedUtils.Utils;
    using System;
    using System.Collections.Generic;
    using System.Reflection;
    using System.Runtime.CompilerServices;
-   using Com.MarcusTS.SharedUtils.Utils;
 
    /// <summary>
    ///    Copied from (internal) Xamarin.Forms  to make it publicly accessible.
@@ -28,7 +28,7 @@
       ///    or
       ///    handler
       /// </exception>
-      public static void AddEventHandler<TEventArgs>(EventHandler<TEventArgs>  handler,
+      public static void AddEventHandler<TEventArgs>(EventHandler<TEventArgs> handler,
                                                      [CallerMemberName] string eventName = null)
          where TEventArgs : EventArgs
       {
@@ -78,7 +78,7 @@
       /// <param name="eventName">Name of the event.</param>
       public static void HandleEvent(object sender, object args, string eventName)
       {
-         var toRaise  = new List<(object subscriber, MethodInfo handler)>();
+         var toRaise = new List<(object subscriber, MethodInfo handler)>();
          var toRemove = new List<Subscription>();
 
          if (_eventHandlers.TryGetValue(eventName, out var target))
@@ -86,7 +86,7 @@
             for (var i = 0; i < target.Count; i++)
             {
                var subscription = target[i];
-               var isStatic     = subscription.Subscriber == null;
+               var isStatic = subscription.Subscriber == null;
                if (isStatic)
                {
                   // For a static method, we'll just pass null as the first parameter of MethodInfo.Invoke
@@ -98,7 +98,7 @@
 
                if (subscriber == null)
 
-                  // The subscriber was collected, so there's no need to keep this subscription around
+               // The subscriber was collected, so there's no need to keep this subscription around
                {
                   toRemove.Add(subscription);
                }
@@ -118,7 +118,7 @@
          for (var i = 0; i < toRaise.Count; i++)
          {
             var (subscriber, handler) = toRaise[i];
-            handler.Invoke(subscriber, new[] {sender, args});
+            handler.Invoke(subscriber, new[] { sender, args });
          }
       }
 
@@ -133,7 +133,7 @@
       ///    or
       ///    handler
       /// </exception>
-      public static void RemoveEventHandler<TEventArgs>(EventHandler<TEventArgs>  handler,
+      public static void RemoveEventHandler<TEventArgs>(EventHandler<TEventArgs> handler,
                                                         [CallerMemberName] string eventName = null)
          where TEventArgs : EventArgs
       {
@@ -250,7 +250,7 @@
          public Subscription(WeakReference subscriber, MethodInfo handler)
          {
             Subscriber = subscriber;
-            Handler    = handler ?? throw new ArgumentNullException(nameof(handler));
+            Handler = handler ?? throw new ArgumentNullException(nameof(handler));
          }
       }
    }

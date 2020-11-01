@@ -1,9 +1,9 @@
 ﻿namespace Com.MarcusTS.SharedUtils.Controls
 {
+   using Com.MarcusTS.SharedUtils.Utils;
    using System.Collections.ObjectModel;
    using System.Collections.Specialized;
    using System.Linq;
-   using Com.MarcusTS.SharedUtils.Utils;
 
    /// <summary>
    ///    Interface IDecideWhichIsLess
@@ -58,7 +58,7 @@
       public void AddRangeSortedAndWithoutNotification(T[] list, IDecideWhichIsLess<T> comparer = null)
       {
          ErrorUtils.ConsiderArgumentError(list.IsEmpty(),
-                                          nameof(BetterObservableCollection<T>)        + ": " +
+                                          nameof(BetterObservableCollection<T>) + ": " +
                                           nameof(AddRangeSortedAndWithoutNotification) + " requires a valid list");
 
          _suppressNotification = true;

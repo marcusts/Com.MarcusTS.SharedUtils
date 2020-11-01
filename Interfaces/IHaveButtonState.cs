@@ -57,6 +57,16 @@ namespace Com.MarcusTS.SharedUtils.Interfaces
    public interface IHaveButtonState
    {
       /// <summary>
+      ///    Occurs when [button state changed].
+      /// </summary>
+      event EventHandler<ButtonStates> ButtonStateChanged;
+
+      /// <summary>
+      ///    Occurs when [view button pressed].
+      /// </summary>
+      event EventUtils.NoParamsDelegate ViewButtonPressed;
+
+      /// <summary>
       ///    Gets or sets the state of the button.
       /// </summary>
       /// <value>The state of the button.</value>
@@ -67,15 +77,5 @@ namespace Com.MarcusTS.SharedUtils.Interfaces
       /// </summary>
       /// <value>The selection group.</value>
       int SelectionGroup { get; set; }
-
-      /// <summary>
-      ///    Occurs when [button state changed].
-      /// </summary>
-      event EventHandler<ButtonStates> ButtonStateChanged;
-
-      /// <summary>
-      ///    Occurs when [view button pressed].
-      /// </summary>
-      event EventUtils.NoParamsDelegate ViewButtonPressed;
    }
 }

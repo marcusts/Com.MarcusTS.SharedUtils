@@ -87,25 +87,16 @@
                The items
             </summary>
         </member>
+        <member name="M:Com.MarcusTS.SharedUtils.Controls.FlexibleStack`1.Clear">
+            <summary>
+               Clears this instance.
+            </summary>
+        </member>
         <member name="M:Com.MarcusTS.SharedUtils.Controls.FlexibleStack`1.GetEnumerator">
             <summary>
                Returns an enumerator that iterates through the collection.
             </summary>
             <returns>An enumerator that can be used to iterate through the collection.</returns>
-        </member>
-        <member name="M:Com.MarcusTS.SharedUtils.Controls.FlexibleStack`1.System#Collections#IEnumerable#GetEnumerator">
-            <summary>
-               Returns an enumerator that iterates through a collection.
-            </summary>
-            <returns>
-               An <see cref="T:System.Collections.IEnumerator"></see> object that can be used to iterate through the
-               collection.
-            </returns>
-        </member>
-        <member name="M:Com.MarcusTS.SharedUtils.Controls.FlexibleStack`1.Clear">
-            <summary>
-               Clears this instance.
-            </summary>
         </member>
         <member name="M:Com.MarcusTS.SharedUtils.Controls.FlexibleStack`1.Peek">
             <summary>
@@ -131,6 +122,15 @@
             </summary>
             <param name="item">The item.</param>
             <param name="dupTest">The dup test.</param>
+        </member>
+        <member name="M:Com.MarcusTS.SharedUtils.Controls.FlexibleStack`1.System#Collections#IEnumerable#GetEnumerator">
+            <summary>
+               Returns an enumerator that iterates through a collection.
+            </summary>
+            <returns>
+               An <see cref="T:System.Collections.IEnumerator"></see> object that can be used to iterate through the
+               collection.
+            </returns>
         </member>
         <member name="M:Com.MarcusTS.SharedUtils.Controls.FlexibleStack`1.PopOrPeek(System.Boolean)">
             <summary>
@@ -427,6 +427,16 @@
                Interface IHaveButtonState
             </summary>
         </member>
+        <member name="E:Com.MarcusTS.SharedUtils.Interfaces.IHaveButtonState.ButtonStateChanged">
+            <summary>
+               Occurs when [button state changed].
+            </summary>
+        </member>
+        <member name="E:Com.MarcusTS.SharedUtils.Interfaces.IHaveButtonState.ViewButtonPressed">
+            <summary>
+               Occurs when [view button pressed].
+            </summary>
+        </member>
         <member name="P:Com.MarcusTS.SharedUtils.Interfaces.IHaveButtonState.ButtonState">
             <summary>
                Gets or sets the state of the button.
@@ -438,16 +448,6 @@
                Gets or sets the selection group.
             </summary>
             <value>The selection group.</value>
-        </member>
-        <member name="E:Com.MarcusTS.SharedUtils.Interfaces.IHaveButtonState.ButtonStateChanged">
-            <summary>
-               Occurs when [button state changed].
-            </summary>
-        </member>
-        <member name="E:Com.MarcusTS.SharedUtils.Interfaces.IHaveButtonState.ViewButtonPressed">
-            <summary>
-               Occurs when [view button pressed].
-            </summary>
         </member>
         <member name="T:Com.MarcusTS.SharedUtils.Interfaces.IHavePageViewModel`1">
             <summary>
@@ -639,14 +639,14 @@
                The zero character
             </summary>
         </member>
-        <member name="F:Com.MarcusTS.SharedUtils.Utils.Extensions.NUMERIC_ERROR">
-            <summary>
-               The numeric error
-            </summary>
-        </member>
         <member name="F:Com.MarcusTS.SharedUtils.Utils.Extensions.GLOBAL_RANDOM">
             <summary>
                The global random
+            </summary>
+        </member>
+        <member name="F:Com.MarcusTS.SharedUtils.Utils.Extensions.NUMERIC_ERROR">
+            <summary>
+               The numeric error
             </summary>
         </member>
         <member name="P:Com.MarcusTS.SharedUtils.Utils.Extensions.EmptyNullableBool">

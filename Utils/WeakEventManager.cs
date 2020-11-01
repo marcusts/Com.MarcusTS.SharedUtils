@@ -41,8 +41,6 @@ namespace Com.MarcusTS.SharedUtils.Utils
    /// https://forums.xamarin.com/discussion/4931/summary-of-current-best-practices-for-event-handlers-and-disposing</remarks>
    public static class WeakEventManager
    {
-      #region Public Methods
-
       /// <summary>
       /// This overload handles any type of EventHandler
       /// </summary>
@@ -56,11 +54,11 @@ namespace Com.MarcusTS.SharedUtils.Utils
       /// <param name="action">The action.</param>
       /// <exception cref="ArgumentException">WeakEventManager: SetAnyHandler: Converter cannot be null.</exception>
       /// <exception cref="System.ArgumentException">WeakEventManager: SetAnyHandler: Converter cannot be null.</exception>
-      public static void SetAnyHandler<T, TDelegate, TArgs>(this T                               subscriber,
+      public static void SetAnyHandler<T, TDelegate, TArgs>(this T subscriber,
                                                             Func<EventHandler<TArgs>, TDelegate> converter,
-                                                            Action<TDelegate>                    add,
-                                                            Action<TDelegate>                    remove,
-                                                            Action<T, TArgs>                     action)
+                                                            Action<TDelegate> add,
+                                                            Action<TDelegate> remove,
+                                                            Action<T, TArgs> action)
          where TArgs : EventArgs
          where TDelegate : class
          where T : class
@@ -70,8 +68,8 @@ namespace Com.MarcusTS.SharedUtils.Utils
             throw new ArgumentException("WeakEventManager: SetAnyHandler: Converter cannot be null.");
          }
 
-         var       weakReferenceSubscriber = new WeakReference(subscriber);
-         TDelegate handler                 = null;
+         var weakReferenceSubscriber = new WeakReference(subscriber);
+         TDelegate handler = null;
 
          handler =
             converter.Invoke
@@ -106,10 +104,10 @@ namespace Com.MarcusTS.SharedUtils.Utils
       /// <param name="add">The add.</param>
       /// <param name="remove">The remove.</param>
       /// <param name="action">The action.</param>
-      public static void SetAnyHandler<T, TArgs>(this T                      subscriber,
+      public static void SetAnyHandler<T, TArgs>(this T subscriber,
                                                  Action<EventHandler<TArgs>> add,
                                                  Action<EventHandler<TArgs>> remove,
-                                                 Action<T, TArgs>            action)
+                                                 Action<T, TArgs> action)
          where TArgs : EventArgs
          where T : class
       {
@@ -131,7 +129,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       /// <param name="add">The add.</param>
       /// <param name="remove">The remove.</param>
       /// <param name="action">The action.</param>
-      public static void SetAnyHandler<T>(this T               subscriber,
+      public static void SetAnyHandler<T>(this T subscriber,
                                           Action<EventHandler> add,
                                           Action<EventHandler> remove,
                                           Action<T, EventArgs> action)
@@ -147,7 +145,5 @@ namespace Com.MarcusTS.SharedUtils.Utils
              action
             );
       }
-
-      #endregion Public Methods
    }
 }
