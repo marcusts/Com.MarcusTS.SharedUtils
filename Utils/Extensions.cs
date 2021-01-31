@@ -403,6 +403,21 @@
       }
 
       /// <summary>
+      /// Determines whether [is a number greater than zero] [the specified o].
+      /// </summary>
+      /// <param name="o">The o.</param>
+      /// <returns><c>true</c> if [is a number greater than zero] [the specified o]; otherwise, <c>false</c>.</returns>
+      public static bool IsANumberGreaterThanZero(this object o)
+      {
+         if (double.TryParse(o?.ToString(), out var testDouble))
+         {
+            return testDouble.IsGreaterThan(0);
+         }
+
+         return false;
+      }
+
+      /// <summary>
       ///    Determines whether [is different than] [the specified other date time].
       /// </summary>
       /// <param name="mainDateTime">The main date time.</param>
@@ -487,6 +502,23 @@
       public static bool IsDifferentThan<T>(this T[] mainList, T[] secondList)
       {
          return !mainList.IsSameAs(secondList);
+      }
+
+      /// <summary>
+      ///    Determines whether [is not the same] [the specified second].
+      /// </summary>
+      /// <param name="first">if set to <c>true</c> [first].</param>
+      /// <param name="second">if set to <c>true</c> [second].</param>
+      /// <returns><c>true</c> if [is not the same] [the specified second]; otherwise, <c>false</c>.</returns>
+      public static bool IsDifferentThan
+      (
+         this bool? first,
+         bool? second
+      )
+      {
+         return first == null != (second == null)
+              ||
+                first.IsNotAnEqualObjectTo(second);
       }
 
       /// <summary>
@@ -717,23 +749,6 @@
          where T : class
       {
          return !mainObj.IsNullOrDefault();
-      }
-
-      /// <summary>
-      ///    Determines whether [is not the same] [the specified second].
-      /// </summary>
-      /// <param name="first">if set to <c>true</c> [first].</param>
-      /// <param name="second">if set to <c>true</c> [second].</param>
-      /// <returns><c>true</c> if [is not the same] [the specified second]; otherwise, <c>false</c>.</returns>
-      public static bool IsNotTheSame
-      (
-         this bool? first,
-         bool? second
-      )
-      {
-         return first == null != (second == null)
-              ||
-                first.IsNotAnEqualObjectTo(second);
       }
 
       /// <summary>
@@ -1016,6 +1031,13 @@
          }
 
          return string.Empty;
+      }
+
+      public static T[] AppendArray<T>(this T[] existingArray, T[] arrayToAppend)
+      {
+         var retList = existingArray.ToList();
+         retList.AddRange(arrayToAppend);
+         return retList.ToArray();
       }
    }
 }

@@ -129,7 +129,7 @@
          return default;
       }
 
-      //public void RemoveIfPresent(T item)
+      //public Task RemoveIfPresent(T item)
       //{
       //   // Can remove more than one.
       //   while (_items.Contains(item))

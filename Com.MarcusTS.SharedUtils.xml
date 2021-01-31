@@ -620,7 +620,7 @@
             <summary>
                Starts the new on different thread.
             </summary>
-            <param name="taskFactory">The task factory.</param>
+            <param name="taskFactory">The void factory.</param>
             <param name="action">The action.</param>
             <returns>Task.</returns>
         </member>
@@ -779,6 +779,13 @@
             <param name="compareObj">The compare object.</param>
             <returns><c>true</c> if [is an equal reference to] [the specified compare object]; otherwise, <c>false</c>.</returns>
         </member>
+        <member name="M:Com.MarcusTS.SharedUtils.Utils.Extensions.IsANumberGreaterThanZero(System.Object)">
+            <summary>
+            Determines whether [is a number greater than zero] [the specified o].
+            </summary>
+            <param name="o">The o.</param>
+            <returns><c>true</c> if [is a number greater than zero] [the specified o]; otherwise, <c>false</c>.</returns>
+        </member>
         <member name="M:Com.MarcusTS.SharedUtils.Utils.Extensions.IsDifferentThan(System.DateTime,System.DateTime)">
             <summary>
                Determines whether [is different than] [the specified other date time].
@@ -827,6 +834,14 @@
             <param name="mainList">The main list.</param>
             <param name="secondList">The second list.</param>
             <returns><c>true</c> if [is different than] [the specified second list]; otherwise, <c>false</c>.</returns>
+        </member>
+        <member name="M:Com.MarcusTS.SharedUtils.Utils.Extensions.IsDifferentThan(System.Nullable{System.Boolean},System.Nullable{System.Boolean})">
+            <summary>
+               Determines whether [is not the same] [the specified second].
+            </summary>
+            <param name="first">if set to <c>true</c> [first].</param>
+            <param name="second">if set to <c>true</c> [second].</param>
+            <returns><c>true</c> if [is not the same] [the specified second]; otherwise, <c>false</c>.</returns>
         </member>
         <member name="M:Com.MarcusTS.SharedUtils.Utils.Extensions.IsEmpty(System.DateTime)">
             <summary>
@@ -968,14 +983,6 @@
             <typeparam name="T"></typeparam>
             <param name="mainObj">The main object.</param>
             <returns><c>true</c> if [is not null or default] [the specified main object]; otherwise, <c>false</c>.</returns>
-        </member>
-        <member name="M:Com.MarcusTS.SharedUtils.Utils.Extensions.IsNotTheSame(System.Nullable{System.Boolean},System.Nullable{System.Boolean})">
-            <summary>
-               Determines whether [is not the same] [the specified second].
-            </summary>
-            <param name="first">if set to <c>true</c> [first].</param>
-            <param name="second">if set to <c>true</c> [second].</param>
-            <returns><c>true</c> if [is not the same] [the specified second]; otherwise, <c>false</c>.</returns>
         </member>
         <member name="M:Com.MarcusTS.SharedUtils.Utils.Extensions.IsNullOrDefault``1(``0)">
             <summary>

@@ -22,7 +22,7 @@
       /// <typeparam name="T"></typeparam>
       /// <param name="val">The value.</param>
       /// <returns>Task.</returns>
-      public delegate Task GenericDelegateTask<in T>(T val);
+      public delegate void GenericDelegateTask<in T>(T val);
 
       /// <summary>
       ///    Delegate NoParamsDelegate
@@ -33,7 +33,7 @@
       ///    Delegate NoParamsDelegateTask
       /// </summary>
       /// <returns>Task.</returns>
-      public delegate Task NoParamsDelegateTask();
+      public delegate void NoParamsDelegateTask();
 
       /// <summary>
       ///    Raises the specified sender.
@@ -85,20 +85,22 @@
       /// <param name="handler">The handler.</param>
       /// <param name="sender">The sender.</param>
       /// <param name="e">The <see cref="EventArgs" /> instance containing the event data.</param>
-      public static void RaiseOnDifferentThread(this EventHandler handler,
+      public static Task RaiseOnDifferentThread(this EventHandler handler,
                                                 object sender,
                                                 EventArgs e)
       {
          if (handler != null)
          {
-            Task.Factory.StartNewOnDifferentThread(() => handler.Raise(sender, e));
+            return Task.Factory.StartNewOnDifferentThread(() => handler.Raise(sender, e));
          }
+
+         return Task.FromResult(false);
       }
 
       /// <summary>
       ///    Starts the new on different thread.
       /// </summary>
-      /// <param name="taskFactory">The task factory.</param>
+      /// <param name="taskFactory">The void factory.</param>
       /// <param name="action">The action.</param>
       /// <returns>Task.</returns>
       public static Task StartNewOnDifferentThread(this TaskFactory taskFactory,
