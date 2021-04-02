@@ -1175,6 +1175,55 @@
             </summary>
             <param name="mainThreadId">The main thread identifier.</param>
         </member>
+        <member name="T:Com.MarcusTS.SharedUtils.Utils.IThreadSafeAccessor">
+            <summary>
+            Interface IThreadSafeAccessor
+            </summary>
+        </member>
+        <member name="M:Com.MarcusTS.SharedUtils.Utils.IThreadSafeAccessor.ReadStoredValue">
+            <summary>
+            Reads the stored value.
+            </summary>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:Com.MarcusTS.SharedUtils.Utils.IThreadSafeAccessor.WriteStoredValue(System.Int32)">
+            <summary>
+            Writes the stored value.
+            </summary>
+            <param name="valueToStore">The value to store.</param>
+        </member>
+        <member name="T:Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor">
+            <summary>
+            Class ThreadSafeAccessor.
+            Implements the <see cref="T:Com.MarcusTS.SharedUtils.Utils.IThreadSafeAccessor" />
+            Implements the <see cref="T:Com.MarcusTS.SharedUtils.Utils.IThreadSafeAccessor" />
+            </summary>
+            <seealso cref="T:Com.MarcusTS.SharedUtils.Utils.IThreadSafeAccessor" />
+            <seealso cref="T:Com.MarcusTS.SharedUtils.Utils.IThreadSafeAccessor" />
+        </member>
+        <member name="F:Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor._storedValue">
+            <summary>
+            The stored value
+            </summary>
+        </member>
+        <member name="M:Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor.#ctor(System.Nullable{System.Int32})">
+            <summary>
+            Initializes a new instance of the <see cref="T:Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor" /> class.
+            </summary>
+            <param name="storedValue">The stored value.</param>
+        </member>
+        <member name="M:Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor.ReadStoredValue">
+            <summary>
+            Reads the stored value.
+            </summary>
+            <returns>System.Object.</returns>
+        </member>
+        <member name="M:Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor.WriteStoredValue(System.Int32)">
+            <summary>
+            Writes the stored value.
+            </summary>
+            <param name="valueToStore">The value to store.</param>
+        </member>
         <member name="T:Com.MarcusTS.SharedUtils.Utils.WeakEventManager">
             <summary>
             Static Class that holds the extension methods to handle events using weak references.
