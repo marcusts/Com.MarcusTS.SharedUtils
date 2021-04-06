@@ -4,6 +4,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
 {
    using System;
    using System.Diagnostics;
+   using System.Runtime.CompilerServices;
    using System.Threading.Tasks;
    using Xamarin.Forms;
 
@@ -37,23 +38,24 @@ namespace Com.MarcusTS.SharedUtils.Utils
       /// <summary>Runs a Task without changing the context (configure await is false).</summary>
       /// <param name="task">The task.</param>
       /// <returns>Task.</returns>
-      public static Task WithoutChangingContext(this Task task)
+      public static ConfiguredTaskAwaitable WithoutChangingContext(this Task task)
       {
-#if !AVOID_CONTEXT_MANAGEMENT
-         task.ConfigureAwait(false);
+#if AVOID_CONTEXT_MANAGEMENT
+         return task.ConfigureAwait(true);
+#else
+         return task.ConfigureAwait(false);
 #endif
-         return task;
       }
 
       /// <summary>Runs a Task without changing the context (configure await is false).</summary>
       /// <param name="task">The task.</param>
       /// <returns>Task&lt;T&gt;.</returns>
-      public static Task<T> WithoutChangingContext<T>(this Task<T> task)
+      public static ConfiguredTaskAwaitable<T> WithoutChangingContext<T>(this Task<T> task)
       {
-#if !AVOID_CONTEXT_MANAGEMENT
-         task.ConfigureAwait(false);
+#if AVOID_CONTEXT_MANAGEMENT
+         return task.ConfigureAwait(true);
 #endif
-         return task;
+         return task.ConfigureAwait(false);
       }
 
       /// <remarks>
