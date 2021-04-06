@@ -1175,6 +1175,52 @@
             </summary>
             <param name="mainThreadId">The main thread identifier.</param>
         </member>
+        <member name="M:Com.MarcusTS.SharedUtils.Utils.ThreadHelper.WithoutChangingContext(System.Threading.Tasks.Task)">
+            <summary>Runs a Task without changing the context (configure await is false).</summary>
+            <param name="task">The task.</param>
+            <returns>Task.</returns>
+        </member>
+        <member name="M:Com.MarcusTS.SharedUtils.Utils.ThreadHelper.WithoutChangingContext``1(System.Threading.Tasks.Task{``0})">
+            <summary>Runs a Task without changing the context (configure await is false).</summary>
+            <param name="task">The task.</param>
+            <returns>Task&lt;T&gt;.</returns>
+        </member>
+        <member name="M:Com.MarcusTS.SharedUtils.Utils.ThreadHelper.FireAndForget(System.Threading.Tasks.Task,Com.MarcusTS.SharedUtils.Utils.IErrorHandler)">
+            <remarks>
+            https://johnthiriet.com/removing-async-void/
+            {With modifications}
+            </remarks>
+        </member>
+        <member name="M:Com.MarcusTS.SharedUtils.Utils.ThreadHelper.RunParallel(System.Threading.Tasks.Task,System.Threading.Tasks.Task,System.Action)">
+            <summary>
+            Runs the parallel.
+            </summary>
+            <param name="task">The task.</param>
+            <param name="taskCallback">The task callback.</param>
+            <param name="actionCallback">The action callback.</param>
+        </member>
+        <member name="T:Com.MarcusTS.SharedUtils.Utils.IErrorHandler">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Com.MarcusTS.SharedUtils.Utils.IErrorHandler.HandleError(System.Exception)">
+            <summary>
+            
+            </summary>
+            <param name="ex"></param>
+        </member>
+        <member name="T:Com.MarcusTS.SharedUtils.Utils.DefaultErrorHandler">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Com.MarcusTS.SharedUtils.Utils.DefaultErrorHandler.HandleError(System.Exception)">
+            <summary>
+            
+            </summary>
+            <param name="ex"></param>
+        </member>
         <member name="T:Com.MarcusTS.SharedUtils.Utils.IThreadSafeAccessor">
             <summary>
             Interface IThreadSafeAccessor
