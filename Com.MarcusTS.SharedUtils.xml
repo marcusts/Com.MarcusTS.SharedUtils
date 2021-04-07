@@ -539,10 +539,24 @@
         </member>
         <member name="M:Com.MarcusTS.SharedUtils.Utils.ErrorUtils.ConsiderArgumentError(System.Boolean,System.String)">
             <summary>
-               Considers the argument error.
+            Confusing function; use <see cref="M:Com.MarcusTS.SharedUtils.Utils.ErrorUtils.IssueArgumentErrorIfFalse(System.Boolean,System.String)"/> or <see cref="M:Com.MarcusTS.SharedUtils.Utils.ErrorUtils.IssueArgumentErrorIfTrue(System.Boolean,System.String)"/>.
             </summary>
             <param name="condition">if set to <c>true</c> [condition].</param>
             <param name="message">The message.</param>
+        </member>
+        <member name="M:Com.MarcusTS.SharedUtils.Utils.ErrorUtils.IssueArgumentErrorIfFalse(System.Boolean,System.String)">
+            <summary>
+            Issues an argument error if the condition is false.
+            </summary>
+            <param name="condition"></param>
+            <param name="message"></param>
+        </member>
+        <member name="M:Com.MarcusTS.SharedUtils.Utils.ErrorUtils.IssueArgumentErrorIfTrue(System.Boolean,System.String)">
+            <summary>
+            Issues an argument error if the condition is true.
+            </summary>
+            <param name="condition"></param>
+            <param name="message"></param>
         </member>
         <member name="M:Com.MarcusTS.SharedUtils.Utils.ErrorUtils.ThrowArgumentError(System.String)">
             <summary>
@@ -1269,6 +1283,37 @@
             Writes the stored value.
             </summary>
             <param name="valueToStore">The value to store.</param>
+        </member>
+        <member name="T:Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor_Static">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor_Static.IsTrue(Com.MarcusTS.SharedUtils.Utils.IThreadSafeAccessor)">
+            <summary>
+            
+            </summary>
+            <param name="accessor"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor_Static.IsFalse(Com.MarcusTS.SharedUtils.Utils.IThreadSafeAccessor)">
+            <summary>
+            
+            </summary>
+            <param name="accessor"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor_Static.SetTrue(Com.MarcusTS.SharedUtils.Utils.IThreadSafeAccessor)">
+            <summary>
+            
+            </summary>
+            <param name="accessor"></param>
+        </member>
+        <member name="M:Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor_Static.SetFalse(Com.MarcusTS.SharedUtils.Utils.IThreadSafeAccessor)">
+            <summary>
+            
+            </summary>
+            <param name="accessor"></param>
         </member>
         <member name="T:Com.MarcusTS.SharedUtils.Utils.WeakEventManager">
             <summary>

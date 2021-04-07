@@ -87,18 +87,44 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
    }
    
+   /// <summary>
+   /// 
+   /// </summary>
    public static class ThreadSafeAccessor_Static
    {
+      /// <summary>
+      /// 
+      /// </summary>
+      /// <param name="accessor"></param>
+      /// <returns></returns>
       public static bool IsTrue(this IThreadSafeAccessor accessor)
       {
          return accessor?.ReadStoredValue() == 1;
       }
 
+      /// <summary>
+      /// 
+      /// </summary>
+      /// <param name="accessor"></param>
+      /// <returns></returns>
+      public static bool IsFalse(this IThreadSafeAccessor accessor)
+      {
+         return accessor?.ReadStoredValue() == 0;
+      }
+
+      /// <summary>
+      /// 
+      /// </summary>
+      /// <param name="accessor"></param>
       public static void SetTrue(this IThreadSafeAccessor accessor)
       {
          accessor?.WriteStoredValue(1);
       }
       
+      /// <summary>
+      /// 
+      /// </summary>
+      /// <param name="accessor"></param>
       public static void SetFalse(this IThreadSafeAccessor accessor)
       {
          accessor?.WriteStoredValue(0);
