@@ -6,7 +6,6 @@ namespace Com.MarcusTS.SharedUtils.Utils
    using System.Diagnostics;
    using System.Runtime.CompilerServices;
    using System.Threading.Tasks;
-   using Xamarin.Forms;
 
    /// <summary>
    ///    Class ThreadHelper.
@@ -76,50 +75,6 @@ namespace Com.MarcusTS.SharedUtils.Utils
             }
 
             handler?.HandleError(ex);
-         }
-      }
-
-      /// <summary>
-      /// Runs the parallel.
-      /// </summary>
-      /// <param name="task">The task.</param>
-      /// <param name="taskCallback">The task callback.</param>
-      /// <param name="actionCallback">The action callback.</param>
-      public static void RunParallel
-      (
-         this Task task,
-         Task      taskCallback   = null,
-         Action    actionCallback = null)
-      {
-         try
-         {
-            Task.Run
-            (
-               async () =>
-               {
-                  await task.WithoutChangingContext();
-
-                  if (taskCallback != null)
-                  {
-                     Device.BeginInvokeOnMainThread
-                     (
-                        async () => { await taskCallback.WithoutChangingContext(); }
-                     );
-                  }
-
-                  if (actionCallback != null)
-                  {
-                     Device.BeginInvokeOnMainThread
-                     (
-                        actionCallback.Invoke
-                     );
-                  }
-               }
-            );
-         }
-         catch (Exception ex)
-         {
-            Debug.WriteLine(nameof(RunParallel) + " error ->" + ex.Message + "<-");
          }
       }
    }

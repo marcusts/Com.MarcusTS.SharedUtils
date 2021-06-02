@@ -139,55 +139,6 @@
             <param name="removeIt">if set to <c>true</c> [remove it].</param>
             <returns>T.</returns>
         </member>
-        <member name="T:Com.MarcusTS.SharedUtils.Controls.IThreadSafeAccessor">
-            <summary>
-               Interface IThreadSafeAccessor
-            </summary>
-        </member>
-        <member name="M:Com.MarcusTS.SharedUtils.Controls.IThreadSafeAccessor.ReadStoredValue">
-            <summary>
-               Reads the stored value.
-            </summary>
-            <returns>System.Object.</returns>
-        </member>
-        <member name="M:Com.MarcusTS.SharedUtils.Controls.IThreadSafeAccessor.WriteStoredValue(System.Object)">
-            <summary>
-               Writes the stored value.
-            </summary>
-            <param name="valueToStore">The value to store.</param>
-        </member>
-        <member name="T:Com.MarcusTS.SharedUtils.Controls.ThreadSafeAccessor">
-            <summary>
-               Class ThreadSafeAccessor.
-               Implements the <see cref="T:Com.MarcusTS.SharedUtils.Controls.IThreadSafeAccessor" />
-               Implements the <see cref="T:Com.MarcusTS.SharedUtils.Controls.IThreadSafeAccessor" />
-            </summary>
-            <seealso cref="T:Com.MarcusTS.SharedUtils.Controls.IThreadSafeAccessor" />
-            <seealso cref="T:Com.MarcusTS.SharedUtils.Controls.IThreadSafeAccessor" />
-        </member>
-        <member name="F:Com.MarcusTS.SharedUtils.Controls.ThreadSafeAccessor._storedValue">
-            <summary>
-               The stored value
-            </summary>
-        </member>
-        <member name="M:Com.MarcusTS.SharedUtils.Controls.ThreadSafeAccessor.#ctor(System.Object)">
-            <summary>
-               Initializes a new instance of the <see cref="T:Com.MarcusTS.SharedUtils.Controls.ThreadSafeAccessor" /> class.
-            </summary>
-            <param name="storedValue">The stored value.</param>
-        </member>
-        <member name="M:Com.MarcusTS.SharedUtils.Controls.ThreadSafeAccessor.ReadStoredValue">
-            <summary>
-               Reads the stored value.
-            </summary>
-            <returns>System.Object.</returns>
-        </member>
-        <member name="M:Com.MarcusTS.SharedUtils.Controls.ThreadSafeAccessor.WriteStoredValue(System.Object)">
-            <summary>
-               Writes the stored value.
-            </summary>
-            <param name="valueToStore">The value to store.</param>
-        </member>
         <member name="T:Com.MarcusTS.SharedUtils.Events.CopiedWeakEventManager">
             <summary>
             Copied from Xamarin.Forms internal to make it accessible.
@@ -710,6 +661,16 @@
             <param name="valueViewModel">The view model to copy *from*.</param>
             <param name="propInfos">The property info records to use to get and set values.</param>
         </member>
+        <member name="M:Com.MarcusTS.SharedUtils.Utils.Extensions.CoerceSettablePropertyValuesFrom``2(``0,``1,System.Func{System.Reflection.PropertyInfo,``1,System.ValueTuple{System.Boolean,System.String,System.Object}},System.Reflection.PropertyInfo[],System.Reflection.PropertyInfo[])">
+            <summary>
+            Coerces property values between two interfaces using rules.
+            </summary>
+            <param name="targetViewModel">The target view model ("this")</param>
+            <param name="sourceViewModel">The source view model.</param>
+            <param name="coerceProperty">Changes the propety name (as needed) so it can be found in the targetViewModel</param>
+            <param name="targetPropInfos">The property info collection for the target view model.</param>
+            <param name="sourcePropInfos">The property info collection for the source view model.</param>
+        </member>
         <member name="M:Com.MarcusTS.SharedUtils.Utils.Extensions.GetAllPropInfos``1">
             <summary>
                Gets all property infos.
@@ -1204,14 +1165,6 @@
             https://johnthiriet.com/removing-async-void/
             {With modifications}
             </remarks>
-        </member>
-        <member name="M:Com.MarcusTS.SharedUtils.Utils.ThreadHelper.RunParallel(System.Threading.Tasks.Task,System.Threading.Tasks.Task,System.Action)">
-            <summary>
-            Runs the parallel.
-            </summary>
-            <param name="task">The task.</param>
-            <param name="taskCallback">The task callback.</param>
-            <param name="actionCallback">The action callback.</param>
         </member>
         <member name="T:Com.MarcusTS.SharedUtils.Utils.IErrorHandler">
             <summary>

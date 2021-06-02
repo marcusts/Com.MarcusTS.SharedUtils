@@ -196,6 +196,60 @@
       }
 
       /// <summary>
+      /// Coerces property values between two interfaces using rules.
+      /// </summary>
+      /// <param name="targetViewModel">The target view model ("this")</param>
+      /// <param name="sourceViewModel">The source view model.</param>
+      /// <param name="coerceProperty">Changes the propety name (as needed) so it can be found in the targetViewModel</param>
+      /// <param name="targetPropInfos">The property info collection for the target view model.</param>
+      /// <param name="sourcePropInfos">The property info collection for the source view model.</param>
+      public static void CoerceSettablePropertyValuesFrom<TargetT, SourceT>
+      (
+         this TargetT                                     targetViewModel,
+         SourceT                                           sourceViewModel,
+         Func<PropertyInfo, SourceT, (bool, string, object)> coerceProperty,
+         PropertyInfo[]                                   targetPropInfos = default,
+         PropertyInfo[]                                   sourcePropInfos  = default
+      )
+      {
+         if (sourcePropInfos == null || sourcePropInfos.IsAnEmptyList())
+         {
+            sourcePropInfos = typeof(SourceT).GetRuntimeWriteableProperties();
+         }
+
+         if (targetPropInfos == null || targetPropInfos.IsAnEmptyList())
+         {
+            targetPropInfos = typeof(TargetT).GetRuntimeWriteableProperties();
+         }
+
+         try
+         {
+            foreach (var valuePropInfo in sourcePropInfos)
+            {
+               var propNameAndValue = coerceProperty(valuePropInfo, sourceViewModel);
+               
+               // Make sure the property was found
+               if (propNameAndValue.Item1)
+               {
+                  var foundPropInfo =
+                     targetPropInfos.FirstOrDefault(pi => pi.Name.IsSameAs(propNameAndValue.Item2));
+
+                  if (foundPropInfo.IsNotNullOrDefault())
+                  {
+                     // Assign the value
+                     // ReSharper disable once PossibleNullReferenceException
+                     foundPropInfo.SetValue(targetViewModel, propNameAndValue.Item3);
+                  }
+               }
+            }
+         }
+         catch (Exception ex)
+         {
+            Debug.WriteLine(nameof(CoerceSettablePropertyValuesFrom) + " ERROR ->" + ex.Message + "<-");
+         }
+      }
+
+      /// <summary>
       ///    Gets all property infos.
       /// </summary>
       /// <typeparam name="T"></typeparam>
