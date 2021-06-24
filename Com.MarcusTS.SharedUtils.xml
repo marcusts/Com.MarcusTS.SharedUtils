@@ -353,53 +353,6 @@
             <param name="handler">The handler.</param>
             <exception cref="T:System.ArgumentNullException">handler</exception>
         </member>
-        <member name="T:Com.MarcusTS.SharedUtils.Interfaces.ButtonStates">
-            <summary>
-               Enum ButtonStates
-            </summary>
-        </member>
-        <member name="F:Com.MarcusTS.SharedUtils.Interfaces.ButtonStates.Deselected">
-            <summary>
-               The deselected
-            </summary>
-        </member>
-        <member name="F:Com.MarcusTS.SharedUtils.Interfaces.ButtonStates.Selected">
-            <summary>
-               The selected
-            </summary>
-        </member>
-        <member name="F:Com.MarcusTS.SharedUtils.Interfaces.ButtonStates.Disabled">
-            <summary>
-               The disabled
-            </summary>
-        </member>
-        <member name="T:Com.MarcusTS.SharedUtils.Interfaces.IHaveButtonState">
-            <summary>
-               Interface IHaveButtonState
-            </summary>
-        </member>
-        <member name="E:Com.MarcusTS.SharedUtils.Interfaces.IHaveButtonState.ButtonStateChanged">
-            <summary>
-               Occurs when [button state changed].
-            </summary>
-        </member>
-        <member name="E:Com.MarcusTS.SharedUtils.Interfaces.IHaveButtonState.ViewButtonPressed">
-            <summary>
-               Occurs when [view button pressed].
-            </summary>
-        </member>
-        <member name="P:Com.MarcusTS.SharedUtils.Interfaces.IHaveButtonState.ButtonState">
-            <summary>
-               Gets or sets the state of the button.
-            </summary>
-            <value>The state of the button.</value>
-        </member>
-        <member name="P:Com.MarcusTS.SharedUtils.Interfaces.IHaveButtonState.SelectionGroup">
-            <summary>
-               Gets or sets the selection group.
-            </summary>
-            <value>The selection group.</value>
-        </member>
         <member name="T:Com.MarcusTS.SharedUtils.Interfaces.IHavePageViewModel`1">
             <summary>
             The HasViewModel interface. Implements a ViewModel of type T. T must be an IAmBusy. This is

@@ -228,7 +228,7 @@
             {
                var propNameAndValue = coerceProperty(valuePropInfo, sourceViewModel);
                
-               // Make sure the property was found
+               // Make sure the property was found and we can proceed
                if (propNameAndValue.Item1)
                {
                   var foundPropInfo =
@@ -277,19 +277,22 @@
          var mainListItemsNotFoundInSecondList = new List<T>();
          var secondListItemsNotFoundInMainList = new List<T>();
 
-         if (mainList.IsNotEmpty() || secondList.IsNotEmpty())
+         if (mainList.IsNotAnEmptyList())
          {
             foreach (var mainListItem in mainList)
             {
-               if (!secondList.Contains(mainListItem))
+               if (secondList.IsAnEmptyList() || !secondList.Contains(mainListItem))
                {
                   mainListItemsNotFoundInSecondList.Add(mainListItem);
                }
             }
+         }
 
+         if (secondList.IsNotAnEmptyList())
+         {
             foreach (var secondListItem in secondList)
             {
-               if (!mainList.Contains(secondListItem))
+               if (mainList.IsAnEmptyList() || !mainList.Contains(secondListItem))
                {
                   secondListItemsNotFoundInMainList.Add(secondListItem);
                }
@@ -1092,6 +1095,11 @@
          var retList = existingArray.ToList();
          retList.AddRange(arrayToAppend);
          return retList.ToArray();
+      }
+      
+      public static bool IsFalse(this bool? b)
+      {
+         return (b.HasValue && !b.Value);
       }
    }
 }

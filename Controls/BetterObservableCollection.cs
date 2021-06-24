@@ -85,7 +85,8 @@ namespace Com.MarcusTS.SharedUtils.Controls
       /// <param name="comparer">The comparer.</param>
       public void AddRangeSortedAndWithoutNotification(T[] list, IDecideWhichIsLess<T> comparer = null)
       {
-         ErrorUtils.ConsiderArgumentError(list.IsEmpty(),
+         ErrorUtils.IssueArgumentErrorIfTrue
+         (list.IsAnEmptyList(),
             nameof(BetterObservableCollection<T>) + ": " +
             nameof(AddRangeSortedAndWithoutNotification) + " requires a valid list");
 
