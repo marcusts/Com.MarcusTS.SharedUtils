@@ -265,41 +265,37 @@
       /// </summary>
       /// <typeparam name="T"></typeparam>
       /// <param name="mainList">The main list.</param>
-      /// <param name="secondList">The second list.</param>
+      /// <param name="compareList">The second list.</param>
       /// <returns>System.ValueTuple&lt;IList&lt;T&gt;, IList&lt;T&gt;&gt;.</returns>
       /// <return>
       ///    The differences between the two lists:
       ///    * First tuple -- the main list items not in the second list
       ///    * Second tuple -- the second list items not fond in the main list
       /// </return>
-      public static (IList<T>, IList<T>) GetDifferences<T>(this T[] mainList, T[] secondList)
+      public static (IList<T>, IList<T>) GetDifferences<T>(this T[] mainList, T[] compareList)
       {
-         var mainListItemsNotFoundInSecondList = new List<T>();
-         var secondListItemsNotFoundInMainList = new List<T>();
-
-         if (mainList.IsNotAnEmptyList())
-         {
-            foreach (var mainListItem in mainList)
-            {
-               if (secondList.IsAnEmptyList() || !secondList.Contains(mainListItem))
-               {
-                  mainListItemsNotFoundInSecondList.Add(mainListItem);
-               }
-            }
-         }
-
-         if (secondList.IsNotAnEmptyList())
-         {
-            foreach (var secondListItem in secondList)
-            {
-               if (mainList.IsAnEmptyList() || !mainList.Contains(secondListItem))
-               {
-                  secondListItemsNotFoundInMainList.Add(secondListItem);
-               }
-            }
-         }
+         var mainListItemsNotFoundInSecondList = CreateDiffFromList(mainList, compareList);
+         var secondListItemsNotFoundInMainList = CreateDiffFromList( compareList, mainList);
 
          return (mainListItemsNotFoundInSecondList, secondListItemsNotFoundInMainList);
+
+         // PRIVATE METHODS
+         List<T> CreateDiffFromList(T[] firstList, T[] secondList)
+         {
+            var retList = new List<T>();
+            if (firstList.IsNotAnEmptyList())
+            {
+               foreach (var firstListItem in firstList)
+               {
+                  if (secondList.IsAnEmptyList() || !secondList.Contains(firstListItem))
+                  {
+                     retList.Add(firstListItem);
+                  }
+               }
+            }
+
+            return retList;
+         }
       }
 
       /// <summary>
@@ -916,11 +912,13 @@
       /// </summary>
       /// <param name="mainStr">The main string.</param>
       /// <param name="otherStr">The other string.</param>
+      /// <param name="compareType"></param>
       /// <returns><c>true</c> if [is same as] [the specified other string]; otherwise, <c>false</c>.</returns>
       public static bool IsSameAs
       (
          this string mainStr,
-         string otherStr
+         string otherStr,
+         StringComparison compareType = StringComparison.CurrentCultureIgnoreCase
       )
       {
          var mainStrIsNullOrEmpty = string.IsNullOrEmpty(mainStr);
@@ -933,12 +931,7 @@
          }
 
          var isSameBasedOnComparison =
-            string.Compare(mainStr, otherStr, StringComparison.CurrentCultureIgnoreCase) == 0;
-
-         //if (isSameBasedOnNull && !isSameBasedOnComparison)
-         //{
-         //   Debug.WriteLine(nameof(IsSameAs) + ": WarningException: Mismatched comparison");
-         //}
+            string.Compare(mainStr, otherStr, compareType) == 0;
 
          return isSameBasedOnComparison;
       }

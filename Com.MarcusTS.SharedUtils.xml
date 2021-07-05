@@ -637,7 +637,7 @@
             </summary>
             <typeparam name="T"></typeparam>
             <param name="mainList">The main list.</param>
-            <param name="secondList">The second list.</param>
+            <param name="compareList">The second list.</param>
             <returns>System.ValueTuple&lt;IList&lt;T&gt;, IList&lt;T&gt;&gt;.</returns>
             <return>
                The differences between the two lists:
@@ -970,12 +970,13 @@
             <param name="numericError">The numeric error.</param>
             <returns><c>true</c> if [is same as] [the specified other f]; otherwise, <c>false</c>.</returns>
         </member>
-        <member name="M:Com.MarcusTS.SharedUtils.Utils.Extensions.IsSameAs(System.String,System.String)">
+        <member name="M:Com.MarcusTS.SharedUtils.Utils.Extensions.IsSameAs(System.String,System.String,System.StringComparison)">
             <summary>
                Determines whether [is same as] [the specified other string].
             </summary>
             <param name="mainStr">The main string.</param>
             <param name="otherStr">The other string.</param>
+            <param name="compareType"></param>
             <returns><c>true</c> if [is same as] [the specified other string]; otherwise, <c>false</c>.</returns>
         </member>
         <member name="M:Com.MarcusTS.SharedUtils.Utils.Extensions.IsTrue(System.Nullable{System.Boolean})">
