@@ -28,6 +28,8 @@
 
 namespace Com.MarcusTS.SharedUtils.Controls
 {
+   using System.Collections;
+   using System.Collections.Generic;
    using System.Collections.ObjectModel;
    using System.Collections.Specialized;
    using System.Linq;
@@ -48,13 +50,42 @@ namespace Com.MarcusTS.SharedUtils.Controls
       bool IsLessThan(T mainItem, T compareItem);
    }
 
+   public interface IBetterObservableCollection<T> : ICollection<T>
+   {
+      /// <summary>
+      ///    Adds the range sorted and without notification.
+      /// </summary>
+      /// <param name="list">The list.</param>
+      /// <param name="comparer">The comparer.</param>
+      void AddRangeSortedAndWithoutNotification(T[] list, IDecideWhichIsLess<T> comparer = null);
+
+      /// <summary>
+      ///    Adds the sorted.
+      /// </summary>
+      /// <param name="item">The item.</param>
+      /// <param name="comparer">The comparer.</param>
+      void AddSorted(T item, IDecideWhichIsLess<T> comparer = null);
+
+      /// <summary>
+      ///    Notifies the of additions.
+      /// </summary>
+      /// <param name="list">The list.</param>
+      void NotifyOfAdditions(T[] list);
+
+      /// <summary>
+      ///    Sorts the specified sorted.
+      /// </summary>
+      /// <param name="sorted">The sorted.</param>
+      void Sort(T[] sorted);
+   }
+
    /// <summary>
    ///    Class BetterObservableCollection.
    ///    Implements the <see cref="System.Collections.ObjectModel.ObservableCollection{T}" />
    /// </summary>
    /// <typeparam name="T"></typeparam>
    /// <seealso cref="System.Collections.ObjectModel.ObservableCollection{T}" />
-   public class BetterObservableCollection<T> : ObservableCollection<T>
+   public class BetterObservableCollection<T> : ObservableCollection<T>, IBetterObservableCollection<T>
    {
       /// <summary>
       ///    The suppress notification
@@ -67,8 +98,11 @@ namespace Com.MarcusTS.SharedUtils.Controls
       /// <param name="items">The items.</param>
       public BetterObservableCollection(T[] items)
       {
-         AddRangeSortedAndWithoutNotification(items);
-         NotifyOfAdditions(items);
+         if (items.IsNotAnEmptyList())
+         {
+            AddRangeSortedAndWithoutNotification(items);
+            NotifyOfAdditions(items);
+         }
       }
 
       /// <summary>

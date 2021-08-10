@@ -25,109 +25,107 @@ namespace Com.MarcusTS.SharedUtils.Utils
    using System.Threading;
 
    /// <summary>
-   /// Interface IThreadSafeAccessor
+   ///    Interface IThreadSafeAccessor
    /// </summary>
    public interface IThreadSafeAccessor
    {
       /// <summary>
-      /// Reads the stored value.
+      ///    Reads the stored value.
       /// </summary>
       /// <returns>System.Object.</returns>
       int ReadStoredValue();
 
       /// <summary>
-      /// Writes the stored value.
+      ///    Writes the stored value.
       /// </summary>
       /// <param name="valueToStore">The value to store.</param>
       void WriteStoredValue(int valueToStore);
+
+      bool IsFalse();
+
+      bool IsTrue();
+
+      bool IsUnset();
+
+      void SetFalse();
+
+      void SetTrue();
+
+      void Unset();
    }
 
    /// <summary>
-   /// Class ThreadSafeAccessor.
-   /// Implements the <see cref="IThreadSafeAccessor" />
-   /// Implements the <see cref="IThreadSafeAccessor" />
+   ///    Class ThreadSafeAccessor.
+   ///    Implements the <see cref="IThreadSafeAccessor" />
+   ///    Implements the <see cref="IThreadSafeAccessor" />
    /// </summary>
    /// <seealso cref="IThreadSafeAccessor" />
    /// <seealso cref="IThreadSafeAccessor" />
    public class ThreadSafeAccessor : IThreadSafeAccessor
    {
+      public const int UNSET_VALUE = int.MinValue;
+
       /// <summary>
-      /// The stored value
+      ///    The stored value
       /// </summary>
       private volatile int _storedValue;
 
       /// <summary>
-      /// Initializes a new instance of the <see cref="ThreadSafeAccessor" /> class.
+      ///    Initializes a new instance of the <see cref="ThreadSafeAccessor" /> class.
       /// </summary>
       /// <param name="storedValue">The stored value.</param>
-      public ThreadSafeAccessor(int? storedValue = default)
+      public ThreadSafeAccessor(int storedValue = UNSET_VALUE)
       {
-         if (storedValue.HasValue)
-         {
-            WriteStoredValue(storedValue.Value);
-         }
+         // NOTE Min value is reserved for the "unset" state
+         WriteStoredValue(storedValue);
       }
 
       /// <summary>
-      /// Reads the stored value.
+      ///    Reads the stored value.
       /// </summary>
       /// <returns>System.Object.</returns>
       public int ReadStoredValue()
       {
-         return Interlocked.CompareExchange(ref _storedValue, default(int), default(int));
+         return Interlocked.CompareExchange(ref _storedValue, default, default);
       }
 
       /// <summary>
-      /// Writes the stored value.
+      ///    Writes the stored value.
       /// </summary>
       /// <param name="valueToStore">The value to store.</param>
       public void WriteStoredValue(int valueToStore)
       {
          Interlocked.Exchange(ref _storedValue, valueToStore);
       }
-   }
-   
-   /// <summary>
-   /// 
-   /// </summary>
-   public static class ThreadSafeAccessor_Static
-   {
-      /// <summary>
-      /// 
-      /// </summary>
-      /// <param name="accessor"></param>
-      /// <returns></returns>
-      public static bool IsTrue(this IThreadSafeAccessor accessor)
+
+      public bool IsFalse()
       {
-         return accessor?.ReadStoredValue() == 1;
+         return ReadStoredValue() == 0;
       }
 
-      /// <summary>
-      /// 
-      /// </summary>
-      /// <param name="accessor"></param>
-      /// <returns></returns>
-      public static bool IsFalse(this IThreadSafeAccessor accessor)
+      public bool IsTrue()
       {
-         return accessor?.ReadStoredValue() == 0;
+         return ReadStoredValue() == 1;
       }
 
-      /// <summary>
-      /// 
-      /// </summary>
-      /// <param name="accessor"></param>
-      public static void SetTrue(this IThreadSafeAccessor accessor)
+      public bool IsUnset()
       {
-         accessor?.WriteStoredValue(1);
+         return ReadStoredValue() == UNSET_VALUE;
       }
-      
-      /// <summary>
-      /// 
-      /// </summary>
-      /// <param name="accessor"></param>
-      public static void SetFalse(this IThreadSafeAccessor accessor)
+
+      public void SetFalse()
       {
-         accessor?.WriteStoredValue(0);
+         WriteStoredValue(0);
+      }
+
+      public void SetTrue()
+      {
+         WriteStoredValue(1);
+      }
+
+      public void Unset()
+      {
+         WriteStoredValue(UNSET_VALUE);
       }
    }
 }
