@@ -18,6 +18,32 @@
             <param name="compareItem">The compare item.</param>
             <returns><c>true</c> if [is less than] [the specified main item]; otherwise, <c>false</c>.</returns>
         </member>
+        <member name="M:Com.MarcusTS.SharedUtils.Controls.IBetterObservableCollection`1.AddRangeSortedAndWithoutNotification(`0[],Com.MarcusTS.SharedUtils.Controls.IDecideWhichIsLess{`0})">
+            <summary>
+               Adds the range sorted and without notification.
+            </summary>
+            <param name="list">The list.</param>
+            <param name="comparer">The comparer.</param>
+        </member>
+        <member name="M:Com.MarcusTS.SharedUtils.Controls.IBetterObservableCollection`1.AddSorted(`0,Com.MarcusTS.SharedUtils.Controls.IDecideWhichIsLess{`0})">
+            <summary>
+               Adds the sorted.
+            </summary>
+            <param name="item">The item.</param>
+            <param name="comparer">The comparer.</param>
+        </member>
+        <member name="M:Com.MarcusTS.SharedUtils.Controls.IBetterObservableCollection`1.NotifyOfAdditions(`0[])">
+            <summary>
+               Notifies the of additions.
+            </summary>
+            <param name="list">The list.</param>
+        </member>
+        <member name="M:Com.MarcusTS.SharedUtils.Controls.IBetterObservableCollection`1.Sort(`0[])">
+            <summary>
+               Sorts the specified sorted.
+            </summary>
+            <param name="sorted">The sorted.</param>
+        </member>
         <member name="T:Com.MarcusTS.SharedUtils.Controls.BetterObservableCollection`1">
             <summary>
                Class BetterObservableCollection.
@@ -1081,6 +1107,34 @@
                The next selection group
             </summary>
         </member>
+        <member name="T:Com.MarcusTS.SharedUtils.Utils.TaskHelper">
+            <summary>
+               Class TaskHelper.
+            </summary>
+        </member>
+        <member name="M:Com.MarcusTS.SharedUtils.Utils.TaskHelper.BeginInvokeOnMainThreadAsync``1(System.Func{``0})">
+            <summary>
+               Begins the invoke on main thread asynchronous.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="a">a.</param>
+            <returns>Task&lt;T&gt;.</returns>
+        </member>
+        <member name="M:Com.MarcusTS.SharedUtils.Utils.TaskHelper.BeginInvokeOnMainThreadAsync(System.Action)">
+            <summary>
+               Begins the invoke on main thread asynchronous.
+            </summary>
+            <param name="a">a.</param>
+            <returns>Task.</returns>
+        </member>
+        <member name="M:Com.MarcusTS.SharedUtils.Utils.TaskHelper.RunParallel(System.Threading.Tasks.Task,System.Threading.Tasks.Task,System.Action)">
+            <summary>
+               Runs the parallel.
+            </summary>
+            <param name="task">The task.</param>
+            <param name="taskCallback">The task callback.</param>
+            <param name="actionCallback">The action callback.</param>
+        </member>
         <member name="T:Com.MarcusTS.SharedUtils.Utils.ThreadHelper">
             <summary>
                Class ThreadHelper.
@@ -1120,6 +1174,16 @@
             {With modifications}
             </remarks>
         </member>
+        <member name="M:Com.MarcusTS.SharedUtils.Utils.ThreadHelper.WaitFromVoid(System.Threading.Tasks.Task,Com.MarcusTS.SharedUtils.Interfaces.ICanRun,System.Int32)">
+            <summary>
+            Replaces FireAndForget with a true "wait" while loop along with timeout
+            </summary>
+        </member>
+        <member name="M:Com.MarcusTS.SharedUtils.Utils.ThreadHelper.WaitFromVoid(System.Threading.Tasks.Task,System.Int32)">
+            <summary>
+            Replaces FireAndForget with a true "wait" while loop along with timeout
+            </summary>
+        </member>
         <member name="T:Com.MarcusTS.SharedUtils.Utils.IErrorHandler">
             <summary>
             
@@ -1144,83 +1208,52 @@
         </member>
         <member name="T:Com.MarcusTS.SharedUtils.Utils.IThreadSafeAccessor">
             <summary>
-            Interface IThreadSafeAccessor
+               Interface IThreadSafeAccessor
             </summary>
         </member>
         <member name="M:Com.MarcusTS.SharedUtils.Utils.IThreadSafeAccessor.ReadStoredValue">
             <summary>
-            Reads the stored value.
+               Reads the stored value.
             </summary>
             <returns>System.Object.</returns>
         </member>
         <member name="M:Com.MarcusTS.SharedUtils.Utils.IThreadSafeAccessor.WriteStoredValue(System.Int32)">
             <summary>
-            Writes the stored value.
+               Writes the stored value.
             </summary>
             <param name="valueToStore">The value to store.</param>
         </member>
         <member name="T:Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor">
             <summary>
-            Class ThreadSafeAccessor.
-            Implements the <see cref="T:Com.MarcusTS.SharedUtils.Utils.IThreadSafeAccessor" />
-            Implements the <see cref="T:Com.MarcusTS.SharedUtils.Utils.IThreadSafeAccessor" />
+               Class ThreadSafeAccessor.
+               Implements the <see cref="T:Com.MarcusTS.SharedUtils.Utils.IThreadSafeAccessor" />
+               Implements the <see cref="T:Com.MarcusTS.SharedUtils.Utils.IThreadSafeAccessor" />
             </summary>
             <seealso cref="T:Com.MarcusTS.SharedUtils.Utils.IThreadSafeAccessor" />
             <seealso cref="T:Com.MarcusTS.SharedUtils.Utils.IThreadSafeAccessor" />
         </member>
         <member name="F:Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor._storedValue">
             <summary>
-            The stored value
+               The stored value
             </summary>
         </member>
-        <member name="M:Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor.#ctor(System.Nullable{System.Int32})">
+        <member name="M:Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor.#ctor(System.Int32)">
             <summary>
-            Initializes a new instance of the <see cref="T:Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor" /> class.
+               Initializes a new instance of the <see cref="T:Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor" /> class.
             </summary>
             <param name="storedValue">The stored value.</param>
         </member>
         <member name="M:Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor.ReadStoredValue">
             <summary>
-            Reads the stored value.
+               Reads the stored value.
             </summary>
             <returns>System.Object.</returns>
         </member>
         <member name="M:Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor.WriteStoredValue(System.Int32)">
             <summary>
-            Writes the stored value.
+               Writes the stored value.
             </summary>
             <param name="valueToStore">The value to store.</param>
-        </member>
-        <member name="T:Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor_Static">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor_Static.IsTrue(Com.MarcusTS.SharedUtils.Utils.IThreadSafeAccessor)">
-            <summary>
-            
-            </summary>
-            <param name="accessor"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor_Static.IsFalse(Com.MarcusTS.SharedUtils.Utils.IThreadSafeAccessor)">
-            <summary>
-            
-            </summary>
-            <param name="accessor"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor_Static.SetTrue(Com.MarcusTS.SharedUtils.Utils.IThreadSafeAccessor)">
-            <summary>
-            
-            </summary>
-            <param name="accessor"></param>
-        </member>
-        <member name="M:Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor_Static.SetFalse(Com.MarcusTS.SharedUtils.Utils.IThreadSafeAccessor)">
-            <summary>
-            
-            </summary>
-            <param name="accessor"></param>
         </member>
         <member name="T:Com.MarcusTS.SharedUtils.Utils.WeakEventManager">
             <summary>
