@@ -1135,28 +1135,33 @@
             <param name="taskCallback">The task callback.</param>
             <param name="actionCallback">The action callback.</param>
         </member>
+        <member name="T:Com.MarcusTS.SharedUtils.Utils.IErrorHandler">
+            <summary></summary>
+        </member>
+        <member name="M:Com.MarcusTS.SharedUtils.Utils.IErrorHandler.HandleError(System.Exception)">
+            <summary></summary>
+            <param name="ex"></param>
+        </member>
         <member name="T:Com.MarcusTS.SharedUtils.Utils.ThreadHelper">
-            <summary>
-               Class ThreadHelper.
-            </summary>
+            <summary>Class ThreadHelper.</summary>
         </member>
         <member name="P:Com.MarcusTS.SharedUtils.Utils.ThreadHelper.IsOnMainThread">
-            <summary>
-               Gets a value indicating whether this instance is on main thread.
-            </summary>
+            <summary>Gets a value indicating whether this instance is on main thread.</summary>
             <value><c>true</c> if this instance is on main thread; otherwise, <c>false</c>.</value>
         </member>
         <member name="P:Com.MarcusTS.SharedUtils.Utils.ThreadHelper.MainThreadId">
-            <summary>
-               Gets the main thread identifier.
-            </summary>
+            <summary>Gets the main thread identifier.</summary>
             <value>The main thread identifier.</value>
         </member>
+        <member name="M:Com.MarcusTS.SharedUtils.Utils.ThreadHelper.FireAndForget(System.Threading.Tasks.Task,Com.MarcusTS.SharedUtils.Utils.IErrorHandler)">
+            <remarks>https://johnthiriet.com/removing-async-void/ {With modifications}</remarks>
+        </member>
         <member name="M:Com.MarcusTS.SharedUtils.Utils.ThreadHelper.Initialize(System.Int32)">
-            <summary>
-               Initializes the specified main thread identifier.
-            </summary>
+            <summary>Initializes the specified main thread identifier.</summary>
             <param name="mainThreadId">The main thread identifier.</param>
+        </member>
+        <member name="M:Com.MarcusTS.SharedUtils.Utils.ThreadHelper.WaitFromVoid(System.Threading.Tasks.Task,System.Int32)">
+            <summary>Replaces FireAndForget with a true "wait" while loop along with timeout</summary>
         </member>
         <member name="M:Com.MarcusTS.SharedUtils.Utils.ThreadHelper.WithoutChangingContext(System.Threading.Tasks.Task)">
             <summary>Runs a Task without changing the context (configure await is false).</summary>
@@ -1168,42 +1173,14 @@
             <param name="task">The task.</param>
             <returns>Task&lt;T&gt;.</returns>
         </member>
-        <member name="M:Com.MarcusTS.SharedUtils.Utils.ThreadHelper.FireAndForget(System.Threading.Tasks.Task,Com.MarcusTS.SharedUtils.Utils.IErrorHandler)">
-            <remarks>
-            https://johnthiriet.com/removing-async-void/
-            {With modifications}
-            </remarks>
-        </member>
-        <member name="M:Com.MarcusTS.SharedUtils.Utils.ThreadHelper.WaitFromVoid(System.Threading.Tasks.Task,Com.MarcusTS.SharedUtils.Interfaces.ICanRun,System.Int32)">
-            <summary>
-            Replaces FireAndForget with a true "wait" while loop along with timeout
-            </summary>
-        </member>
-        <member name="M:Com.MarcusTS.SharedUtils.Utils.ThreadHelper.WaitFromVoid(System.Threading.Tasks.Task,System.Int32)">
-            <summary>
-            Replaces FireAndForget with a true "wait" while loop along with timeout
-            </summary>
-        </member>
-        <member name="T:Com.MarcusTS.SharedUtils.Utils.IErrorHandler">
-            <summary>
-            
-            </summary>
-        </member>
-        <member name="M:Com.MarcusTS.SharedUtils.Utils.IErrorHandler.HandleError(System.Exception)">
-            <summary>
-            
-            </summary>
-            <param name="ex"></param>
+        <member name="M:Com.MarcusTS.SharedUtils.Utils.ThreadHelper.WaitFromVoid(System.Threading.Tasks.Task,Com.MarcusTS.SharedUtils.Utils.IRunnableTask,System.Int32)">
+            <summary>WORKS ONLY WITH RUNNABLE TASK THAT SETS IS RUNNING INTERNALLY (SEE BELOW)</summary>
         </member>
         <member name="T:Com.MarcusTS.SharedUtils.Utils.DefaultErrorHandler">
-            <summary>
-            
-            </summary>
+            <summary></summary>
         </member>
         <member name="M:Com.MarcusTS.SharedUtils.Utils.DefaultErrorHandler.HandleError(System.Exception)">
-            <summary>
-            
-            </summary>
+            <summary></summary>
             <param name="ex"></param>
         </member>
         <member name="T:Com.MarcusTS.SharedUtils.Utils.IThreadSafeAccessor">
