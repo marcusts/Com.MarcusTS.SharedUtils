@@ -1,20 +1,22 @@
 ﻿// *********************************************************************************
-// <copyright file=TaskHelper.cs company="Marcus Technical Services, Inc.">
-//     Copyright @2019 Marcus Technical Services, Inc.
+// Copyright @2021 Marcus Technical Services, Inc.
+// <copyright
+// file=TaskHelper.cs
+// company="Marcus Technical Services, Inc.">
 // </copyright>
-//
+// 
 // MIT License
-//
+// 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
 // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-//
+// 
 // The above copyright notice and this permission notice shall be included in all
 // copies or substantial portions of the Software.
-//
+// 
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
@@ -35,12 +37,12 @@ namespace Com.MarcusTS.SharedUtils.Utils
    using Xamarin.Forms;
 
    /// <summary>
-   ///    Class TaskHelper.
+   /// Class TaskHelper.
    /// </summary>
    public static class TaskHelper
    {
       /// <summary>
-      ///    Begins the invoke on main thread asynchronous.
+      /// Begins the invoke on main thread asynchronous.
       /// </summary>
       /// <typeparam name="T"></typeparam>
       /// <param name="a">a.</param>
@@ -67,7 +69,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      ///    Begins the invoke on main thread asynchronous.
+      /// Begins the invoke on main thread asynchronous.
       /// </summary>
       /// <param name="a">a.</param>
       /// <returns>Task.</returns>
@@ -91,13 +93,12 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /*
-      public static 
+      public static
 #if !DISALLOW_MAIN_THREAD_CHECK
-         async 
+         async
 #endif
          Task EnsureRunOnMainThread(this Task task, bool forceToMainThread = false)
       {
-
 #if !DISALLOW_MAIN_THREAD_CHECK
          if (!forceToMainThread && MainThread.IsMainThread)
          {
@@ -127,6 +128,10 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
       */
 
+      /// <summary>
+      /// Runs the on main thread.
+      /// </summary>
+      /// <param name="action">The action.</param>
       public static void RunOnMainThread(this Action action)
       {
          if (action.IsNotNullOrDefault())
@@ -135,49 +140,50 @@ namespace Com.MarcusTS.SharedUtils.Utils
          }
       }
 
+      /// <summary>
+      /// Runs the on main thread.
+      /// </summary>
+      /// <param name="task">The task.</param>
       public static void RunOnMainThread(this Task task)
       {
          if (task.IsNotNullOrDefault())
          {
             MainThread.BeginInvokeOnMainThread(
-               async () =>
-               {
-                  await task.WithoutChangingContext();
-               });
+                                               async () => { await task.WithoutChangingContext(); });
          }
       }
 
       /// <summary>
-      ///    Runs the parallel.
+      /// Runs the parallel.
       /// </summary>
       /// <param name="task">The task.</param>
       /// <param name="taskCallback">The task callback.</param>
       /// <param name="actionCallback">The action callback.</param>
       public static void RunParallel
       (
-         this Task   task,
-         Task   taskCallback   = default,
-         Action actionCallback = default
+         this Task task,
+         Task      taskCallback   = default,
+         Action    actionCallback = default
       )
       {
          try
          {
             Task.Run
-            (
-               async () =>
-               {
-                  await task.WithoutChangingContext();
+               (
+                async () =>
+                {
+                   await task.WithoutChangingContext();
 
-                  if (taskCallback.IsNotNullOrDefault())
-                  {
-                     taskCallback.RunOnMainThread();
-                  }
-                  else if (actionCallback.IsNotNullOrDefault())
-                  {
-                     actionCallback.RunOnMainThread();
-                  }
-               }
-            );
+                   if (taskCallback.IsNotNullOrDefault())
+                   {
+                      taskCallback.RunOnMainThread();
+                   }
+                   else if (actionCallback.IsNotNullOrDefault())
+                   {
+                      actionCallback.RunOnMainThread();
+                   }
+                }
+               );
          }
          catch (Exception ex)
          {

@@ -1,0 +1,352 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpTOC>
+
+  <HelpTOCNode Id="9d74e8d1-1d88-4a42-8b08-506ae536b555" Title="Com.MarcusTS.SharedUtils.Controls Namespace" Url="html/N-Com.MarcusTS.SharedUtils.Controls.htm">
+    <HelpTOCNode Id="16de1bcc-5dbd-4698-808f-41691997dff1" Title="BetterObservableCollection(T) Class" Url="html/T-Com.MarcusTS.SharedUtils.Controls.BetterObservableCollection-1.htm">
+      <HelpTOCNode Title="BetterObservableCollection(T) Members" Url="html/AllMembers.T-Com.MarcusTS.SharedUtils.Controls.BetterObservableCollection-1.htm" />
+      <HelpTOCNode Id="a0704d7f-31f5-4789-a832-2e29b7046db5" Title="BetterObservableCollection(T) Constructor " Url="html/Overload-Com.MarcusTS.SharedUtils.Controls.BetterObservableCollection-1.-ctor.htm">
+        <HelpTOCNode Title="BetterObservableCollection(T) Constructor (T[])" Url="html/M-Com.MarcusTS.SharedUtils.Controls.BetterObservableCollection-1.-ctor.htm" />
+        <HelpTOCNode Title="BetterObservableCollection(T) Constructor " Url="html/M-Com.MarcusTS.SharedUtils.Controls.BetterObservableCollection-1.-ctor_1.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="f852447f-131d-4a6e-913b-90655cd0b7fa" Title="BetterObservableCollection(T) Methods" Url="html/Methods.T-Com.MarcusTS.SharedUtils.Controls.BetterObservableCollection-1.htm">
+        <HelpTOCNode Title="AddRangeSortedAndWithoutNotification Method " Url="html/M-Com.MarcusTS.SharedUtils.Controls.BetterObservableCollection-1.AddRangeSortedAndWithoutNotification.htm" />
+        <HelpTOCNode Title="AddSorted Method " Url="html/M-Com.MarcusTS.SharedUtils.Controls.BetterObservableCollection-1.AddSorted.htm" />
+        <HelpTOCNode Title="NotifyOfAdditions Method " Url="html/M-Com.MarcusTS.SharedUtils.Controls.BetterObservableCollection-1.NotifyOfAdditions.htm" />
+        <HelpTOCNode Title="Sort Method " Url="html/M-Com.MarcusTS.SharedUtils.Controls.BetterObservableCollection-1.Sort.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="028cddbb-b943-4c2c-a1bb-10ed57947b35" Title="FlexibleStack(T) Class" Url="html/T-Com.MarcusTS.SharedUtils.Controls.FlexibleStack-1.htm">
+      <HelpTOCNode Title="FlexibleStack(T) Members" Url="html/AllMembers.T-Com.MarcusTS.SharedUtils.Controls.FlexibleStack-1.htm" />
+      <HelpTOCNode Id="0e828e93-6eec-41e5-91d7-37f223b2404e" Title="FlexibleStack(T) Methods" Url="html/Methods.T-Com.MarcusTS.SharedUtils.Controls.FlexibleStack-1.htm">
+        <HelpTOCNode Title="Clear Method " Url="html/M-Com.MarcusTS.SharedUtils.Controls.FlexibleStack-1.Clear.htm" />
+        <HelpTOCNode Title="GetEnumerator Method " Url="html/M-Com.MarcusTS.SharedUtils.Controls.FlexibleStack-1.GetEnumerator.htm" />
+        <HelpTOCNode Title="Peek Method " Url="html/M-Com.MarcusTS.SharedUtils.Controls.FlexibleStack-1.Peek.htm" />
+        <HelpTOCNode Title="Pop Method " Url="html/M-Com.MarcusTS.SharedUtils.Controls.FlexibleStack-1.Pop.htm" />
+        <HelpTOCNode Title="Push Method " Url="html/M-Com.MarcusTS.SharedUtils.Controls.FlexibleStack-1.Push.htm" />
+        <HelpTOCNode Title="RemoveIfPresent Method " Url="html/M-Com.MarcusTS.SharedUtils.Controls.FlexibleStack-1.RemoveIfPresent.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="a1a6b76e-0b99-48ba-9501-891ccb70ef83" Title="IBetterObservableCollection(T) Interface" Url="html/T-Com.MarcusTS.SharedUtils.Controls.IBetterObservableCollection-1.htm">
+      <HelpTOCNode Title="IBetterObservableCollection Members" Url="html/AllMembers.T-Com.MarcusTS.SharedUtils.Controls.IBetterObservableCollection-1.htm" />
+      <HelpTOCNode Id="0e1bdd7f-6bee-490b-ba87-b943276eb7ae" Title="IBetterObservableCollection Methods" Url="html/Methods.T-Com.MarcusTS.SharedUtils.Controls.IBetterObservableCollection-1.htm">
+        <HelpTOCNode Title="AddRangeSortedAndWithoutNotification Method " Url="html/M-Com.MarcusTS.SharedUtils.Controls.IBetterObservableCollection-1.AddRangeSortedAndWithoutNotification.htm" />
+        <HelpTOCNode Title="AddSorted Method " Url="html/M-Com.MarcusTS.SharedUtils.Controls.IBetterObservableCollection-1.AddSorted.htm" />
+        <HelpTOCNode Title="NotifyOfAdditions Method " Url="html/M-Com.MarcusTS.SharedUtils.Controls.IBetterObservableCollection-1.NotifyOfAdditions.htm" />
+        <HelpTOCNode Title="Sort Method " Url="html/M-Com.MarcusTS.SharedUtils.Controls.IBetterObservableCollection-1.Sort.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="a658bc3f-ba82-43eb-8078-27b577dfdef5" Title="IDecideWhichIsLess(T) Interface" Url="html/T-Com.MarcusTS.SharedUtils.Controls.IDecideWhichIsLess-1.htm">
+      <HelpTOCNode Title="IDecideWhichIsLess Members" Url="html/AllMembers.T-Com.MarcusTS.SharedUtils.Controls.IDecideWhichIsLess-1.htm" />
+      <HelpTOCNode Id="2ca222cc-807e-45d4-bfa8-88d104d66363" Title="IDecideWhichIsLess Methods" Url="html/Methods.T-Com.MarcusTS.SharedUtils.Controls.IDecideWhichIsLess-1.htm">
+        <HelpTOCNode Title="IsLessThan Method " Url="html/M-Com.MarcusTS.SharedUtils.Controls.IDecideWhichIsLess-1.IsLessThan.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="5bcae82f-c912-46ee-a267-64f99dcf4b82" Title="Com.MarcusTS.SharedUtils.Events Namespace" Url="html/N-Com.MarcusTS.SharedUtils.Events.htm">
+    <HelpTOCNode Id="d08fab58-84d4-425c-9904-ef8e8ac18e4c" Title="CopiedWeakEventManager Class" Url="html/T-Com.MarcusTS.SharedUtils.Events.CopiedWeakEventManager.htm">
+      <HelpTOCNode Title="CopiedWeakEventManager Members" Url="html/AllMembers.T-Com.MarcusTS.SharedUtils.Events.CopiedWeakEventManager.htm" />
+      <HelpTOCNode Id="3db631f0-644b-4b4b-a731-a52bc0ac2a35" Title="CopiedWeakEventManager Methods" Url="html/Methods.T-Com.MarcusTS.SharedUtils.Events.CopiedWeakEventManager.htm">
+        <HelpTOCNode Id="9e52ac1c-abe9-4264-95bd-1826df14d653" Title="Overload:Com.MarcusTS.SharedUtils.Events.CopiedWeakEventManager.AddEventHandler">
+          <HelpTOCNode Title="AddEventHandler(TEventArgs) Method (EventHandler(TEventArgs), String)" Url="html/M-Com.MarcusTS.SharedUtils.Events.CopiedWeakEventManager.AddEventHandler--1.htm" />
+          <HelpTOCNode Title="AddEventHandler Method (EventHandler, String)" Url="html/M-Com.MarcusTS.SharedUtils.Events.CopiedWeakEventManager.AddEventHandler.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="HandleEvent Method " Url="html/M-Com.MarcusTS.SharedUtils.Events.CopiedWeakEventManager.HandleEvent.htm" />
+        <HelpTOCNode Id="004b8fa5-52d4-448d-8303-597a150b1768" Title="Overload:Com.MarcusTS.SharedUtils.Events.CopiedWeakEventManager.RemoveEventHandler">
+          <HelpTOCNode Title="RemoveEventHandler(TEventArgs) Method (EventHandler(TEventArgs), String)" Url="html/M-Com.MarcusTS.SharedUtils.Events.CopiedWeakEventManager.RemoveEventHandler--1.htm" />
+          <HelpTOCNode Title="RemoveEventHandler Method (EventHandler, String)" Url="html/M-Com.MarcusTS.SharedUtils.Events.CopiedWeakEventManager.RemoveEventHandler.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="fec7de26-565a-445b-b2f2-d5e11f25b537" Title="CustomWeakEventManager Class" Url="html/T-Com.MarcusTS.SharedUtils.Events.CustomWeakEventManager.htm">
+      <HelpTOCNode Title="CustomWeakEventManager Members" Url="html/AllMembers.T-Com.MarcusTS.SharedUtils.Events.CustomWeakEventManager.htm" />
+      <HelpTOCNode Id="5ac6b00d-0705-4eac-9695-7ddaf974363a" Title="CustomWeakEventManager Methods" Url="html/Methods.T-Com.MarcusTS.SharedUtils.Events.CustomWeakEventManager.htm">
+        <HelpTOCNode Id="d122ea26-c2a0-4037-ab51-4519b8af3f5f" Title="Overload:Com.MarcusTS.SharedUtils.Events.CustomWeakEventManager.AddEventHandler">
+          <HelpTOCNode Title="AddEventHandler(TEventArgs) Method (EventHandler(TEventArgs), String)" Url="html/M-Com.MarcusTS.SharedUtils.Events.CustomWeakEventManager.AddEventHandler--1.htm" />
+          <HelpTOCNode Title="AddEventHandler Method (EventHandler, String)" Url="html/M-Com.MarcusTS.SharedUtils.Events.CustomWeakEventManager.AddEventHandler.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="HandleEvent Method " Url="html/M-Com.MarcusTS.SharedUtils.Events.CustomWeakEventManager.HandleEvent.htm" />
+        <HelpTOCNode Id="f7b1e4ed-652c-4d1d-866a-801ecc04729e" Title="Overload:Com.MarcusTS.SharedUtils.Events.CustomWeakEventManager.RemoveEventHandler">
+          <HelpTOCNode Title="RemoveEventHandler(TEventArgs) Method (EventHandler(TEventArgs), String)" Url="html/M-Com.MarcusTS.SharedUtils.Events.CustomWeakEventManager.RemoveEventHandler--1.htm" />
+          <HelpTOCNode Title="RemoveEventHandler Method (EventHandler, String)" Url="html/M-Com.MarcusTS.SharedUtils.Events.CustomWeakEventManager.RemoveEventHandler.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="5f174682-8e5d-4f7a-b3e2-9f6741950dfc" Title="Com.MarcusTS.SharedUtils.Interfaces Namespace" Url="html/N-Com.MarcusTS.SharedUtils.Interfaces.htm">
+    <HelpTOCNode Id="be68ea68-c54e-42f3-ac6e-3ddb2c66836b" Title="ICanRun Interface" Url="html/T-Com.MarcusTS.SharedUtils.Interfaces.ICanRun.htm">
+      <HelpTOCNode Title="ICanRun Members" Url="html/AllMembers.T-Com.MarcusTS.SharedUtils.Interfaces.ICanRun.htm" />
+      <HelpTOCNode Title="ICanRun Methods" Url="html/Methods.T-Com.MarcusTS.SharedUtils.Interfaces.ICanRun.htm" />
+      <HelpTOCNode Id="1f8c151b-97da-4f64-8a89-d5eeae878b4a" Title="ICanRun Properties" Url="html/Properties.T-Com.MarcusTS.SharedUtils.Interfaces.ICanRun.htm">
+        <HelpTOCNode Title="IsRunning Property " Url="html/P-Com.MarcusTS.SharedUtils.Interfaces.ICanRun.IsRunning.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="110aa99c-2e05-4d11-a193-292129e0c9f7" Title="IHavePageViewModel(T) Interface" Url="html/T-Com.MarcusTS.SharedUtils.Interfaces.IHavePageViewModel-1.htm">
+      <HelpTOCNode Title="IHavePageViewModel Members" Url="html/AllMembers.T-Com.MarcusTS.SharedUtils.Interfaces.IHavePageViewModel-1.htm" />
+      <HelpTOCNode Title="IHavePageViewModel Methods" Url="html/Methods.T-Com.MarcusTS.SharedUtils.Interfaces.IHavePageViewModel-1.htm" />
+      <HelpTOCNode Id="97f099f7-f44d-46a8-ac7a-a6aec5fd28e3" Title="IHavePageViewModel Properties" Url="html/Properties.T-Com.MarcusTS.SharedUtils.Interfaces.IHavePageViewModel-1.htm">
+        <HelpTOCNode Title="ViewModel Property " Url="html/P-Com.MarcusTS.SharedUtils.Interfaces.IHavePageViewModel-1.ViewModel.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="47c0b5cf-9938-44bc-ac90-9864da071533" Title="IMenuNavigationState Interface" Url="html/T-Com.MarcusTS.SharedUtils.Interfaces.IMenuNavigationState.htm">
+      <HelpTOCNode Title="IMenuNavigationState Members" Url="html/AllMembers.T-Com.MarcusTS.SharedUtils.Interfaces.IMenuNavigationState.htm" />
+      <HelpTOCNode Title="IMenuNavigationState Methods" Url="html/Methods.T-Com.MarcusTS.SharedUtils.Interfaces.IMenuNavigationState.htm" />
+      <HelpTOCNode Id="bb1e5d8e-9c6d-40f2-8475-ba65bcba45cf" Title="IMenuNavigationState Properties" Url="html/Properties.T-Com.MarcusTS.SharedUtils.Interfaces.IMenuNavigationState.htm">
+        <HelpTOCNode Title="AppState Property " Url="html/P-Com.MarcusTS.SharedUtils.Interfaces.IMenuNavigationState.AppState.htm" />
+        <HelpTOCNode Title="MenuOrder Property " Url="html/P-Com.MarcusTS.SharedUtils.Interfaces.IMenuNavigationState.MenuOrder.htm" />
+        <HelpTOCNode Title="MenuTitle Property " Url="html/P-Com.MarcusTS.SharedUtils.Interfaces.IMenuNavigationState.MenuTitle.htm" />
+        <HelpTOCNode Title="ViewTitle Property " Url="html/P-Com.MarcusTS.SharedUtils.Interfaces.IMenuNavigationState.ViewTitle.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="9137b65d-c757-4d10-bf15-91863497efcf" Title="IProvidePageEvents Interface" Url="html/T-Com.MarcusTS.SharedUtils.Interfaces.IProvidePageEvents.htm">
+      <HelpTOCNode Title="IProvidePageEvents Members" Url="html/AllMembers.T-Com.MarcusTS.SharedUtils.Interfaces.IProvidePageEvents.htm" />
+      <HelpTOCNode Title="IProvidePageEvents Methods" Url="html/Methods.T-Com.MarcusTS.SharedUtils.Interfaces.IProvidePageEvents.htm" />
+      <HelpTOCNode Id="c8f6d063-0682-433f-b643-dcfca538d6d4" Title="IProvidePageEvents Properties" Url="html/Properties.T-Com.MarcusTS.SharedUtils.Interfaces.IProvidePageEvents.htm">
+        <HelpTOCNode Title="GetEventBroadcaster Property " Url="html/P-Com.MarcusTS.SharedUtils.Interfaces.IProvidePageEvents.GetEventBroadcaster.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="af3af41c-d574-42de-9c78-812f1defcb36" Title="IReceivePageEvents Interface" Url="html/T-Com.MarcusTS.SharedUtils.Interfaces.IReceivePageEvents.htm">
+      <HelpTOCNode Title="IReceivePageEvents Members" Url="html/AllMembers.T-Com.MarcusTS.SharedUtils.Interfaces.IReceivePageEvents.htm" />
+      <HelpTOCNode Title="IReceivePageEvents Methods" Url="html/Methods.T-Com.MarcusTS.SharedUtils.Interfaces.IReceivePageEvents.htm" />
+      <HelpTOCNode Id="f1d86c0a-e6db-44ea-87e5-8a20401163a5" Title="IReceivePageEvents Properties" Url="html/Properties.T-Com.MarcusTS.SharedUtils.Interfaces.IReceivePageEvents.htm">
+        <HelpTOCNode Title="PageEventProvider Property " Url="html/P-Com.MarcusTS.SharedUtils.Interfaces.IReceivePageEvents.PageEventProvider.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="8736c844-35b2-408e-8cd2-50b8379614eb" Title="Com.MarcusTS.SharedUtils.Navigation Namespace" Url="html/N-Com.MarcusTS.SharedUtils.Navigation.htm">
+    <HelpTOCNode Id="db8c7193-eb0b-46d2-bf2c-b4113644a691" Title="INoPayload Interface" Url="html/T-Com.MarcusTS.SharedUtils.Navigation.INoPayload.htm">
+      <HelpTOCNode Title="INoPayload Methods" Url="html/Methods.T-Com.MarcusTS.SharedUtils.Navigation.INoPayload.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="ccba31fd-4d35-4b3c-9c4e-1d7a6b0f7612" Title="NoPayload Class" Url="html/T-Com.MarcusTS.SharedUtils.Navigation.NoPayload.htm">
+      <HelpTOCNode Title="NoPayload Methods" Url="html/Methods.T-Com.MarcusTS.SharedUtils.Navigation.NoPayload.htm" />
+    </HelpTOCNode>
+  </HelpTOCNode>
+  <HelpTOCNode Id="0042aac6-6413-4bd4-a209-9c8313268a36" Title="Com.MarcusTS.SharedUtils.Utils Namespace" Url="html/N-Com.MarcusTS.SharedUtils.Utils.htm">
+    <HelpTOCNode Id="4864ea48-b213-47f7-8a96-14898456d5c4" Title="DefaultErrorHandler Class" Url="html/T-Com.MarcusTS.SharedUtils.Utils.DefaultErrorHandler.htm">
+      <HelpTOCNode Title="DefaultErrorHandler Members" Url="html/AllMembers.T-Com.MarcusTS.SharedUtils.Utils.DefaultErrorHandler.htm" />
+      <HelpTOCNode Id="471c65db-efa8-4c18-8453-886a3f3cb660" Title="DefaultErrorHandler Methods" Url="html/Methods.T-Com.MarcusTS.SharedUtils.Utils.DefaultErrorHandler.htm">
+        <HelpTOCNode Title="HandleError Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.DefaultErrorHandler.HandleError.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="a15f9f74-6d8d-4101-8fb0-a815c4f0ea28" Title="ErrorUtils Class" Url="html/T-Com.MarcusTS.SharedUtils.Utils.ErrorUtils.htm">
+      <HelpTOCNode Title="ErrorUtils Members" Url="html/AllMembers.T-Com.MarcusTS.SharedUtils.Utils.ErrorUtils.htm" />
+      <HelpTOCNode Id="d14ed9ef-cc7a-4436-b789-557bbddf2831" Title="ErrorUtils Methods" Url="html/Methods.T-Com.MarcusTS.SharedUtils.Utils.ErrorUtils.htm">
+        <HelpTOCNode Title="ConsiderArgumentError Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.ErrorUtils.ConsiderArgumentError.htm" />
+        <HelpTOCNode Title="IssueArgumentErrorIfFalse Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.ErrorUtils.IssueArgumentErrorIfFalse.htm" />
+        <HelpTOCNode Title="IssueArgumentErrorIfTrue Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.ErrorUtils.IssueArgumentErrorIfTrue.htm" />
+        <HelpTOCNode Title="ThrowArgumentError Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.ErrorUtils.ThrowArgumentError.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="9af64a37-071e-42db-8951-7fda70984720" Title="EventUtils Class" Url="html/T-Com.MarcusTS.SharedUtils.Utils.EventUtils.htm">
+      <HelpTOCNode Title="EventUtils Members" Url="html/AllMembers.T-Com.MarcusTS.SharedUtils.Utils.EventUtils.htm" />
+      <HelpTOCNode Id="f2a6d754-476b-4f2c-b7a7-7c084323e43b" Title="EventUtils Methods" Url="html/Methods.T-Com.MarcusTS.SharedUtils.Utils.EventUtils.htm">
+        <HelpTOCNode Id="2845f3cd-3fc4-45a6-887b-2cf2960a5f93" Title="Overload:Com.MarcusTS.SharedUtils.Utils.EventUtils.Raise">
+          <HelpTOCNode Title="Raise(T) Method (EventHandler(T), Object, T)" Url="html/M-Com.MarcusTS.SharedUtils.Utils.EventUtils.Raise--1.htm" />
+          <HelpTOCNode Title="Raise Method (EventHandler, Object, EventArgs)" Url="html/M-Com.MarcusTS.SharedUtils.Utils.EventUtils.Raise.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="f0bfac3a-2e85-4f05-984f-16b9eeafbb1b" Title="Overload:Com.MarcusTS.SharedUtils.Utils.EventUtils.RaiseOnDifferentThread">
+          <HelpTOCNode Title="RaiseOnDifferentThread(T) Method (EventHandler(T), Object, T)" Url="html/M-Com.MarcusTS.SharedUtils.Utils.EventUtils.RaiseOnDifferentThread--1.htm" />
+          <HelpTOCNode Title="RaiseOnDifferentThread Method (EventHandler, Object, EventArgs)" Url="html/M-Com.MarcusTS.SharedUtils.Utils.EventUtils.RaiseOnDifferentThread.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="StartNewOnDifferentThread Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.EventUtils.StartNewOnDifferentThread.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Title="EventUtils.GenericDelegate(T) Delegate" Url="html/T-Com.MarcusTS.SharedUtils.Utils.EventUtils.GenericDelegate-1.htm" />
+    <HelpTOCNode Title="EventUtils.GenericDelegateTask(T) Delegate" Url="html/T-Com.MarcusTS.SharedUtils.Utils.EventUtils.GenericDelegateTask-1.htm" />
+    <HelpTOCNode Title="EventUtils.NoParamsDelegate Delegate" Url="html/T-Com.MarcusTS.SharedUtils.Utils.EventUtils.NoParamsDelegate.htm" />
+    <HelpTOCNode Title="EventUtils.NoParamsDelegateTask Delegate" Url="html/T-Com.MarcusTS.SharedUtils.Utils.EventUtils.NoParamsDelegateTask.htm" />
+    <HelpTOCNode Id="daefdb8b-5e2e-4f6a-b0af-3b17d6d7f50e" Title="Extensions Class" Url="html/T-Com.MarcusTS.SharedUtils.Utils.Extensions.htm">
+      <HelpTOCNode Title="Extensions Members" Url="html/AllMembers.T-Com.MarcusTS.SharedUtils.Utils.Extensions.htm" />
+      <HelpTOCNode Id="f0321fe4-4420-406f-9605-bc7ebc1a48ad" Title="Extensions Fields" Url="html/Fields.T-Com.MarcusTS.SharedUtils.Utils.Extensions.htm">
+        <HelpTOCNode Title="DECIMAL Field" Url="html/F-Com.MarcusTS.SharedUtils.Utils.Extensions.DECIMAL.htm" />
+        <HelpTOCNode Title="GLOBAL_RANDOM Field" Url="html/F-Com.MarcusTS.SharedUtils.Utils.Extensions.GLOBAL_RANDOM.htm" />
+        <HelpTOCNode Title="ZERO_CHAR Field" Url="html/F-Com.MarcusTS.SharedUtils.Utils.Extensions.ZERO_CHAR.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="29c1eadb-723d-42b5-99bd-9dffb1919bc4" Title="Extensions Methods" Url="html/Methods.T-Com.MarcusTS.SharedUtils.Utils.Extensions.htm">
+        <HelpTOCNode Title="AddOrUpdate(T, U) Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.AddOrUpdate--2.htm" />
+        <HelpTOCNode Title="AnySettablePropertyHasChanged(T) Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.AnySettablePropertyHasChanged--1.htm" />
+        <HelpTOCNode Title="AppendArray(T) Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.AppendArray--1.htm" />
+        <HelpTOCNode Title="CleanUpServiceErrorText Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.CleanUpServiceErrorText.htm" />
+        <HelpTOCNode Title="CoerceSettablePropertyValuesFrom(TargetT, SourceT) Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.CoerceSettablePropertyValuesFrom--2.htm" />
+        <HelpTOCNode Title="CopyEnumerable(InputListInterface, InputListClass, OutputListInterface, OutputListClass) Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.CopyEnumerable--4.htm" />
+        <HelpTOCNode Title="CopySettablePropertyValuesFrom(T) Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.CopySettablePropertyValuesFrom--1.htm" />
+        <HelpTOCNode Title="GetAllPropInfos(T) Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.GetAllPropInfos--1.htm" />
+        <HelpTOCNode Title="GetDifferences(T) Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.GetDifferences--1.htm" />
+        <HelpTOCNode Title="GetEnumCount(T) Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.GetEnumCount--1.htm" />
+        <HelpTOCNode Title="GetRuntimeWriteableProperties Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.GetRuntimeWriteableProperties.htm" />
+        <HelpTOCNode Title="GetStringFromObject Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.GetStringFromObject.htm" />
+        <HelpTOCNode Title="HasNoValue Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.HasNoValue.htm" />
+        <HelpTOCNode Id="293301d0-b4c9-4b0b-b04f-f15d926df7f2" Title="IsAnEmptyList Method " Url="html/Overload-Com.MarcusTS.SharedUtils.Utils.Extensions.IsAnEmptyList.htm">
+          <HelpTOCNode Title="IsAnEmptyList Method (IList)" Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsAnEmptyList.htm" />
+          <HelpTOCNode Title="IsAnEmptyList Method (IEnumerable)" Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsAnEmptyList_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="IsAnEqualObjectTo Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsAnEqualObjectTo.htm" />
+        <HelpTOCNode Title="IsAnEqualReferenceTo(T) Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsAnEqualReferenceTo--1.htm" />
+        <HelpTOCNode Title="IsANumberGreaterThanZero Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsANumberGreaterThanZero.htm" />
+        <HelpTOCNode Id="27ad2490-59be-4002-b5d8-e5b2acb8f2ae" Title="IsDifferentThan Method " Url="html/Overload-Com.MarcusTS.SharedUtils.Utils.Extensions.IsDifferentThan.htm">
+          <HelpTOCNode Title="IsDifferentThan Method (DateTime, DateTime)" Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsDifferentThan.htm" />
+          <HelpTOCNode Title="IsDifferentThan Method (Nullable(Double), Nullable(Double))" Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsDifferentThan_1.htm" />
+          <HelpTOCNode Title="IsDifferentThan Method (Double, Double)" Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsDifferentThan_2.htm" />
+          <HelpTOCNode Title="IsDifferentThan Method (Single, Single)" Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsDifferentThan_3.htm" />
+          <HelpTOCNode Title="IsDifferentThan Method (String, String)" Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsDifferentThan_4.htm" />
+          <HelpTOCNode Title="IsDifferentThan(T) Method (T[], T[])" Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsDifferentThan--1.htm" />
+          <HelpTOCNode Title="IsDifferentThan Method (Nullable(Boolean), Nullable(Boolean))" Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsDifferentThan_5.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="4af2717a-da95-40c3-9110-88f847fb9550" Title="IsEmpty Method " Url="html/Overload-Com.MarcusTS.SharedUtils.Utils.Extensions.IsEmpty.htm">
+          <HelpTOCNode Title="IsEmpty Method (DateTime)" Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsEmpty.htm" />
+          <HelpTOCNode Title="IsEmpty(T) Method (IEnumerable(T))" Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsEmpty--1.htm" />
+          <HelpTOCNode Title="IsEmpty Method (Double)" Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsEmpty_1.htm" />
+          <HelpTOCNode Title="IsEmpty Method (String)" Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsEmpty_2.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="IsFalse Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsFalse.htm" />
+        <HelpTOCNode Title="IsGreaterThan Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsGreaterThan.htm" />
+        <HelpTOCNode Title="IsGreaterThanOrEqualTo Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsGreaterThanOrEqualTo.htm" />
+        <HelpTOCNode Title="IsLessThan Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsLessThan.htm" />
+        <HelpTOCNode Title="IsLessThanOrEqualTo Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsLessThanOrEqualTo.htm" />
+        <HelpTOCNode Title="IsNonNullRegexMatch Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsNonNullRegexMatch.htm" />
+        <HelpTOCNode Id="4b84f128-3535-4c8f-a56b-a4fa395b133f" Title="IsNotAnEmptyList Method " Url="html/Overload-Com.MarcusTS.SharedUtils.Utils.Extensions.IsNotAnEmptyList.htm">
+          <HelpTOCNode Title="IsNotAnEmptyList Method (IList)" Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsNotAnEmptyList.htm" />
+          <HelpTOCNode Title="IsNotAnEmptyList Method (IEnumerable)" Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsNotAnEmptyList_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="IsNotAnEqualObjectTo Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsNotAnEqualObjectTo.htm" />
+        <HelpTOCNode Title="IsNotAnEqualReferenceTo(T) Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsNotAnEqualReferenceTo--1.htm" />
+        <HelpTOCNode Id="cdc256f5-72c4-4172-9a6b-2ac9bd669baa" Title="IsNotEmpty Method " Url="html/Overload-Com.MarcusTS.SharedUtils.Utils.Extensions.IsNotEmpty.htm">
+          <HelpTOCNode Title="IsNotEmpty Method (DateTime)" Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsNotEmpty.htm" />
+          <HelpTOCNode Title="IsNotEmpty(T) Method (IEnumerable(T))" Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsNotEmpty--1.htm" />
+          <HelpTOCNode Title="IsNotEmpty Method (Double)" Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsNotEmpty_1.htm" />
+          <HelpTOCNode Title="IsNotEmpty Method (String)" Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsNotEmpty_2.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="IsNotNullOrDefault(T) Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsNotNullOrDefault--1.htm" />
+        <HelpTOCNode Title="IsNullOrDefault(T) Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsNullOrDefault--1.htm" />
+        <HelpTOCNode Title="IsReallyNull Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsReallyNull.htm" />
+        <HelpTOCNode Id="14c72b13-b942-4f1e-9c26-7ca14f9b55a0" Title="IsSameAs Method " Url="html/Overload-Com.MarcusTS.SharedUtils.Utils.Extensions.IsSameAs.htm">
+          <HelpTOCNode Title="IsSameAs Method (Nullable(Double), Nullable(Double))" Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsSameAs.htm" />
+          <HelpTOCNode Title="IsSameAs(T) Method (T[], T[])" Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsSameAs--1.htm" />
+          <HelpTOCNode Title="IsSameAs Method (DateTime, DateTime)" Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsSameAs_1.htm" />
+          <HelpTOCNode Title="IsSameAs Method (Double, Double, Double)" Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsSameAs_2.htm" />
+          <HelpTOCNode Title="IsSameAs Method (Single, Single, Double)" Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsSameAs_3.htm" />
+          <HelpTOCNode Title="IsSameAs Method (String, String, StringComparison)" Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsSameAs_4.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="IsTrue Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsTrue.htm" />
+        <HelpTOCNode Title="IsTypeOrAssignableFromType Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.IsTypeOrAssignableFromType.htm" />
+        <HelpTOCNode Title="MinOfTwoDoubles Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.MinOfTwoDoubles.htm" />
+        <HelpTOCNode Title="PositionOfDecimal Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.PositionOfDecimal.htm" />
+        <HelpTOCNode Title="RandomString Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.RandomString.htm" />
+        <HelpTOCNode Title="ReverseDictionary(T, U) Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.ReverseDictionary--2.htm" />
+        <HelpTOCNode Title="RoundToInt Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.RoundToInt.htm" />
+        <HelpTOCNode Title="ToRoundedInt Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.ToRoundedInt.htm" />
+        <HelpTOCNode Title="ToRoundedLong Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.ToRoundedLong.htm" />
+        <HelpTOCNode Title="TryToGetKeyValue Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.Extensions.TryToGetKeyValue.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="d0233292-44bc-46b5-b76d-e917c5ac7ead" Title="Extensions Properties" Url="html/Properties.T-Com.MarcusTS.SharedUtils.Utils.Extensions.htm">
+        <HelpTOCNode Title="EmptyNullableBool Property " Url="html/P-Com.MarcusTS.SharedUtils.Utils.Extensions.EmptyNullableBool.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="a2197ed2-3918-4537-96ec-15c1399aa75e" Title="GCUtils Class" Url="html/T-Com.MarcusTS.SharedUtils.Utils.GCUtils.htm">
+      <HelpTOCNode Title="GCUtils Members" Url="html/AllMembers.T-Com.MarcusTS.SharedUtils.Utils.GCUtils.htm" />
+      <HelpTOCNode Title="GCUtils Methods" Url="html/Methods.T-Com.MarcusTS.SharedUtils.Utils.GCUtils.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="adae232e-65a0-4a7e-a3ef-e6727f49c944" Title="GlobalConstants Class" Url="html/T-Com.MarcusTS.SharedUtils.Utils.GlobalConstants.htm">
+      <HelpTOCNode Title="GlobalConstants Members" Url="html/AllMembers.T-Com.MarcusTS.SharedUtils.Utils.GlobalConstants.htm" />
+      <HelpTOCNode Id="4445c11a-be91-47f1-84b3-d57b98040c2b" Title="GlobalConstants Fields" Url="html/Fields.T-Com.MarcusTS.SharedUtils.Utils.GlobalConstants.htm">
+        <HelpTOCNode Title="NEXT_SELECTION_GROUP Field" Url="html/F-Com.MarcusTS.SharedUtils.Utils.GlobalConstants.NEXT_SELECTION_GROUP.htm" />
+        <HelpTOCNode Title="TOOL_BAR_BUTTON_CORNER_RADIUS_FACTOR Field" Url="html/F-Com.MarcusTS.SharedUtils.Utils.GlobalConstants.TOOL_BAR_BUTTON_CORNER_RADIUS_FACTOR.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Title="GlobalConstants Methods" Url="html/Methods.T-Com.MarcusTS.SharedUtils.Utils.GlobalConstants.htm" />
+    </HelpTOCNode>
+    <HelpTOCNode Id="952d6805-55ef-487e-9e70-273d883b03dc" Title="IErrorHandler Interface" Url="html/T-Com.MarcusTS.SharedUtils.Utils.IErrorHandler.htm">
+      <HelpTOCNode Title="IErrorHandler Members" Url="html/AllMembers.T-Com.MarcusTS.SharedUtils.Utils.IErrorHandler.htm" />
+      <HelpTOCNode Id="e595b59d-a8d1-4629-8424-4d862c18a33d" Title="IErrorHandler Methods" Url="html/Methods.T-Com.MarcusTS.SharedUtils.Utils.IErrorHandler.htm">
+        <HelpTOCNode Title="HandleError Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.IErrorHandler.HandleError.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="c70138e6-7ab4-4892-90e2-a0f5c5bf9eb7" Title="IRunnableTask Interface" Url="html/T-Com.MarcusTS.SharedUtils.Utils.IRunnableTask.htm">
+      <HelpTOCNode Title="IRunnableTask Members" Url="html/AllMembers.T-Com.MarcusTS.SharedUtils.Utils.IRunnableTask.htm" />
+      <HelpTOCNode Title="IRunnableTask Methods" Url="html/Methods.T-Com.MarcusTS.SharedUtils.Utils.IRunnableTask.htm" />
+      <HelpTOCNode Id="364e96ff-7962-4c40-893f-34748b0f62f6" Title="IRunnableTask Properties" Url="html/Properties.T-Com.MarcusTS.SharedUtils.Utils.IRunnableTask.htm">
+        <HelpTOCNode Title="TaskToRun Property " Url="html/P-Com.MarcusTS.SharedUtils.Utils.IRunnableTask.TaskToRun.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="6624d618-26d8-4465-8b62-de7f7a0d55f0" Title="IThreadSafeAccessor Interface" Url="html/T-Com.MarcusTS.SharedUtils.Utils.IThreadSafeAccessor.htm">
+      <HelpTOCNode Title="IThreadSafeAccessor Members" Url="html/AllMembers.T-Com.MarcusTS.SharedUtils.Utils.IThreadSafeAccessor.htm" />
+      <HelpTOCNode Id="d01b7c09-2b45-4362-af8e-beddfeac6b3f" Title="IThreadSafeAccessor Methods" Url="html/Methods.T-Com.MarcusTS.SharedUtils.Utils.IThreadSafeAccessor.htm">
+        <HelpTOCNode Title="IsFalse Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.IThreadSafeAccessor.IsFalse.htm" />
+        <HelpTOCNode Title="IsTrue Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.IThreadSafeAccessor.IsTrue.htm" />
+        <HelpTOCNode Title="IsUnset Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.IThreadSafeAccessor.IsUnset.htm" />
+        <HelpTOCNode Title="ReadStoredValue Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.IThreadSafeAccessor.ReadStoredValue.htm" />
+        <HelpTOCNode Title="SetFalse Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.IThreadSafeAccessor.SetFalse.htm" />
+        <HelpTOCNode Title="SetTrue Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.IThreadSafeAccessor.SetTrue.htm" />
+        <HelpTOCNode Title="Unset Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.IThreadSafeAccessor.Unset.htm" />
+        <HelpTOCNode Title="WriteStoredValue Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.IThreadSafeAccessor.WriteStoredValue.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="5ea530f2-2ea4-449f-a467-82c76b559a1f" Title="RunnableTask Class" Url="html/T-Com.MarcusTS.SharedUtils.Utils.RunnableTask.htm">
+      <HelpTOCNode Title="RunnableTask Members" Url="html/AllMembers.T-Com.MarcusTS.SharedUtils.Utils.RunnableTask.htm" />
+      <HelpTOCNode Title="RunnableTask Constructor " Url="html/M-Com.MarcusTS.SharedUtils.Utils.RunnableTask.-ctor.htm" />
+      <HelpTOCNode Title="RunnableTask Methods" Url="html/Methods.T-Com.MarcusTS.SharedUtils.Utils.RunnableTask.htm" />
+      <HelpTOCNode Id="56067f8b-02a2-4eef-8b1c-b9e749c4d18b" Title="RunnableTask Properties" Url="html/Properties.T-Com.MarcusTS.SharedUtils.Utils.RunnableTask.htm">
+        <HelpTOCNode Title="IsRunning Property " Url="html/P-Com.MarcusTS.SharedUtils.Utils.RunnableTask.IsRunning.htm" />
+        <HelpTOCNode Title="TaskToRun Property " Url="html/P-Com.MarcusTS.SharedUtils.Utils.RunnableTask.TaskToRun.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="b57ee267-eb21-4b11-bf11-eae13529925a" Title="TaskHelper Class" Url="html/T-Com.MarcusTS.SharedUtils.Utils.TaskHelper.htm">
+      <HelpTOCNode Title="TaskHelper Members" Url="html/AllMembers.T-Com.MarcusTS.SharedUtils.Utils.TaskHelper.htm" />
+      <HelpTOCNode Id="694d1f1c-0957-4ed0-a3f4-a7c42b35bc49" Title="TaskHelper Methods" Url="html/Methods.T-Com.MarcusTS.SharedUtils.Utils.TaskHelper.htm">
+        <HelpTOCNode Id="c3721e85-e479-4bde-8aad-d32d5ba90071" Title="Overload:Com.MarcusTS.SharedUtils.Utils.TaskHelper.BeginInvokeOnMainThreadAsync">
+          <HelpTOCNode Title="BeginInvokeOnMainThreadAsync(T) Method (Func(T))" Url="html/M-Com.MarcusTS.SharedUtils.Utils.TaskHelper.BeginInvokeOnMainThreadAsync--1.htm" />
+          <HelpTOCNode Title="BeginInvokeOnMainThreadAsync Method (Action)" Url="html/M-Com.MarcusTS.SharedUtils.Utils.TaskHelper.BeginInvokeOnMainThreadAsync.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Id="c10c35ff-27b1-476f-997c-ef3e38e1614e" Title="RunOnMainThread Method " Url="html/Overload-Com.MarcusTS.SharedUtils.Utils.TaskHelper.RunOnMainThread.htm">
+          <HelpTOCNode Title="RunOnMainThread Method (Action)" Url="html/M-Com.MarcusTS.SharedUtils.Utils.TaskHelper.RunOnMainThread.htm" />
+          <HelpTOCNode Title="RunOnMainThread Method (Task)" Url="html/M-Com.MarcusTS.SharedUtils.Utils.TaskHelper.RunOnMainThread_1.htm" />
+        </HelpTOCNode>
+        <HelpTOCNode Title="RunParallel Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.TaskHelper.RunParallel.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="ccf81b72-aa07-4395-aede-9f4b2f3de0b5" Title="ThreadHelper Class" Url="html/T-Com.MarcusTS.SharedUtils.Utils.ThreadHelper.htm">
+      <HelpTOCNode Title="ThreadHelper Members" Url="html/AllMembers.T-Com.MarcusTS.SharedUtils.Utils.ThreadHelper.htm" />
+      <HelpTOCNode Id="07e9f166-cf06-469a-995e-287f0e6f64a5" Title="ThreadHelper Fields" Url="html/Fields.T-Com.MarcusTS.SharedUtils.Utils.ThreadHelper.htm">
+        <HelpTOCNode Title="DEFAULT_TIMER_MILLISECONDS Field" Url="html/F-Com.MarcusTS.SharedUtils.Utils.ThreadHelper.DEFAULT_TIMER_MILLISECONDS.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="51b0b980-c1b2-41a9-911f-f73211c4e71c" Title="ThreadHelper Methods" Url="html/Methods.T-Com.MarcusTS.SharedUtils.Utils.ThreadHelper.htm">
+        <HelpTOCNode Title="FireAndForget Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.ThreadHelper.FireAndForget.htm" />
+        <HelpTOCNode Title="Initialize Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.ThreadHelper.Initialize.htm" />
+        <HelpTOCNode Title="WaitFromVoid Method (Task, Int32)" Url="html/M-Com.MarcusTS.SharedUtils.Utils.ThreadHelper.WaitFromVoid.htm" />
+        <HelpTOCNode Id="41ba05cb-b28e-412b-aa54-b295c8388a45" Title="Overload:Com.MarcusTS.SharedUtils.Utils.ThreadHelper.WithoutChangingContext">
+          <HelpTOCNode Title="WithoutChangingContext Method (Task)" Url="html/M-Com.MarcusTS.SharedUtils.Utils.ThreadHelper.WithoutChangingContext.htm" />
+          <HelpTOCNode Title="WithoutChangingContext(T) Method (Task(T))" Url="html/M-Com.MarcusTS.SharedUtils.Utils.ThreadHelper.WithoutChangingContext--1.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+      <HelpTOCNode Id="1feb6629-9a02-44ae-a020-240bab13f0cb" Title="ThreadHelper Properties" Url="html/Properties.T-Com.MarcusTS.SharedUtils.Utils.ThreadHelper.htm">
+        <HelpTOCNode Title="IsOnMainThread Property " Url="html/P-Com.MarcusTS.SharedUtils.Utils.ThreadHelper.IsOnMainThread.htm" />
+        <HelpTOCNode Title="MainThreadId Property " Url="html/P-Com.MarcusTS.SharedUtils.Utils.ThreadHelper.MainThreadId.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="8eb7252e-69f5-44a4-bc1a-fc500cfe2039" Title="ThreadSafeAccessor Class" Url="html/T-Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor.htm">
+      <HelpTOCNode Title="ThreadSafeAccessor Members" Url="html/AllMembers.T-Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor.htm" />
+      <HelpTOCNode Title="ThreadSafeAccessor Constructor " Url="html/M-Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor.-ctor.htm" />
+      <HelpTOCNode Id="54861ee6-b734-438d-8534-2b875da02bef" Title="ThreadSafeAccessor Fields" Url="html/Fields.T-Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor.htm">
+        <HelpTOCNode Title="UNSET_VALUE Field" Url="html/F-Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor.UNSET_VALUE.htm" />
+      </HelpTOCNode>
+      <HelpTOCNode Id="50a38d15-6dc2-4faf-9127-da7671097fe1" Title="ThreadSafeAccessor Methods" Url="html/Methods.T-Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor.htm">
+        <HelpTOCNode Title="IsFalse Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor.IsFalse.htm" />
+        <HelpTOCNode Title="IsTrue Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor.IsTrue.htm" />
+        <HelpTOCNode Title="IsUnset Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor.IsUnset.htm" />
+        <HelpTOCNode Title="ReadStoredValue Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor.ReadStoredValue.htm" />
+        <HelpTOCNode Title="SetFalse Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor.SetFalse.htm" />
+        <HelpTOCNode Title="SetTrue Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor.SetTrue.htm" />
+        <HelpTOCNode Title="Unset Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor.Unset.htm" />
+        <HelpTOCNode Title="WriteStoredValue Method " Url="html/M-Com.MarcusTS.SharedUtils.Utils.ThreadSafeAccessor.WriteStoredValue.htm" />
+      </HelpTOCNode>
+    </HelpTOCNode>
+    <HelpTOCNode Id="84d894f5-6f0c-4256-9eca-d71f94d89401" Title="WeakEventManager Class" Url="html/T-Com.MarcusTS.SharedUtils.Utils.WeakEventManager.htm">
+      <HelpTOCNode Title="WeakEventManager Members" Url="html/AllMembers.T-Com.MarcusTS.SharedUtils.Utils.WeakEventManager.htm" />
+      <HelpTOCNode Id="d636f6a5-71e4-4c6b-a5a5-43a8ee58df1f" Title="WeakEventManager Methods" Url="html/Methods.T-Com.MarcusTS.SharedUtils.Utils.WeakEventManager.htm">
+        <HelpTOCNode Id="1b59c63a-3d4f-4cc9-8e54-3cfa835ce1a1" Title="Overload:Com.MarcusTS.SharedUtils.Utils.WeakEventManager.SetAnyHandler">
+          <HelpTOCNode Title="SetAnyHandler(T, TDelegate, TArgs) Method (T, Func(EventHandler(TArgs), TDelegate), Action(TDelegate), Action(TDelegate), Action(T, TArgs))" Url="html/M-Com.MarcusTS.SharedUtils.Utils.WeakEventManager.SetAnyHandler--3.htm" />
+          <HelpTOCNode Title="SetAnyHandler(T, TArgs) Method (T, Action(EventHandler(TArgs)), Action(EventHandler(TArgs)), Action(T, TArgs))" Url="html/M-Com.MarcusTS.SharedUtils.Utils.WeakEventManager.SetAnyHandler--2.htm" />
+          <HelpTOCNode Title="SetAnyHandler(T) Method (T, Action(EventHandler), Action(EventHandler), Action(T, EventArgs))" Url="html/M-Com.MarcusTS.SharedUtils.Utils.WeakEventManager.SetAnyHandler--1.htm" />
+        </HelpTOCNode>
+      </HelpTOCNode>
+    </HelpTOCNode>
+  </HelpTOCNode>
+</HelpTOC>

@@ -1,25 +1,22 @@
 ﻿// *********************************************************************************
-// Assembly         : Com.MarcusTS.SharedUtils
-// Author           : Stephen Marcus (Marcus Technical Services, Inc.)
-// Created          : 01-03-2019
-// Last Modified On : 01-03-2019
-//
-// <copyright file="CopiedWeakEventManager.cs" company="Marcus Technical Services, Inc.">
-//     Copyright @2018 Marcus Technical Services, Inc.
+// Copyright @2021 Marcus Technical Services, Inc.
+// <copyright
+// file=CopiedWeakEventManager.cs
+// company="Marcus Technical Services, Inc.">
 // </copyright>
-//
+// 
 // MIT License
-//
+// 
 // Permission is hereby granted, free of charge, to any person obtaining a copy
 // of this software and associated documentation files (the "Software"), to deal
 // in the Software without restriction, including without limitation the rights
 // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-//
+// 
 // The above copyright notice and this permission notice shall be included in all
 // copies or substantial portions of the Software.
-//
+// 
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT. IN NO EVENT SHALL THE
@@ -28,13 +25,14 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 // SOFTWARE.
 // *********************************************************************************
+
 namespace Com.MarcusTS.SharedUtils.Events
 {
    using System;
    using System.Collections.Generic;
    using System.Reflection;
    using System.Runtime.CompilerServices;
-   using Utils;
+   using Com.MarcusTS.SharedUtils.Utils;
 
    /// <summary>
    /// Copied from Xamarin.Forms internal to make it accessible.
@@ -44,7 +42,8 @@ namespace Com.MarcusTS.SharedUtils.Events
       /// <summary>
       /// The event handlers
       /// </summary>
-      private static readonly Dictionary<string, List<Subscription>> _eventHandlers = new Dictionary<string, List<Subscription>>();
+      private static readonly Dictionary<string, List<Subscription>> _eventHandlers =
+         new Dictionary<string, List<Subscription>>();
 
       /// <summary>
       /// Adds the event handler.
@@ -52,19 +51,22 @@ namespace Com.MarcusTS.SharedUtils.Events
       /// <typeparam name="TEventArgs">The type of the t event arguments.</typeparam>
       /// <param name="handler">The handler.</param>
       /// <param name="eventName">Name of the event.</param>
-      /// <exception cref="ArgumentNullException">
-      /// eventName
-      /// or
-      /// handler
-      /// </exception>
-      public static void AddEventHandler<TEventArgs>(EventHandler<TEventArgs> handler, [CallerMemberName] string eventName = null)
+      /// <exception cref="System.ArgumentNullException">eventName</exception>
+      /// <exception cref="System.ArgumentNullException">handler</exception>
+      /// <exception cref="ArgumentNullException">eventName</exception>
+      public static void AddEventHandler<TEventArgs>(EventHandler<TEventArgs>  handler,
+                                                     [CallerMemberName] string eventName = null)
          where TEventArgs : EventArgs
       {
          if (eventName.IsEmpty())
+         {
             throw new ArgumentNullException(nameof(eventName));
+         }
 
          if (handler == null)
+         {
             throw new ArgumentNullException(nameof(handler));
+         }
 
          AddEventHandler(eventName, handler.Target, handler.GetMethodInfo());
       }
@@ -74,18 +76,20 @@ namespace Com.MarcusTS.SharedUtils.Events
       /// </summary>
       /// <param name="handler">The handler.</param>
       /// <param name="eventName">Name of the event.</param>
-      /// <exception cref="ArgumentNullException">
-      /// eventName
-      /// or
-      /// handler
-      /// </exception>
+      /// <exception cref="System.ArgumentNullException">eventName</exception>
+      /// <exception cref="System.ArgumentNullException">handler</exception>
+      /// <exception cref="ArgumentNullException">eventName</exception>
       public static void AddEventHandler(EventHandler handler, [CallerMemberName] string eventName = null)
       {
          if (eventName.IsEmpty())
+         {
             throw new ArgumentNullException(nameof(eventName));
+         }
 
          if (handler == null)
+         {
             throw new ArgumentNullException(nameof(handler));
+         }
 
          AddEventHandler(eventName, handler.Target, handler.GetMethodInfo());
       }
@@ -98,14 +102,13 @@ namespace Com.MarcusTS.SharedUtils.Events
       /// <param name="eventName">Name of the event.</param>
       public static void HandleEvent(object sender, object args, string eventName)
       {
-         var toRaise = new List<(object subscriber, MethodInfo handler)>();
+         var toRaise  = new List<(object subscriber, MethodInfo handler)>();
          var toRemove = new List<Subscription>();
 
          if (_eventHandlers.TryGetValue(eventName, out var target))
          {
-            for (var i = 0; i < target.Count; i++)
+            foreach (var subscription in target)
             {
-               var subscription = target[i];
                var isStatic = subscription.Subscriber == null;
                if (isStatic)
                {
@@ -117,22 +120,26 @@ namespace Com.MarcusTS.SharedUtils.Events
                var subscriber = subscription.Subscriber.Target;
 
                if (subscriber == null)
+
                   // The subscriber was collected, so there's no need to keep this subscription around
+               {
                   toRemove.Add(subscription);
+               }
                else
+               {
                   toRaise.Add((subscriber, subscription.Handler));
+               }
             }
 
-            for (var i = 0; i < toRemove.Count; i++)
+            foreach (var subscription in toRemove)
             {
-               var subscription = toRemove[i];
                target.Remove(subscription);
             }
          }
 
-         for (var i = 0; i < toRaise.Count; i++)
+         foreach (var t in toRaise)
          {
-            (var subscriber, var handler) = toRaise[i];
+            (var subscriber, var handler) = t;
             handler.Invoke(subscriber, new[] { sender, args });
          }
       }
@@ -143,19 +150,22 @@ namespace Com.MarcusTS.SharedUtils.Events
       /// <typeparam name="TEventArgs">The type of the t event arguments.</typeparam>
       /// <param name="handler">The handler.</param>
       /// <param name="eventName">Name of the event.</param>
-      /// <exception cref="ArgumentNullException">
-      /// eventName
-      /// or
-      /// handler
-      /// </exception>
-      public static void RemoveEventHandler<TEventArgs>(EventHandler<TEventArgs> handler, [CallerMemberName] string eventName = null)
+      /// <exception cref="System.ArgumentNullException">eventName</exception>
+      /// <exception cref="System.ArgumentNullException">handler</exception>
+      /// <exception cref="ArgumentNullException">eventName</exception>
+      public static void RemoveEventHandler<TEventArgs>(EventHandler<TEventArgs>  handler,
+                                                        [CallerMemberName] string eventName = null)
          where TEventArgs : EventArgs
       {
          if (eventName.IsEmpty())
+         {
             throw new ArgumentNullException(nameof(eventName));
+         }
 
          if (handler == null)
+         {
             throw new ArgumentNullException(nameof(handler));
+         }
 
          RemoveEventHandler(eventName, handler.Target, handler.GetMethodInfo());
       }
@@ -165,18 +175,20 @@ namespace Com.MarcusTS.SharedUtils.Events
       /// </summary>
       /// <param name="handler">The handler.</param>
       /// <param name="eventName">Name of the event.</param>
-      /// <exception cref="ArgumentNullException">
-      /// eventName
-      /// or
-      /// handler
-      /// </exception>
+      /// <exception cref="System.ArgumentNullException">eventName</exception>
+      /// <exception cref="System.ArgumentNullException">handler</exception>
+      /// <exception cref="ArgumentNullException">eventName</exception>
       public static void RemoveEventHandler(EventHandler handler, [CallerMemberName] string eventName = null)
       {
          if (eventName.IsEmpty())
+         {
             throw new ArgumentNullException(nameof(eventName));
+         }
 
          if (handler == null)
+         {
             throw new ArgumentNullException(nameof(handler));
+         }
 
          RemoveEventHandler(eventName, handler.Target, handler.GetMethodInfo());
       }
@@ -214,14 +226,18 @@ namespace Com.MarcusTS.SharedUtils.Events
       private static void RemoveEventHandler(string eventName, object handlerTarget, MemberInfo methodInfo)
       {
          if (!_eventHandlers.TryGetValue(eventName, out var subscriptions))
+         {
             return;
+         }
 
          for (var n = subscriptions.Count; n > 0; n--)
          {
             var current = subscriptions[n - 1];
 
-            if (current.Subscriber?.Target != handlerTarget || current.Handler.Name != methodInfo.Name)
+            if ((current.Subscriber?.Target != handlerTarget) || (current.Handler.Name != methodInfo.Name))
+            {
                continue;
+            }
 
             subscriptions.Remove(current);
             break;
@@ -231,7 +247,7 @@ namespace Com.MarcusTS.SharedUtils.Events
       /// <summary>
       /// Struct Subscription
       /// </summary>
-      private struct Subscription
+      private readonly struct Subscription
       {
          /// <summary>
          /// The handler
@@ -244,15 +260,16 @@ namespace Com.MarcusTS.SharedUtils.Events
          public readonly WeakReference Subscriber;
 
          /// <summary>
-         /// Initializes a new instance of the <see cref="Subscription"/> struct.
+         /// Initializes a new instance of the <see cref="Subscription" /> struct.
          /// </summary>
          /// <param name="subscriber">The subscriber.</param>
          /// <param name="handler">The handler.</param>
+         /// <exception cref="System.ArgumentNullException">handler</exception>
          /// <exception cref="ArgumentNullException">handler</exception>
          public Subscription(WeakReference subscriber, MethodInfo handler)
          {
             Subscriber = subscriber;
-            Handler = handler ?? throw new ArgumentNullException(nameof(handler));
+            Handler    = handler ?? throw new ArgumentNullException(nameof(handler));
          }
       }
    }

@@ -14,5 +14,9 @@
       </description>
       <copyright>Copyright 2021 Marcus Technical Services, Inc. (https://www.marcusts.com)</copyright>
       <tags>c# c#-utils c#-utilities c-sharp  c-sharp-utils  c-sharp-utilities</tags>
+      <readme>docs\README.md</readme>
    </metadata>
+   <files>
+      <file src="..\README.md" target="docs\" />
+   </files>
 </package>
