@@ -51,24 +51,42 @@ if (mainStr.isDifferentThan(otherStr))
 
 ## SharedUtils Is Open Source; Enjoy Our Other Offerings
 
-If you enjoy using **SharedUtils**, consider these other related projects:
+If you find valuem in **SharedUtils**, consider these other related projects:
 
-| Git Hub                       &nbsp;|&nbsp; NuGet                    &nbsp;|&nbsp; Help API &nbsp;  |&nbsp;
-| :---                                | :---                                 | :---                   |
-|-------------------------------&nbsp;|&nbsp;------------------------------&nbsp;|&nbsp;------------------------------&nbsp;|&nbsp;
-| [Shared Utils](https://github.com/marcusts/Com.MarcusTS.SharedUtils)  &nbsp;|&nbsp; [Shared Utils](https://www.nuget.org/packages/Com.MarcusTS.SharedUtils/) &nbsp;|&nbsp; [Shared Utils](https://github.com/marcusts/Com.MarcusTS.SharedUtils/docs/Help/index.html)	    &nbsp;|&nbsp;
-|-------------------------------&nbsp;|&nbsp;------------------------------&nbsp;|&nbsp;------------------------------&nbsp;|&nbsp;
-| [Smart DI Container](https://github.com/marcusts/Com.MarcusTS.SmartDI)  &nbsp;|&nbsp; [Smart DI Container](https://www.nuget.org/packages/Com.MarcusTS.SmartDI/) &nbsp;|&nbsp; [Smart DI Container](https://github.com/marcusts/Com.MarcusTS.SmartDI/docs/Help/index.html)	    &nbsp;|&nbsp;
-|-------------------------------&nbsp;|&nbsp;------------------------------&nbsp;|&nbsp;------------------------------&nbsp;|&nbsp;
-| [Shared Forms](https://github.com/marcusts/Com.MarcusTS.SharedForms)  &nbsp;|&nbsp; [Shared Forms](https://www.nuget.org/packages/Com.MarcusTS.SharedForms/) &nbsp;|&nbsp; [Shared Forms](https://github.com/marcusts/Com.MarcusTS.SharedForms/docs/Help/index.html)	    &nbsp;|&nbsp;
-|-------------------------------&nbsp;|&nbsp;------------------------------&nbsp;|&nbsp;------------------------------&nbsp;|&nbsp;
-| [Responsive Tasks](https://github.com/marcusts/Com.MarcusTS.ResponsiveTasks)  &nbsp;|&nbsp; [Responsive Tasks](https://www.nuget.org/packages/Com.MarcusTS.ResponsiveTasks/) &nbsp;|&nbsp; [Responsive Tasks](https://github.com/marcusts/Com.MarcusTS.ResponsiveTasks/docs/Help/index.html)	    &nbsp;|&nbsp;
-|-------------------------------&nbsp;|&nbsp;------------------------------&nbsp;|&nbsp;------------------------------&nbsp;|&nbsp;
-| [Resp. Tasks Forms Support](https://github.com/marcusts/Com.MarcusTS.ResponsiveTasks.XamFormsSupport)  &nbsp;|&nbsp; [Resp. Tasks Forms Support](https://www.nuget.org/packages/Com.MarcusTS.ResponsiveTasks.XamFormsSupport/) &nbsp;|&nbsp; [Resp. Tasks Forms Support](https://github.com/marcusts/Com.MarcusTS.ResponsiveTasks.XamFormsSupport/docs/Help/index.html)	    &nbsp;|&nbsp;
-|-------------------------------&nbsp;|&nbsp;------------------------------&nbsp;|&nbsp;------------------------------&nbsp;|&nbsp;
-| [Modern App Demo](https://github.com/marcusts/Com.MarcusTS.ModernAppDemo)  &nbsp;|&nbsp;  &nbsp;|&nbsp; [Modern App Demo](https://github.com/marcusts/Com.MarcusTS.ModernAppDemo/docs/Help/index.html)	    &nbsp;|&nbsp;
-|-------------------------------&nbsp;|&nbsp;------------------------------&nbsp;|&nbsp;------------------------------&nbsp;|&nbsp;
+### *Shared Utils*
 
-\
+[GutHub](https://github.com/marcusts/Com.MarcusTS.SharedUtils)
+[NuGet](https://www.nuget.org/packages/Com.MarcusTS.SharedUtils/)
+[Help API (CHM format)](https://github.com/marcusts/Com.MarcusTS.SharedUtils/docs/Help/SharedUtils.chm)
+
+### *The Smart DI Container*
+
+[GutHub](https://github.com/marcusts/Com.MarcusTS.SmartDI)
+[NNuGet](https://www.nuget.org/packages/Com.MarcusTS.SmartDI/)
+[Help API (CHM format)](https://github.com/marcusts/Com.MarcusTS.SmartDI/docs/Help/SmartDI.chm)
+
+### *Shared Forms*
+
+[GutHub](https://github.com/marcusts/Com.MarcusTS.SharedForms)
+[NuGet](https://www.nuget.org/packages/Com.MarcusTS.SharedForms/)
+[Help API (CHM format)](https://github.com/marcusts/Com.MarcusTS.SharedForms/docs/Help/SharedForms.chm)
+
+### *Responsive Tasks*
+
+[GutHub](https://github.com/marcusts/Com.MarcusTS.ResponsiveTasks)
+[NuGet](https://www.nuget.org/packages/Com.MarcusTS.ResponsiveTasks/)
+[Help API (CHM format)](https://github.com/marcusts/Com.MarcusTS.ResponsiveTasks/docs/Help/ResponsiveTasks.chm)
+
+### *Responsive Tasks - Xamarin.Forms Support*
+
+[GutHub](https://github.com/marcusts/Com.MarcusTS.ResponsiveTasks.XamFormsSupport)
+[NuGet](https://www.nuget.org/packages/Com.MarcusTS.ResponsiveTasks.XamFormsSupport/)
+[Help API (CHM format)](https://github.com/marcusts/Com.MarcusTS.ResponsiveTasks.XamFormsSupport/docs/Help/ResponsiveTasks.XamFormsSupport.chm)
+
+### *The Modern App Demo*
+
+[GutHub](https://github.com/marcusts/Com.MarcusTS.ModernAppDemo)
+[Help API (CHM format)](https://github.com/marcusts/Com.MarcusTS.ModernAppDemo/docs/Help/ModernAppDemo.chm)
+
 &nbsp;
 ![](https://gitlab.com/marcusts1/nugetimages/-/raw/master/Modern_App_Demo_Master_FINAL.gif)

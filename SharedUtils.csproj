@@ -36,17 +36,10 @@
    <ItemGroup>
       <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
       <PackageReference Include="Xamarin.Forms" Version="5.0.0.2083" />
-      <None Include="docs\README.md" Pack="true" PackagePath="\" />
    </ItemGroup>
 
    <ItemGroup>
-      <None Update="Com.MarcusTS.SharedUtils.chm">
-         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
       <None Update="Com.MarcusTS.SharedUtils.nuspec">
-         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-      <None Update="Com.MarcusTS.SharedUtils.xml">
          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="license.txt">
