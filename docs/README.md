@@ -56,28 +56,33 @@ If you find value in **SharedUtils**, consider these other related projects:
 ### *Shared Utils*
 
 [GutHub](https://github.com/marcusts/Com.MarcusTS.SharedUtils)
+
 [NuGet](https://www.nuget.org/packages/Com.MarcusTS.SharedUtils)
 
 ### *The Smart DI Container*
 
 [GutHub](https://github.com/marcusts/Com.MarcusTS.SmartDI)
+
 [NuGet](https://www.nuget.org/packages/Com.MarcusTS.SmartDI)
 
 ### *Shared Forms*
 
 [GutHub](https://github.com/marcusts/Com.MarcusTS.SharedForms)
+
 [NuGet](https://www.nuget.org/packages/Com.MarcusTS.SharedForms)
 
 ### *Responsive Tasks*
 
 [GutHub](https://github.com/marcusts/Com.MarcusTS.ResponsiveTasks)
+
 [NuGet](https://www.nuget.org/packages/Com.MarcusTS.ResponsiveTasks)
 
 ### *Responsive Tasks - Xamarin.Forms Support*
 
 [GutHub](https://github.com/marcusts/Com.MarcusTS.ResponsiveTasks.XamFormsSupport)
+
 [NuGet](https://www.nuget.org/packages/Com.MarcusTS.ResponsiveTasks.XamFormsSupport)
-[Help API (CHM format)]
+
 ### *The Modern App Demo*
 
 [GutHub](https://github.com/marcusts/Com.MarcusTS.ModernAppDemo)
