@@ -57,36 +57,30 @@ If you find value in **SharedUtils**, consider these other related projects:
 
 [GutHub](https://github.com/marcusts/Com.MarcusTS.SharedUtils)
 [NuGet](https://www.nuget.org/packages/Com.MarcusTS.SharedUtils)
-[Help API (CHM format)](https://github.com/marcusts/Com.MarcusTS.SharedUtils/docs/Help/SharedUtils.chm)
 
 ### *The Smart DI Container*
 
 [GutHub](https://github.com/marcusts/Com.MarcusTS.SmartDI)
 [NuGet](https://www.nuget.org/packages/Com.MarcusTS.SmartDI)
-[Help API (CHM format)](https://github.com/marcusts/Com.MarcusTS.SmartDI/docs/Help/SmartDI.chm)
 
 ### *Shared Forms*
 
 [GutHub](https://github.com/marcusts/Com.MarcusTS.SharedForms)
 [NuGet](https://www.nuget.org/packages/Com.MarcusTS.SharedForms)
-[Help API (CHM format)](https://github.com/marcusts/Com.MarcusTS.SharedForms/docs/Help/SharedForms.chm)
 
 ### *Responsive Tasks*
 
 [GutHub](https://github.com/marcusts/Com.MarcusTS.ResponsiveTasks)
 [NuGet](https://www.nuget.org/packages/Com.MarcusTS.ResponsiveTasks)
-[Help API (CHM format)](https://github.com/marcusts/Com.MarcusTS.ResponsiveTasks/docs/Help/ResponsiveTasks.chm)
 
 ### *Responsive Tasks - Xamarin.Forms Support*
 
 [GutHub](https://github.com/marcusts/Com.MarcusTS.ResponsiveTasks.XamFormsSupport)
 [NuGet](https://www.nuget.org/packages/Com.MarcusTS.ResponsiveTasks.XamFormsSupport)
-[Help API (CHM format)](https://github.com/marcusts/Com.MarcusTS.ResponsiveTasks.XamFormsSupport/docs/Help/ResponsiveTasks.XamFormsSupport.chm)
-
+[Help API (CHM format)]
 ### *The Modern App Demo*
 
 [GutHub](https://github.com/marcusts/Com.MarcusTS.ModernAppDemo)
-[Help API (CHM format)](https://github.com/marcusts/Com.MarcusTS.ModernAppDemo/docs/Help/ModernAppDemo.chm)
 
 &nbsp;
 ![](https://gitlab.com/marcusts1/nugetimages/-/raw/master/Modern_App_Demo_Master_FINAL.gif)
