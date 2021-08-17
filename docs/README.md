@@ -51,36 +51,36 @@ if (mainStr.isDifferentThan(otherStr))
 
 ## SharedUtils Is Open Source; Enjoy Our Other Offerings
 
-If you find valuem in **SharedUtils**, consider these other related projects:
+If you find value in **SharedUtils**, consider these other related projects:
 
 ### *Shared Utils*
 
 [GutHub](https://github.com/marcusts/Com.MarcusTS.SharedUtils)
-[NuGet](https://www.nuget.org/packages/Com.MarcusTS.SharedUtils/)
+[NuGet](https://www.nuget.org/packages/Com.MarcusTS.SharedUtils)
 [Help API (CHM format)](https://github.com/marcusts/Com.MarcusTS.SharedUtils/docs/Help/SharedUtils.chm)
 
 ### *The Smart DI Container*
 
 [GutHub](https://github.com/marcusts/Com.MarcusTS.SmartDI)
-[NNuGet](https://www.nuget.org/packages/Com.MarcusTS.SmartDI/)
+[NuGet](https://www.nuget.org/packages/Com.MarcusTS.SmartDI)
 [Help API (CHM format)](https://github.com/marcusts/Com.MarcusTS.SmartDI/docs/Help/SmartDI.chm)
 
 ### *Shared Forms*
 
 [GutHub](https://github.com/marcusts/Com.MarcusTS.SharedForms)
-[NuGet](https://www.nuget.org/packages/Com.MarcusTS.SharedForms/)
+[NuGet](https://www.nuget.org/packages/Com.MarcusTS.SharedForms)
 [Help API (CHM format)](https://github.com/marcusts/Com.MarcusTS.SharedForms/docs/Help/SharedForms.chm)
 
 ### *Responsive Tasks*
 
 [GutHub](https://github.com/marcusts/Com.MarcusTS.ResponsiveTasks)
-[NuGet](https://www.nuget.org/packages/Com.MarcusTS.ResponsiveTasks/)
+[NuGet](https://www.nuget.org/packages/Com.MarcusTS.ResponsiveTasks)
 [Help API (CHM format)](https://github.com/marcusts/Com.MarcusTS.ResponsiveTasks/docs/Help/ResponsiveTasks.chm)
 
 ### *Responsive Tasks - Xamarin.Forms Support*
 
 [GutHub](https://github.com/marcusts/Com.MarcusTS.ResponsiveTasks.XamFormsSupport)
-[NuGet](https://www.nuget.org/packages/Com.MarcusTS.ResponsiveTasks.XamFormsSupport/)
+[NuGet](https://www.nuget.org/packages/Com.MarcusTS.ResponsiveTasks.XamFormsSupport)
 [Help API (CHM format)](https://github.com/marcusts/Com.MarcusTS.ResponsiveTasks.XamFormsSupport/docs/Help/ResponsiveTasks.XamFormsSupport.chm)
 
 ### *The Modern App Demo*
