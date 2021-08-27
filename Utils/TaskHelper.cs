@@ -34,7 +34,6 @@ namespace Com.MarcusTS.SharedUtils.Utils
    using System.Diagnostics;
    using System.Threading.Tasks;
    using Xamarin.Essentials;
-   using Xamarin.Forms;
 
    /// <summary>
    /// Class TaskHelper.
@@ -52,7 +51,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       {
          var tcs = new TaskCompletionSource<T>();
 
-         Device.BeginInvokeOnMainThread(() =>
+         MainThread.BeginInvokeOnMainThread(() =>
          {
             try
             {
@@ -77,7 +76,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       public static Task BeginInvokeOnMainThreadAsync(Action a)
       {
          var tcs = new TaskCompletionSource<bool>();
-         Device.BeginInvokeOnMainThread(() =>
+         MainThread.BeginInvokeOnMainThread(() =>
          {
             try
             {

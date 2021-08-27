@@ -28,8 +28,6 @@
 
 // #define AVOID_CONTEXT_MANAGEMENT
 
-#define FORCE_WAIT_FROM_VOID
-
 namespace Com.MarcusTS.SharedUtils.Utils
 {
    using System;
@@ -37,31 +35,6 @@ namespace Com.MarcusTS.SharedUtils.Utils
    using System.Runtime.CompilerServices;
    using System.Threading.Tasks;
    using Com.MarcusTS.SharedUtils.Interfaces;
-
-   /// <summary>
-   /// Interface IErrorHandler
-   /// </summary>
-   public interface IErrorHandler
-   {
-      /// <summary>
-      /// Handles the error.
-      /// </summary>
-      /// <param name="ex">The ex.</param>
-      void HandleError(Exception ex);
-   }
-
-   /// <summary>
-   /// Interface IRunnableTask Implements the <see cref="Com.MarcusTS.SharedUtils.Interfaces.ICanRun" />
-   /// </summary>
-   /// <seealso cref="Com.MarcusTS.SharedUtils.Interfaces.ICanRun" />
-   public interface IRunnableTask : ICanRun
-   {
-      /// <summary>
-      /// Gets the task to run.
-      /// </summary>
-      /// <value>The task to run.</value>
-      Task TaskToRun { get; }
-   }
 
    /// <summary>
    /// Class ThreadHelper.
@@ -88,23 +61,12 @@ namespace Com.MarcusTS.SharedUtils.Utils
       public static int MainThreadId { get; private set; }
 
       /// <summary>
-      /// Fires the and forget.
+      /// Moving over to the uniquely-named <see cref="FireAndFuhgetAboutIt"/>. This method is available from many other sources.
       /// </summary>
-      /// <param name="task">The task.</param>
-      /// <param name="handler">The handler.</param>
       /// <remarks>https://johnthiriet.com/removing-async-void/ {With modifications}</remarks>
-      public static
-         #if !FORCE_WAIT_FROM_VOID
-         async
-         #endif
-         void FireAndForget(this Task task, IErrorHandler handler = default)
+      [Obsolete]
+      public static async void FireAndForget(this Task task, IErrorHandler handler = default)
       {
-         #if FORCE_WAIT_FROM_VOID
-
-         // Boolean response is ignored
-         WaitFromVoid(task);
-
-         #else
          try
          {
             await task.WithoutChangingContext();
@@ -118,8 +80,15 @@ namespace Com.MarcusTS.SharedUtils.Utils
 
             handler?.HandleError(ex);
          }
+      }
 
-         #endif
+      /// <summary>
+      /// Now calls WaitFromVoid rather than FireAndForget.
+      /// </summary>
+      public static void FireAndFuhgetAboutIt(this Task task, IErrorHandler handler = default)
+      {
+         // Boolean response is ignored
+         WaitFromVoid(task);
       }
 
       /// <summary>
@@ -133,7 +102,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Replaces FireAndForget with a true "wait" while loop along with timeout
+      /// Replaces FireAndFuhgetAboutIt with a true "wait" while loop along with timeout
       /// </summary>
       /// <param name="taskToRun">The task to run.</param>
       /// <param name="timerMilliseconds">The timer milliseconds.</param>
@@ -153,11 +122,11 @@ namespace Com.MarcusTS.SharedUtils.Utils
       /// <returns>Task.</returns>
       public static ConfiguredTaskAwaitable WithoutChangingContext(this Task task)
       {
-         #if AVOID_CONTEXT_MANAGEMENT
+#if AVOID_CONTEXT_MANAGEMENT
          return task.ConfigureAwait(true);
-         #else
+#else
          return task.ConfigureAwait(false);
-         #endif
+#endif
       }
 
       /// <summary>
@@ -168,9 +137,9 @@ namespace Com.MarcusTS.SharedUtils.Utils
       /// <returns>Task&lt;T&gt;.</returns>
       public static ConfiguredTaskAwaitable<T> WithoutChangingContext<T>(this Task<T> task)
       {
-         #if AVOID_CONTEXT_MANAGEMENT
+#if AVOID_CONTEXT_MANAGEMENT
          return task.ConfigureAwait(true);
-         #endif
+#endif
          return task.ConfigureAwait(false);
       }
 
@@ -191,7 +160,9 @@ namespace Com.MarcusTS.SharedUtils.Utils
          }
 
          // ELSE
-         new Action(async () =>
+         new Action(
+            // ReSharper disable once AsyncVoidLambda
+            async () =>
             {
                // Run on a thread
                taskToRun.RunParallel();
@@ -203,14 +174,10 @@ namespace Com.MarcusTS.SharedUtils.Utils
                   await Task.Delay(timerMilliseconds).WithoutChangingContext();
                }
             })
-           .Invoke();
+            .Invoke();
       }
    }
 
-   /// <summary>
-   /// Class DefaultErrorHandler. Implements the <see cref="Com.MarcusTS.SharedUtils.Utils.IErrorHandler" />
-   /// </summary>
-   /// <seealso cref="Com.MarcusTS.SharedUtils.Utils.IErrorHandler" />
    public class DefaultErrorHandler : IErrorHandler
    {
       /// <summary>
@@ -223,10 +190,6 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
    }
 
-   /// <summary>
-   /// Class RunnableTask. Implements the <see cref="Com.MarcusTS.SharedUtils.Utils.IRunnableTask" />
-   /// </summary>
-   /// <seealso cref="Com.MarcusTS.SharedUtils.Utils.IRunnableTask" />
    public class RunnableTask : IRunnableTask
    {
       /// <summary>

@@ -1,7 +1,7 @@
-// *********************************************************************************
+﻿// *********************************************************************************
 // Copyright @2021 Marcus Technical Services, Inc.
 // <copyright
-// file=AssemblyInfo.cs
+// file=IRunnableTask.cs
 // company="Marcus Technical Services, Inc.">
 // </copyright>
 // 
@@ -26,23 +26,20 @@
 // SOFTWARE.
 // *********************************************************************************
 
-using System;
-using System.Reflection;
-using System.Runtime.InteropServices;
+using System.Threading.Tasks;
 
-[assembly: CLSCompliant(false)]
-
-// [assembly: AssemblyVersion(@"1.0.0.0")]
-
-// In SDK-style projects such as this one, several assembly attributes that were historically defined in this file are
-// now automatically added during build and populated with values defined in project properties. For details of which
-// attributes are included and how to customise this process see: https://aka.ms/assembly-info-properties
-
-// Setting ComVisible to false makes the types in this assembly not visible to COM components. If you need to access a
-// type in this assembly from COM, set the ComVisible attribute to true on that type.
-
-[assembly: ComVisible(false)]
-
-// The following GUID is for the ID of the typelib if this project is exposed to COM.
-
-[assembly: Guid("8b068caf-2e31-40f6-a6f8-c57e08b5a222")]
+namespace Com.MarcusTS.SharedUtils.Interfaces
+{
+   /// <summary>
+   /// Interface IRunnableTask Implements the <see cref="Com.MarcusTS.SharedUtils.Interfaces.ICanRun" />
+   /// </summary>
+   /// <seealso cref="Com.MarcusTS.SharedUtils.Interfaces.ICanRun" />
+   public interface IRunnableTask : ICanRun
+   {
+      /// <summary>
+      /// Gets the task to run.
+      /// </summary>
+      /// <value>The task to run.</value>
+      Task TaskToRun { get; }
+   }
+}

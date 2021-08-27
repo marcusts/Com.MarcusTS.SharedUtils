@@ -512,21 +512,6 @@ namespace Com.MarcusTS.SharedUtils.Utils
       }
 
       /// <summary>
-      /// Determines whether [is a number greater than zero] [the specified o].
-      /// </summary>
-      /// <param name="o">The o.</param>
-      /// <returns><c>true</c> if [is a number greater than zero] [the specified o]; otherwise, <c>false</c>.</returns>
-      public static bool IsANumberGreaterThanZero(this object o)
-      {
-         if (double.TryParse(o?.ToString(), out var testDouble))
-         {
-            return testDouble.IsGreaterThan(0);
-         }
-
-         return false;
-      }
-
-      /// <summary>
       /// Determines whether [is different than] [the specified other date time].
       /// </summary>
       /// <param name="mainDateTime">The main date time.</param>

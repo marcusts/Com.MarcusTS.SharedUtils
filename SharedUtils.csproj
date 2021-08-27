@@ -2,7 +2,7 @@
 
    <PropertyGroup>
       <TargetFramework>netstandard2.0</TargetFramework>
-      <Version>1.0.32</Version>
+      <Version>1.0.34</Version>
       <Authors>Stephen Marcus</Authors>
       <Company>Marcus Technical Services, Inc.</Company>
       <Product>Shared Utils Library</Product>
@@ -10,13 +10,14 @@
       <Copyright>Copyright @2021 Marcus Technical Services, Inc.</Copyright>
       <PackageTags>c# c#-utils c#-utilities c-sharp  c-sharp-utils  c-sharp-utilities</PackageTags>
       <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-      <AssemblyVersion>1.0.32.0</AssemblyVersion>
-      <FileVersion>1.0.32.0</FileVersion>
+      <AssemblyVersion>1.0.34.0</AssemblyVersion>
+      <FileVersion>1.0.34.0</FileVersion>
       <LangVersion>7.3</LangVersion>
       <AssemblyName>Com.MarcusTS.SharedUtils</AssemblyName>
       <RootNamespace>Com.MarcusTS.SharedUtils</RootNamespace>
       <RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
       <PackageReadmeFile>README.md</PackageReadmeFile>
+      <GenerateDocumentationFile>False</GenerateDocumentationFile>
    </PropertyGroup>
 
    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -34,12 +35,11 @@
    </PropertyGroup>
 
    <ItemGroup>
-      <None Include="docs\README.md" Pack="true" PackagePath="\"/>
+      <None Include="docs\README.md" Pack="true" PackagePath="\" />
    </ItemGroup>
 
    <ItemGroup>
       <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
-      <PackageReference Include="Xamarin.Forms" Version="5.0.0.2083" />
    </ItemGroup>
 
    <ItemGroup>
@@ -49,10 +49,6 @@
       <None Update="license.txt">
          <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-   </ItemGroup>
-
-   <ItemGroup>
-      <Folder Include="images\" />
    </ItemGroup>
 
 </Project>

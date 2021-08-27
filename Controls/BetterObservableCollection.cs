@@ -31,6 +31,7 @@ namespace Com.MarcusTS.SharedUtils.Controls
    using System.Collections.Generic;
    using System.Collections.ObjectModel;
    using System.Collections.Specialized;
+   using Com.MarcusTS.SharedUtils.Interfaces;
    using Com.MarcusTS.SharedUtils.Utils;
 
    /// <summary>
@@ -65,21 +66,6 @@ namespace Com.MarcusTS.SharedUtils.Controls
       /// </summary>
       /// <param name="sorted">The sorted.</param>
       void Sort(T[] sorted);
-   }
-
-   /// <summary>
-   /// Interface IDecideWhichIsLess
-   /// </summary>
-   /// <typeparam name="T">The type to compare.</typeparam>
-   public interface IDecideWhichIsLess<in T>
-   {
-      /// <summary>
-      /// Determines whether [is less than] [the specified main item].
-      /// </summary>
-      /// <param name="mainItem">The main item.</param>
-      /// <param name="compareItem">The compare item.</param>
-      /// <returns><c>true</c> if [is less than] [the specified main item]; otherwise, <c>false</c>.</returns>
-      bool IsLessThan(T mainItem, T compareItem);
    }
 
    /// <summary>
