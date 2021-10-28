@@ -78,7 +78,13 @@ namespace Com.MarcusTS.SharedUtils.Utils
       /// Writes the stored value.
       /// </summary>
       /// <param name="valueToStore">The value to store.</param>
-      void WriteStoredValue(int valueToStore);
+      void WriteStoredValue( int valueToStore );
+
+      /// <summary>
+      /// If unset, does nothing.
+      /// If true, becomes false.
+      /// </summary>
+      void Reverse();
    }
 
    /// <summary>
@@ -103,10 +109,10 @@ namespace Com.MarcusTS.SharedUtils.Utils
       /// Initializes a new instance of the <see cref="ThreadSafeAccessor" /> class.
       /// </summary>
       /// <param name="storedValue">The stored value.</param>
-      public ThreadSafeAccessor(int storedValue = UNSET_VALUE)
+      public ThreadSafeAccessor( int storedValue = UNSET_VALUE )
       {
          // NOTE Min value is reserved for the "unset" state
-         WriteStoredValue(storedValue);
+         WriteStoredValue( storedValue );
       }
 
       /// <summary>
@@ -142,7 +148,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       /// <returns>System.Object.</returns>
       public int ReadStoredValue()
       {
-         return Interlocked.CompareExchange(ref _storedValue, default, default);
+         return _storedValue;
       }
 
       /// <summary>
@@ -150,7 +156,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       /// </summary>
       public void SetFalse()
       {
-         WriteStoredValue(0);
+         WriteStoredValue( 0 );
       }
 
       /// <summary>
@@ -158,7 +164,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       /// </summary>
       public void SetTrue()
       {
-         WriteStoredValue(1);
+         WriteStoredValue( 1 );
       }
 
       /// <summary>
@@ -166,16 +172,32 @@ namespace Com.MarcusTS.SharedUtils.Utils
       /// </summary>
       public void Unset()
       {
-         WriteStoredValue(UNSET_VALUE);
+         WriteStoredValue( UNSET_VALUE );
       }
 
       /// <summary>
       /// Writes the stored value.
       /// </summary>
       /// <param name="valueToStore">The value to store.</param>
-      public void WriteStoredValue(int valueToStore)
+      public void WriteStoredValue( int valueToStore )
       {
-         Interlocked.Exchange(ref _storedValue, valueToStore);
+         Interlocked.Exchange( ref _storedValue, valueToStore );
+      }
+
+      public void Reverse()
+      {
+         if ( IsUnset() )
+         {
+            return;
+         }
+
+         if ( IsTrue() )
+         {
+            SetFalse();
+         }
+
+         // ELSE
+         SetTrue();
       }
    }
 }

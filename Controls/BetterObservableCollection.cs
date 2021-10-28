@@ -28,9 +28,11 @@
 
 namespace Com.MarcusTS.SharedUtils.Controls
 {
+   using System;
    using System.Collections.Generic;
    using System.Collections.ObjectModel;
    using System.Collections.Specialized;
+   using System.Threading.Tasks;
    using Com.MarcusTS.SharedUtils.Interfaces;
    using Com.MarcusTS.SharedUtils.Utils;
 
@@ -46,26 +48,49 @@ namespace Com.MarcusTS.SharedUtils.Controls
       /// </summary>
       /// <param name="list">The list.</param>
       /// <param name="comparer">The comparer.</param>
-      void AddRangeSortedAndWithoutNotification(T[] list, IDecideWhichIsLess<T> comparer = null);
+      void AddRangeSortedAndWithoutNotification( T[] list, IDecideWhichIsLess<T> comparer = null );
 
       /// <summary>
-      /// Adds the sorted.
+      /// Adds the items sorted.
       /// </summary>
       /// <param name="item">The item.</param>
       /// <param name="comparer">The comparer.</param>
-      void AddSorted(T item, IDecideWhichIsLess<T> comparer = null);
+      void AddSorted( T item, IDecideWhichIsLess<T> comparer = null );
+
+      /// <summary>
+      /// Adds the items sorted and without notification.
+      /// </summary>
+      /// <param name="item">The item.</param>
+      /// <param name="comparer">The comparer.</param>
+      void AddSortedWithoutNotification( T item, IDecideWhichIsLess<T> comparer = null );
+
+      /// <summary>
+      /// Clears the collection without notification.
+      /// </summary>
+      /// <param name="list">The list.</param>
+      void ClearWithoutNotification();
 
       /// <summary>
       /// Notifies the of additions.
       /// </summary>
       /// <param name="list">The list.</param>
-      void NotifyOfAdditions(T[] list);
+      void NotifyOfAdditions( T[] list );
+
+      /// <summary>
+      /// Runs an action without notification.
+      /// </summary>
+      void RunActionWithoutNotification( Action action );
+
+      /// <summary>
+      /// Runs a task without notification.
+      /// </summary>
+      Task RunTaskWithoutNotification( Task task );
 
       /// <summary>
       /// Sorts the specified sorted.
       /// </summary>
       /// <param name="sorted">The sorted.</param>
-      void Sort(T[] sorted);
+      void Sort( T[] sorted );
    }
 
    /// <summary>
@@ -85,12 +110,12 @@ namespace Com.MarcusTS.SharedUtils.Controls
       /// Initializes a new instance of the <see cref="BetterObservableCollection{T}" /> class.
       /// </summary>
       /// <param name="items">The items.</param>
-      public BetterObservableCollection(T[] items)
+      public BetterObservableCollection( T[] items )
       {
-         if (items.IsNotAnEmptyList())
+         if ( items.IsNotAnEmptyList() )
          {
-            AddRangeSortedAndWithoutNotification(items);
-            NotifyOfAdditions(items);
+            AddRangeSortedAndWithoutNotification( items );
+            NotifyOfAdditions( items );
          }
       }
 
@@ -98,29 +123,30 @@ namespace Com.MarcusTS.SharedUtils.Controls
       /// Initializes a new instance of the <see cref="BetterObservableCollection{T}" /> class.
       /// </summary>
       public BetterObservableCollection()
-      {
-      }
+      { }
 
       /// <summary>
       /// Adds the range sorted and without notification.
       /// </summary>
       /// <param name="list">The list.</param>
       /// <param name="comparer">The comparer.</param>
-      public void AddRangeSortedAndWithoutNotification(T[] list, IDecideWhichIsLess<T> comparer = null)
+      public void AddRangeSortedAndWithoutNotification( T[] list, IDecideWhichIsLess<T> comparer = null )
       {
          ErrorUtils.IssueArgumentErrorIfTrue
-            (list.IsAnEmptyList(),
-             nameof(BetterObservableCollection<T>)        + ": " +
-             nameof(AddRangeSortedAndWithoutNotification) + " requires a valid list");
+         ( list.IsAnEmptyList(),
+            nameof( BetterObservableCollection<T> )        + ": " +
+            nameof( AddRangeSortedAndWithoutNotification ) + " requires a valid list" );
 
-         _suppressNotification = true;
-
-         foreach (var item in list)
-         {
-            AddSorted(item, comparer);
-         }
-
-         _suppressNotification = false;
+         RunActionWithoutNotification
+         (
+            () =>
+            {
+               foreach ( var item in list )
+               {
+                  AddSorted( item, comparer );
+               }
+            }
+         );
       }
 
       /// <summary>
@@ -128,44 +154,82 @@ namespace Com.MarcusTS.SharedUtils.Controls
       /// </summary>
       /// <param name="item">The item.</param>
       /// <param name="comparer">The comparer.</param>
-      public void AddSorted(T item, IDecideWhichIsLess<T> comparer = null)
+      public void AddSorted( T item, IDecideWhichIsLess<T> comparer = null )
       {
-         if (comparer == null)
+         if ( comparer == null )
          {
-            Add(item);
+            Add( item );
             return;
          }
 
          var i = 0;
 
-         while ((i < Count) && comparer.IsLessThan(item, this[i]))
+         while ( ( i < Count ) && comparer.IsLessThan( item, this[ i ] ) )
          {
             i++;
          }
 
-         Insert(i, item);
+         Insert( i, item );
+      }
+
+      public void AddSortedWithoutNotification( T item, IDecideWhichIsLess<T> comparer = null )
+      {
+         RunActionWithoutNotification
+         (
+            () => { AddSorted( item, comparer ); }
+         );
+      }
+
+      public void ClearWithoutNotification()
+      {
+         RunActionWithoutNotification( Clear );
       }
 
       /// <summary>
       /// Notifies the of additions.
       /// </summary>
       /// <param name="list">The list.</param>
-      public void NotifyOfAdditions(T[] list)
+      public void NotifyOfAdditions( T[] list )
       {
-         OnCollectionChanged(new NotifyCollectionChangedEventArgs(NotifyCollectionChangedAction.Add, list));
+         OnCollectionChanged( new NotifyCollectionChangedEventArgs( NotifyCollectionChangedAction.Add, list ) );
+      }
+
+      public void RunActionWithoutNotification( Action action )
+      {
+         _suppressNotification = true;
+
+         action?.Invoke();
+
+         _suppressNotification = false;
+      }
+
+      public async Task RunTaskWithoutNotification( Task task )
+      {
+         if ( task.IsNullOrDefault() )
+         {
+            return;
+         }
+
+
+         // ELSE
+         _suppressNotification = true;
+
+         await task.WithoutChangingContext();
+
+         _suppressNotification = false;
       }
 
       /// <summary>
       /// Sorts the specified sorted.
       /// </summary>
       /// <param name="sorted">The sorted.</param>
-      public void Sort(T[] sorted)
+      public void Sort( T[] sorted )
       {
          _suppressNotification = true;
 
-         for (var i = 0; i < sorted.Length; i++)
+         for ( var i = 0; i < sorted.Length; i++ )
          {
-            Move(IndexOf(sorted[i]), i);
+            Move( IndexOf( sorted[ i ] ), i );
          }
 
          _suppressNotification = false;
@@ -175,14 +239,14 @@ namespace Com.MarcusTS.SharedUtils.Controls
       /// Handles the <see cref="E:CollectionChanged" /> event.
       /// </summary>
       /// <param name="e">The <see cref="NotifyCollectionChangedEventArgs" /> instance containing the event data.</param>
-      protected override void OnCollectionChanged(NotifyCollectionChangedEventArgs e)
+      protected override void OnCollectionChanged( NotifyCollectionChangedEventArgs e )
       {
-         if (_suppressNotification)
+         if ( _suppressNotification )
          {
             return;
          }
 
-         base.OnCollectionChanged(e);
+         base.OnCollectionChanged( e );
       }
    }
 }

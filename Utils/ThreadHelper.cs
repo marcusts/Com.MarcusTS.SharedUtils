@@ -27,24 +27,29 @@
 // *********************************************************************************
 
 // #define AVOID_CONTEXT_MANAGEMENT
+// #define FORCE_ALL_BEGIN_INVOKE
 
 namespace Com.MarcusTS.SharedUtils.Utils
 {
    using System;
    using System.Diagnostics;
    using System.Runtime.CompilerServices;
+   using System.Threading;
    using System.Threading.Tasks;
    using Com.MarcusTS.SharedUtils.Interfaces;
+   using Xamarin.Essentials;
 
    /// <summary>
    /// Class ThreadHelper.
    /// </summary>
    public static class ThreadHelper
    {
+      public const int MAX_DELAY_MILLISECONDS = 10000;
+
       /// <summary>
       /// The default timer milliseconds
       /// </summary>
-      public const int DEFAULT_TIMER_MILLISECONDS = 100;
+      public const int MILLISECONDS_BETWEEN_DELAYS = 25;
 
       /// <summary>
       /// Gets a value indicating whether this instance is on main thread.
@@ -60,35 +65,86 @@ namespace Com.MarcusTS.SharedUtils.Utils
       [Obsolete]
       public static int MainThreadId { get; private set; }
 
+      public static void ConsiderBeginInvokeActionOnMainThread
+      (
+         Action action,
+         bool forceBeginInvoke =
+#if FORCE_ALL_BEGIN_INVOKE
+            true
+#else
+            false
+#endif
+      )
+      {
+         if ( action.IsNullOrDefault() )
+         {
+            return;
+         }
+
+         // ELSE a valid action
+         if ( !forceBeginInvoke && MainThread.IsMainThread )
+         {
+            action.Invoke();
+         }
+         else
+         {
+            MainThread.BeginInvokeOnMainThread( action.Invoke );
+         }
+      }
+
+      public static async Task ConsiderBeginInvokeTaskOnMainThread
+      (
+         this Task task,
+         bool forceBeginInvoke =
+#if FORCE_ALL_BEGIN_INVOKE
+         true
+#else
+            false
+#endif
+      )
+      {
+         if ( !forceBeginInvoke && MainThread.IsMainThread )
+         {
+            await task.WithoutChangingContext();
+         }
+         else
+         {
+            MainThread.BeginInvokeOnMainThread( () => { task.FireAndFuhgetAboutIt(); } );
+         }
+      }
+
       /// <summary>
-      /// Moving over to the uniquely-named <see cref="FireAndFuhgetAboutIt"/>. This method is available from many other sources.
+      /// Moving over to the uniquely-named <see cref="FireAndFuhgetAboutIt" />. This method is available from many other
+      /// sources.
       /// </summary>
       /// <remarks>https://johnthiriet.com/removing-async-void/ {With modifications}</remarks>
       [Obsolete]
-      public static async void FireAndForget(this Task task, IErrorHandler handler = default)
+
+      // ReSharper disable once AsyncVoidMethod
+      public static async void FireAndForget( this Task task, IErrorHandler handler = default )
       {
          try
          {
             await task.WithoutChangingContext();
          }
-         catch (Exception ex)
+         catch ( Exception ex )
          {
-            if (handler.IsNullOrDefault())
+            if ( handler.IsNullOrDefault() )
             {
                handler = new DefaultErrorHandler();
             }
 
-            handler?.HandleError(ex);
+            handler?.HandleError( ex );
          }
       }
 
       /// <summary>
       /// Now calls WaitFromVoid rather than FireAndForget.
       /// </summary>
-      public static void FireAndFuhgetAboutIt(this Task task, IErrorHandler handler = default)
+      public static void FireAndFuhgetAboutIt( this Task task, IErrorHandler handler = default )
       {
          // Boolean response is ignored
-         WaitFromVoid(task);
+         WaitFromVoid( task );
       }
 
       /// <summary>
@@ -96,23 +152,51 @@ namespace Com.MarcusTS.SharedUtils.Utils
       /// </summary>
       /// <param name="mainThreadId">The main thread identifier.</param>
       [Obsolete]
-      public static void Initialize(int mainThreadId)
+      public static void Initialize( int mainThreadId )
       {
          MainThreadId = mainThreadId;
+      }
+
+      /// <summary>
+      /// Runs the task in parallel unconditionally and without waiting.
+      /// </summary>
+      /// <param name="task">The task.</param>
+      public static void RunParallel
+      (
+         this Task task
+      )
+      {
+         try
+         {
+            _ = Task.Run
+            (
+
+               // IMPORTANT The task will run without awaiting the foreground thread and without coordination with other concurrent calls.
+               async () => await task.WithoutChangingContext()
+            );
+         }
+         catch ( Exception ex )
+         {
+            Debug.WriteLine( nameof( RunParallel ) + " error ->" + ex.Message + "<-" );
+         }
       }
 
       /// <summary>
       /// Replaces FireAndFuhgetAboutIt with a true "wait" while loop along with timeout
       /// </summary>
       /// <param name="taskToRun">The task to run.</param>
-      /// <param name="timerMilliseconds">The timer milliseconds.</param>
+      /// <param name="delayMilliseconds"></param>
+      /// <param name="maxWaitMilliseconds"></param>
+      /// <param name="cancelTokenSource"></param>
       public static void WaitFromVoid(
-         this Task taskToRun,
-         int       timerMilliseconds = DEFAULT_TIMER_MILLISECONDS)
+         this Task               taskToRun,
+         int                     delayMilliseconds   = MILLISECONDS_BETWEEN_DELAYS,
+         int                     maxWaitMilliseconds = MAX_DELAY_MILLISECONDS,
+         CancellationTokenSource cancelTokenSource   = default )
       {
-         IRunnableTask parentTask = new RunnableTask(taskToRun);
+         IRunnableTask parentTask = new RunnableTask( taskToRun );
 
-         parentTask.TaskToRun.WaitFromVoid(parentTask, timerMilliseconds);
+         parentTask.TaskToRun.WaitFromVoid( parentTask, delayMilliseconds, maxWaitMilliseconds, cancelTokenSource );
       }
 
       /// <summary>
@@ -120,12 +204,12 @@ namespace Com.MarcusTS.SharedUtils.Utils
       /// </summary>
       /// <param name="task">The task.</param>
       /// <returns>Task.</returns>
-      public static ConfiguredTaskAwaitable WithoutChangingContext(this Task task)
+      public static ConfiguredTaskAwaitable WithoutChangingContext( this Task task )
       {
 #if AVOID_CONTEXT_MANAGEMENT
          return task.ConfigureAwait(true);
 #else
-         return task.ConfigureAwait(false);
+         return task.ConfigureAwait( false );
 #endif
       }
 
@@ -135,12 +219,20 @@ namespace Com.MarcusTS.SharedUtils.Utils
       /// <typeparam name="T"></typeparam>
       /// <param name="task">The task.</param>
       /// <returns>Task&lt;T&gt;.</returns>
-      public static ConfiguredTaskAwaitable<T> WithoutChangingContext<T>(this Task<T> task)
+      public static ConfiguredTaskAwaitable<T> WithoutChangingContext<T>( this Task<T> task )
       {
 #if AVOID_CONTEXT_MANAGEMENT
          return task.ConfigureAwait(true);
 #endif
-         return task.ConfigureAwait(false);
+         return task.ConfigureAwait( false );
+      }
+
+      /// <param name="maxDelay"></param>
+      private static CancellationTokenSource CreateCancellationTokenSource( int maxDelay )
+      {
+         var cancellationTokenSource = new CancellationTokenSource();
+         cancellationTokenSource.CancelAfter( TimeSpan.FromMilliseconds( maxDelay ) );
+         return cancellationTokenSource;
       }
 
       /// <summary>
@@ -148,33 +240,51 @@ namespace Com.MarcusTS.SharedUtils.Utils
       /// </summary>
       /// <param name="taskToRun">The task to run.</param>
       /// <param name="parentTask">The parent task.</param>
-      /// <param name="timerMilliseconds">The timer milliseconds.</param>
-      private static void WaitFromVoid(
-         this Task     taskToRun,
-         IRunnableTask parentTask,
-         int           timerMilliseconds = DEFAULT_TIMER_MILLISECONDS)
+      /// <param name="delayMilliseconds">The timer milliseconds.</param>
+      /// <param name="maxWaitMilliseconds"></param>
+      /// <param name="cancelTokenSource"></param>
+      // ReSharper disable once AsyncVoidMethod
+      private static async void WaitFromVoid(
+         this Task               taskToRun,
+         IRunnableTask           parentTask,
+         int                     delayMilliseconds   = MILLISECONDS_BETWEEN_DELAYS,
+         int                     maxWaitMilliseconds = MAX_DELAY_MILLISECONDS,
+         CancellationTokenSource cancelTokenSource   = default
+      )
       {
-         if (parentTask.IsNullOrDefault() || taskToRun.IsNullOrDefault())
+         if ( parentTask.IsNullOrDefault() || taskToRun.IsNullOrDefault() )
          {
             return;
          }
 
-         // ELSE
-         new Action(
-            // ReSharper disable once AsyncVoidLambda
-            async () =>
-            {
-               // Run on a thread
-               taskToRun.RunParallel();
+         if ( cancelTokenSource.IsNullOrDefault() )
+         {
+            cancelTokenSource = CreateCancellationTokenSource( maxWaitMilliseconds );
+         }
 
-               // Wait for the thread
-               // ReSharper disable once PossibleNullReferenceException
-               while (parentTask.IsRunning.IsTrue())
-               {
-                  await Task.Delay(timerMilliseconds).WithoutChangingContext();
-               }
-            })
-            .Invoke();
+         // ELSE
+         // Run on a thread
+         try
+         {
+            _ = Task.Run
+            (
+
+               // IMPORTANT The task will run without awaiting the foreground thread and without coordination with other concurrent calls.
+               async () => await taskToRun.WithoutChangingContext()
+            );
+
+            // Wait for the thread
+            // ReSharper disable once PossibleNullReferenceException
+            while ( !cancelTokenSource.Token.IsCancellationRequested && parentTask.IsRunning.IsTrue() )
+            {
+               // IMPORTANT This is a legal await from void and on the foreground thread because it occurs in a "while" loop and is also tried and caught.
+               await Task.Delay( delayMilliseconds ).WithoutChangingContext();
+            }
+         }
+         catch ( Exception ex )
+         {
+            Debug.WriteLine( nameof( WaitFromVoid ) + " error ->" + ex.Message + "<-" );
+         }
       }
    }
 
@@ -184,9 +294,9 @@ namespace Com.MarcusTS.SharedUtils.Utils
       /// Handles the error.
       /// </summary>
       /// <param name="ex">The ex.</param>
-      public void HandleError(Exception ex)
+      public void HandleError( Exception ex )
       {
-         Debug.WriteLine(ex.Message);
+         Debug.WriteLine( ex.Message );
       }
    }
 
@@ -196,9 +306,9 @@ namespace Com.MarcusTS.SharedUtils.Utils
       /// Initializes a new instance of the <see cref="RunnableTask" /> class.
       /// </summary>
       /// <param name="task">The task.</param>
-      public RunnableTask(Task task)
+      public RunnableTask( Task task )
       {
-         TaskToRun = task.ContinueWith(t => IsRunning.SetFalse());
+         TaskToRun = task.ContinueWith( t => IsRunning.SetFalse() );
       }
 
       // Set true by default
@@ -206,7 +316,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
       /// Gets the is running.
       /// </summary>
       /// <value>The is running.</value>
-      public IThreadSafeAccessor IsRunning { get; } = new ThreadSafeAccessor(1);
+      public IThreadSafeAccessor IsRunning { get; } = new ThreadSafeAccessor( 1 );
 
       /// <summary>
       /// Gets the task to run.

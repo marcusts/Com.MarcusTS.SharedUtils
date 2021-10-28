@@ -1,4 +1,6 @@
 
+> ## NOW MAUI READY !!!
+
 # SHARED UTILS: Making C# Quick, Easy and Safe
 
 ## Programs Should Not Be Redundant In Any Way
@@ -51,37 +53,37 @@ if (mainStr.isDifferentThan(otherStr))
 
 ## SharedUtils Is Open Source; Enjoy Our Other Offerings
 
-If you find value in **SharedUtils**, consider these other related projects:
+## SharedUtils Is Open Source; Enjoy Our Entire Suite
 
-### *Shared Utils*
+### *Shared Utils (MAUI Ready!)*
 
 [GutHub](https://github.com/marcusts/Com.MarcusTS.SharedUtils)
 
 [NuGet](https://www.nuget.org/packages/Com.MarcusTS.SharedUtils)
 
-### *The Smart DI Container*
+### *The Smart DI Container (MAUI Ready!)*
 
 [GutHub](https://github.com/marcusts/Com.MarcusTS.SmartDI)
 
 [NuGet](https://www.nuget.org/packages/Com.MarcusTS.SmartDI)
 
-### *Shared Forms*
-
-[GutHub](https://github.com/marcusts/Com.MarcusTS.SharedForms)
-
-[NuGet](https://www.nuget.org/packages/Com.MarcusTS.SharedForms)
-
-### *Responsive Tasks*
+### *Responsive Tasks (MAUI Ready!)*
 
 [GutHub](https://github.com/marcusts/Com.MarcusTS.ResponsiveTasks)
 
 [NuGet](https://www.nuget.org/packages/Com.MarcusTS.ResponsiveTasks)
 
-### *Responsive Tasks - Xamarin.Forms Support*
+### *PlatformIndependentShared (MAUI Ready!)*
 
-[GutHub](https://github.com/marcusts/Com.MarcusTS.ResponsiveTasks.XamFormsSupport)
+[GutHub](https://github.com/marcusts/PlatformIndependentShared)
 
-[NuGet](https://www.nuget.org/packages/Com.MarcusTS.ResponsiveTasks.XamFormsSupport)
+[NuGet](https://www.nuget.org/packages/Com.MarcusTS.PlatformIndependentShared)
+
+### *UI.XamForms*
+
+[GutHub](https://github.com/marcusts/UI.XamForms)
+
+[NuGet](https://www.nuget.org/packages/Com.MarcusTS.UI.XamForms)
 
 ### *The Modern App Demo*
 
