@@ -2,16 +2,16 @@
 
    <PropertyGroup>
       <TargetFramework>netstandard2.0</TargetFramework>
-      <Version>2.0.1</Version>
+      <Version>2.0.2</Version>
       <Authors>Stephen Marcus</Authors>
       <Company>Marcus Technical Services, Inc.</Company>
       <Product>Shared Utils Library</Product>
-      <Description>Provides support for C# projects.</Description>
+      <Description>C# utilities and extension methods.</Description>
       <Copyright>Copyright @2021 Marcus Technical Services, Inc.</Copyright>
       <PackageTags>c# c#-utils c#-utilities c-sharp  c-sharp-utils  c-sharp-utilities</PackageTags>
       <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-      <AssemblyVersion>2.0.1.0</AssemblyVersion>
-      <FileVersion>2.0.1.0</FileVersion>
+      <AssemblyVersion>2.0.2.0</AssemblyVersion>
+      <FileVersion>2.0.2.0</FileVersion>
       <AssemblyName>Com.MarcusTS.SharedUtils</AssemblyName>
       <RootNamespace>Com.MarcusTS.SharedUtils</RootNamespace>
       <RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
@@ -21,16 +21,17 @@
 
    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
       <DefineConstants>DEBUG;TRACE</DefineConstants>
+      <PlatformTarget>x64</PlatformTarget>
       <Optimize>false</Optimize>
       <DocumentationFile>M:\MyDocs\Dev\MtsShared\SharedUtils\Com.MarcusTS.SharedUtils.xml</DocumentationFile>
    </PropertyGroup>
 
    <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
       <DefineConstants>DEBUG;TRACE</DefineConstants>
+      <PlatformTarget>x64</PlatformTarget>
       <Optimize>false</Optimize>
       <DocumentationFile></DocumentationFile>
       <NoWarn>1701;1702;1591</NoWarn>
-      <PlatformTarget>x64</PlatformTarget>
    </PropertyGroup>
 
    <ItemGroup>

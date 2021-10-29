@@ -29,6 +29,9 @@
 // #define AVOID_CONTEXT_MANAGEMENT
 // #define FORCE_ALL_BEGIN_INVOKE
 
+// HACK Not working for iOS; fine under Android
+// #define DEFEAT_FIRE_AND_FORGET
+
 namespace Com.MarcusTS.SharedUtils.Utils
 {
    using System;
@@ -141,10 +144,32 @@ namespace Com.MarcusTS.SharedUtils.Utils
       /// <summary>
       /// Now calls WaitFromVoid rather than FireAndForget.
       /// </summary>
-      public static void FireAndFuhgetAboutIt( this Task task, IErrorHandler handler = default )
+      // ReSharper disable once AsyncVoidMethod
+      public static async void FireAndFuhgetAboutIt( this Task task, 
+                                                     bool forceOldStyle = 
+#if DEFEAT_FIRE_AND_FORGET
+                                                     true,
+#else
+                                                     false, 
+#endif
+                                                     IErrorHandler handler = default )
       {
-         // Boolean response is ignored
-         WaitFromVoid( task );
+         if ( forceOldStyle )
+         {
+            try
+            {
+               await task.WithoutChangingContext();
+            }
+            catch ( Exception ex )
+            {
+               Debug.WriteLine( nameof( FireAndFuhgetAboutIt ) + ": ERROR " + ex.Message );
+            }
+         }
+         else
+         {
+            // Boolean response is ignored
+            WaitFromVoid( task );
+         }
       }
 
       /// <summary>
