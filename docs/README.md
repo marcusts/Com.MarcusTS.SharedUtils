@@ -53,8 +53,6 @@ if (mainStr.isDifferentThan(otherStr))
 
 ## SharedUtils Is Open Source; Enjoy Our Other Offerings
 
-## SharedUtils Is Open Source; Enjoy Our Entire Suite
-
 ### *Shared Utils (MAUI Ready!)*
 
 [GutHub](https://github.com/marcusts/Com.MarcusTS.SharedUtils)
