@@ -1,5 +1,5 @@
 ﻿// *********************************************************************************
-// Copyright @2021 Marcus Technical Services, Inc.
+// Copyright @2022 Marcus Technical Services, Inc.
 // <copyright
 // file=ThreadHelper.cs
 // company="Marcus Technical Services, Inc.">
@@ -40,7 +40,6 @@ namespace Com.MarcusTS.SharedUtils.Utils
    using System.Threading;
    using System.Threading.Tasks;
    using Com.MarcusTS.SharedUtils.Interfaces;
-   using Xamarin.Essentials;
 
    /// <summary>
    /// Class ThreadHelper.
@@ -67,54 +66,6 @@ namespace Com.MarcusTS.SharedUtils.Utils
       /// <value>The main thread identifier.</value>
       [Obsolete]
       public static int MainThreadId { get; private set; }
-
-      public static void ConsiderBeginInvokeActionOnMainThread
-      (
-         Action action,
-         bool forceBeginInvoke =
-#if FORCE_ALL_BEGIN_INVOKE
-            true
-#else
-            false
-#endif
-      )
-      {
-         if ( action.IsNullOrDefault() )
-         {
-            return;
-         }
-
-         // ELSE a valid action
-         if ( !forceBeginInvoke && MainThread.IsMainThread )
-         {
-            action.Invoke();
-         }
-         else
-         {
-            MainThread.BeginInvokeOnMainThread( action.Invoke );
-         }
-      }
-
-      public static async Task ConsiderBeginInvokeTaskOnMainThread
-      (
-         this Task task,
-         bool forceBeginInvoke =
-#if FORCE_ALL_BEGIN_INVOKE
-         true
-#else
-            false
-#endif
-      )
-      {
-         if ( !forceBeginInvoke && MainThread.IsMainThread )
-         {
-            await task.WithoutChangingContext();
-         }
-         else
-         {
-            MainThread.BeginInvokeOnMainThread( () => { task.FireAndFuhgetAboutIt(); } );
-         }
-      }
 
       /// <summary>
       /// Moving over to the uniquely-named <see cref="FireAndFuhgetAboutIt" />. This method is available from many other
@@ -295,7 +246,9 @@ namespace Com.MarcusTS.SharedUtils.Utils
             (
 
                // IMPORTANT The task will run without awaiting the foreground thread and without coordination with other concurrent calls.
-               async () => await taskToRun.WithoutChangingContext()
+               async () => await taskToRun.WithoutChangingContext(),
+               // ReSharper disable once PossibleNullReferenceException
+               cancelTokenSource.Token
             );
 
             // Wait for the thread
@@ -303,7 +256,7 @@ namespace Com.MarcusTS.SharedUtils.Utils
             while ( !cancelTokenSource.Token.IsCancellationRequested && parentTask.IsRunning.IsTrue() )
             {
                // IMPORTANT This is a legal await from void and on the foreground thread because it occurs in a "while" loop and is also tried and caught.
-               await Task.Delay( delayMilliseconds ).WithoutChangingContext();
+               await Task.Delay( delayMilliseconds, cancelTokenSource.Token ).WithoutChangingContext();
             }
          }
          catch ( Exception ex )

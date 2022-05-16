@@ -2,16 +2,16 @@
 
    <PropertyGroup>
       <TargetFramework>netstandard2.0</TargetFramework>
-      <Version>2.0.2</Version>
+      <Version>2.0.3</Version>
       <Authors>Stephen Marcus</Authors>
       <Company>Marcus Technical Services, Inc.</Company>
       <Product>Shared Utils Library</Product>
       <Description>C# utilities and extension methods.</Description>
-      <Copyright>Copyright @2021 Marcus Technical Services, Inc.</Copyright>
+      <Copyright>Copyright @2022 Marcus Technical Services, Inc.</Copyright>
       <PackageTags>c# c#-utils c#-utilities c-sharp  c-sharp-utils  c-sharp-utilities</PackageTags>
       <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-      <AssemblyVersion>2.0.2.0</AssemblyVersion>
-      <FileVersion>2.0.2.0</FileVersion>
+      <AssemblyVersion>2.0.3.0</AssemblyVersion>
+      <FileVersion>2.0.3.0</FileVersion>
       <AssemblyName>Com.MarcusTS.SharedUtils</AssemblyName>
       <RootNamespace>Com.MarcusTS.SharedUtils</RootNamespace>
       <RunAnalyzersDuringBuild>true</RunAnalyzersDuringBuild>
@@ -37,10 +37,6 @@
    <ItemGroup>
       <None Include="Com.MarcusTS.SharedUtils.sln" />
       <None Include="docs\README.md" Pack="true" PackagePath="\" />
-   </ItemGroup>
-
-   <ItemGroup>
-      <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
    </ItemGroup>
 
    <ItemGroup>
