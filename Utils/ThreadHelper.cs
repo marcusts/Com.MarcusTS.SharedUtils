@@ -189,13 +189,18 @@ namespace Com.MarcusTS.SharedUtils.Utils
 #endif
       }
 
+      public static ConfiguredTaskAwaitable AndReturnToCallingContext(this Task task)
+      {
+         return task.ConfigureAwait(true);
+      }
+
       /// <summary>
-      /// Runs a Task without changing the context (configure await is false).
-      /// </summary>
-      /// <typeparam name="T"></typeparam>
-      /// <param name="task">The task.</param>
-      /// <returns>Task&lt;T&gt;.</returns>
-      public static ConfiguredTaskAwaitable<T> WithoutChangingContext<T>( this Task<T> task )
+        /// Runs a Task without changing the context (configure await is false).
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="task">The task.</param>
+        /// <returns>Task&lt;T&gt;.</returns>
+        public static ConfiguredTaskAwaitable<T> WithoutChangingContext<T>( this Task<T> task )
       {
 #if AVOID_CONTEXT_MANAGEMENT
          return task.ConfigureAwait(true);
