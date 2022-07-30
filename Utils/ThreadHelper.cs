@@ -189,11 +189,6 @@ namespace Com.MarcusTS.SharedUtils.Utils
 #endif
       }
 
-      public static ConfiguredTaskAwaitable AndReturnToCallingContext(this Task task)
-      {
-         return task.ConfigureAwait(true);
-      }
-
       /// <summary>
         /// Runs a Task without changing the context (configure await is false).
         /// </summary>
@@ -208,8 +203,18 @@ namespace Com.MarcusTS.SharedUtils.Utils
          return task.ConfigureAwait( false );
       }
 
+      public static ConfiguredTaskAwaitable AndReturnToCallingContext(this Task task)
+      {
+          return task.ConfigureAwait(true);
+      }
+
+      public static ConfiguredTaskAwaitable<T> AndReturnToCallingContext<T>(this Task<T> task)
+      {
+          return task.ConfigureAwait(true);
+      }
+
       /// <param name="maxDelay"></param>
-      private static CancellationTokenSource CreateCancellationTokenSource( int maxDelay )
+        private static CancellationTokenSource CreateCancellationTokenSource( int maxDelay )
       {
          var cancellationTokenSource = new CancellationTokenSource();
          cancellationTokenSource.CancelAfter( TimeSpan.FromMilliseconds( maxDelay ) );
